@@ -1,6 +1,10 @@
-# Mirage
+# Hidrogeno Colombia
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.2.
+
+#Install node
+ 
+ npm install
 
 ## Development server
 
