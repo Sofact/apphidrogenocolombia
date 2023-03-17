@@ -9,8 +9,7 @@ import {AppMainComponent} from './app.main.component';
                 <div class="layout-topbar-left">
 					<div class="layout-topbar-logo-wrapper" >
 						<a href="#" height="40" >
-							<img src="assets/layout/images/Logo_Fondo_Blanco_40h.png" alt="mirage-layout" />
-							
+							<img src="assets/layout/images/Logos_hidro_wec.png" alt="mirage-layout" />
 						</a>
 					</div>
 

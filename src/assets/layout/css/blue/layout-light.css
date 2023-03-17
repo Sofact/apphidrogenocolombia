@@ -9284,9 +9284,33 @@ a {
   /* ie10+ */
   background: linear-gradient(256deg, #65afc4 0%, #88c0d0 100%);
   /* w3c */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#65afc4", endColorstr="#88c0d0",GradientType=1 );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#65afc4", endColorstr="#88c0d0",GradientType=1 ); 
   /* ie6-9 */
-}
+ }
+ .widget-overview-box.overview-box-1hidrogeno {
+  background: url('../../images/back1.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+ }
+ .widget-overview-box.overview-box-2hidrogeno {
+  background: url('../../images/back2.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+ }
+ .widget-overview-box.overview-box-3hidrogeno {
+  background: url('../../images/back3.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+ }   
+ .widget-overview-box.overview-box-4hidrogeno {
+  background: url('../../images/back4.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+ }    
 .widget-overview-box.overview-box-1 .overview-box-text span {
   color: #dcf2f9;
 }

@@ -5,7 +5,7 @@ import {Component} from '@angular/core';
     template: `
         <div class="layout-footer">
 			<div >
-				<img src="assets/layout/images/Logo_Fondo_Blanco_40h.png" alt="mirage-layout" />
+				<img src="assets/layout/images/Logos_hidro_wec.png" alt="mirage-layout" />
 				<div class="text">
 					
 					
