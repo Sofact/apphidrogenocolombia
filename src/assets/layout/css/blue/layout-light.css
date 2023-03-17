@@ -9288,28 +9288,28 @@ a {
   /* ie6-9 */
  }
  .widget-overview-box.overview-box-1hidrogeno {
-  background: url('../../images/back1.png');
+  background-image: url('../../images/back1.png');
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: right;
  }
  .widget-overview-box.overview-box-2hidrogeno {
-  background: url('../../images/back2.png');
+  background-image: url('../../images/back2.png');
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: right;
  }
  .widget-overview-box.overview-box-3hidrogeno {
-  background: url('../../images/back3.png');
+  background-image: url('../../images/back3.png');
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: right;
  }   
  .widget-overview-box.overview-box-4hidrogeno {
-  background: url('../../images/back4.png');
+  background-image: url('../../images/back4.png');
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: right;
  }    
 .widget-overview-box.overview-box-1 .overview-box-text span {
   color: #dcf2f9;
