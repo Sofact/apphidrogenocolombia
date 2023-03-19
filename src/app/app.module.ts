@@ -144,6 +144,7 @@ import {ConfigService} from './demo/service/app.config.service';
 import {BreadcrumbService} from './breadcrumb.service';
 import {MenuService} from './app.menu.service';
 import {AppCodeModule} from './blocks/app-code/app.code.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
     imports: [
@@ -209,6 +210,7 @@ import {AppCodeModule} from './blocks/app-code/app.code.component';
         RadioButtonModule,
         RatingModule,
         RippleModule,
+        RouterModule,
         ScrollPanelModule,
         ScrollTopModule,
         SelectButtonModule,

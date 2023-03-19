@@ -1,4 +1,4 @@
-import {RouterModule} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 import {NgModule} from '@angular/core';
 
 import {DashboardDemoComponent} from './demo/view/dashboarddemo.component';
@@ -30,47 +30,74 @@ import {AppCrudComponent} from './pages/app.crud.component';
 import {AppCalendarComponent} from './pages/app.calendar.component';
 import {AppTimelineDemoComponent} from './pages/app.timelinedemo.component';
 import {BlocksComponent} from './blocks/blocks/blocks.component';
+import { AuthGuard } from './modules/auth/_services/auth.guard';
+
+export const routes: Routes = [
+    {
+        path: 'auth',
+        loadChildren: () =>
+            import('./modules/auth/auth.module').then(m => m.AuthModule)
+    },
+    {
+        path: '',
+        canActivate: [AuthGuard],
+        component: AppMainComponent
+      },
+   
+    {
+        path: '',
+        redirectTo: '/dash',
+        pathMatch: 'full'
+    },
+    {
+        path:'**',
+        redirectTo: 'error/404'
+    },
+    {
+        path: '', component: AppMainComponent,
+        children: [
+            {path: 'dash', component: DashboardDemoComponent},
+            {path: 'uikit/formlayout', component: FormLayoutDemoComponent},
+            {path: 'uikit/floatlabel', component: FloatLabelDemoComponent},
+            {path: 'uikit/invalidstate', component: InvalidStateDemoComponent},
+            {path: 'uikit/input', component: InputDemoComponent},
+            {path: 'uikit/button', component: ButtonDemoComponent},
+            {path: 'uikit/table', component: TableDemoComponent},
+            {path: 'uikit/list', component: ListDemoComponent},
+            {path: 'uikit/tree', component: TreeDemoComponent},
+            {path: 'uikit/panel', component: PanelsDemoComponent},
+            {path: 'uikit/overlay', component: OverlaysDemoComponent},
+            {path: 'uikit/media', component: MediaDemoComponent},
+            {path: 'uikit/menu', loadChildren: () => import('./demo/view/menus/menus.module').then(m => m.MenusModule)},
+            {path: 'uikit/message', component: MessagesDemoComponent},
+            {path: 'uikit/misc', component: MiscDemoComponent},
+            {path: 'uikit/charts', component: ChartsDemoComponent},
+            {path: 'uikit/file', component: FileDemoComponent},
+            {path: 'utilities/icons', component: IconsComponent},
+            {path: 'pages/empty', component: EmptyDemoComponent},
+            {path: 'pages/crud', component: AppCrudComponent},
+            {path: 'pages/calendar', component: AppCalendarComponent},
+            {path: 'pages/timeline', component: AppTimelineDemoComponent},
+            {path: 'components/charts', component: ChartsDemoComponent},
+            {path: 'components/file', component: FileDemoComponent},
+            {path: 'documentation', component: DocumentationComponent},
+            {path: 'blocks', component: BlocksComponent},
+            
+        ]
+    },
+    {path: 'error', component: AppErrorComponent},
+    {path: 'accessdenied', component: AppAccessdeniedComponent},
+    {path: 'notfound', component: AppNotfoundComponent},
+    {path: 'login', component: AppLoginComponent},
+    {path: '**', redirectTo: '/notfound'}
+
+];
+
 
 @NgModule({
     imports: [
-        RouterModule.forRoot([
-            {
-                path: '', component: AppMainComponent,
-                children: [
-                    {path: '', component: DashboardDemoComponent},
-                    {path: 'uikit/formlayout', component: FormLayoutDemoComponent},
-                    {path: 'uikit/floatlabel', component: FloatLabelDemoComponent},
-                    {path: 'uikit/invalidstate', component: InvalidStateDemoComponent},
-                    {path: 'uikit/input', component: InputDemoComponent},
-                    {path: 'uikit/button', component: ButtonDemoComponent},
-                    {path: 'uikit/table', component: TableDemoComponent},
-                    {path: 'uikit/list', component: ListDemoComponent},
-                    {path: 'uikit/tree', component: TreeDemoComponent},
-                    {path: 'uikit/panel', component: PanelsDemoComponent},
-                    {path: 'uikit/overlay', component: OverlaysDemoComponent},
-                    {path: 'uikit/media', component: MediaDemoComponent},
-                    {path: 'uikit/menu', loadChildren: () => import('./demo/view/menus/menus.module').then(m => m.MenusModule)},
-                    {path: 'uikit/message', component: MessagesDemoComponent},
-                    {path: 'uikit/misc', component: MiscDemoComponent},
-                    {path: 'uikit/charts', component: ChartsDemoComponent},
-                    {path: 'uikit/file', component: FileDemoComponent},
-                    {path: 'utilities/icons', component: IconsComponent},
-                    {path: 'pages/empty', component: EmptyDemoComponent},
-                    {path: 'pages/crud', component: AppCrudComponent},
-                    {path: 'pages/calendar', component: AppCalendarComponent},
-                    {path: 'pages/timeline', component: AppTimelineDemoComponent},
-                    {path: 'components/charts', component: ChartsDemoComponent},
-                    {path: 'components/file', component: FileDemoComponent},
-                    {path: 'documentation', component: DocumentationComponent},
-                    {path: 'blocks', component: BlocksComponent},
-                ]
-            },
-            {path: 'error', component: AppErrorComponent},
-            {path: 'accessdenied', component: AppAccessdeniedComponent},
-            {path: 'notfound', component: AppNotfoundComponent},
-            {path: 'login', component: AppLoginComponent},
-            {path: '**', redirectTo: '/notfound'},
-        ], {scrollPositionRestoration: 'enabled'})
+        RouterModule.forRoot(routes)
+          
     ],
     exports: [RouterModule]
 })
