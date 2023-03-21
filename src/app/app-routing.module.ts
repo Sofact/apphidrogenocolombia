@@ -30,7 +30,8 @@ import {AppCrudComponent} from './pages/app.crud.component';
 import {AppCalendarComponent} from './pages/app.calendar.component';
 import {AppTimelineDemoComponent} from './pages/app.timelinedemo.component';
 import {BlocksComponent} from './blocks/blocks/blocks.component';
-import { AuthGuard } from './modules/auth/_services/auth.guard';
+import {AuthGuard} from './modules/auth/_services/auth.guard';
+import { AuthComponent } from './modules/auth/auth.component';
 
 export const routes: Routes = [
     {
