@@ -18,8 +18,7 @@ route: ActivatedRouteSnapshot,
 state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
 if(!this.authService.isLogin()){
-
-this.router.navigate(["auth/login"]);
+this.router.navigate(["/login"]);
 return false;
 }
 

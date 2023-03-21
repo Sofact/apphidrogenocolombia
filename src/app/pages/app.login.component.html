@@ -1,40 +1,30 @@
 <div class="login-body" [ngClass]="{'layout-dark': dark, 'layout-light': !dark}">
 
     <div class="login-content">
-        <div class="night-switch">
-            <p-button styleClass="dark-switch"  icon="pi pi-circle-on" (click)="dark = true"></p-button>
-            <p-button styleClass="light-switch"  icon="pi pi-circle-off" (click)="dark = false"></p-button>
-        </div>
         <div class="login-panel">
             <div class="login-panel-content">
                 <div class="logo">
-                    <img src="assets/layout/images/logo-mirage@2x.png" alt="mirage-layout" />
+                    <img src="assets/layout/images/Logo_simplificado_transparente_80h.png" alt="mirage-layout" />
                 </div>
-                <h1>Sign in to Mirage</h1>
-                <p>Welcome, please use the form to sign-in Mirage network</p>
-                <div class="forms">
+                <h1>Iniciar Sesión</h1>
+                <p>Bienvenido, por favor use el correo electrónico registrado para el evento</p>
+
+                <form class="forms" [formGroup]="loginForm">
                     <div class="login-input-wrapper">
-                        <label for="username">Username</label>
-                        <input id="username" pInputText placeholder="Type your username..." />
+                        <input type="email" formControlName= "email" pInputText id="email" placeholder="Correo / email">
                         <i class="pi pi-user"></i>
                     </div>
-
-                    <div class="login-input-wrapper">
-                        <label for="password">Password</label>
-                        <input type="password" id="password" placeholder="Type your password" pPassword [feedback]="false"/>
+                    <div class="login-input-wrapper" hidden>
+                        <input type="password" formControlName= "password" class="form-control form-control-md" id="password" placeholder="123456">
                         <i class="pi pi-lock"></i>
                     </div>
-
-                    <div class="col-12">
-                        <p-checkbox [(ngModel)]="checked" label="Remember me" value="SaveInfo" binary="true"></p-checkbox>
-                    </div>
-
-
+                    <ng-container *ngIf="hasError">
+                            <p class="text-danger">{{hasErrorText}}</p>
+                    </ng-container>
                     <div class="buttons">
-                        <button pButton type="button" [routerLink]="['/']" label="Login"></button>
-                        <a href="#" class="secondary-button">Forget Password?</a>
+                        <button pButton type="submit" class="btn font-weight-semibold" (click)="submit()" [disabled]="loginForm.invalid">Iniciar Sesión</button>
                     </div>
-                </div>
+                </form>                
             </div>
         </div>
 

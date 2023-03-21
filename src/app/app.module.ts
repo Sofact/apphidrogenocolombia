@@ -1,5 +1,5 @@
 import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -146,6 +146,13 @@ import {MenuService} from './app.menu.service';
 import {AppCodeModule} from './blocks/app-code/app.code.component';
 import { RouterModule } from '@angular/router';
 
+
+//Auth services
+import { AuthRoutingModule } from './modules/auth/auth-routing.module';
+import { AuthComponent } from './modules/auth/auth.component';
+import { LoginComponent } from './modules/auth/login/login.component';
+
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -235,6 +242,9 @@ import { RouterModule } from '@angular/router';
         TreeModule,
         TreeTableModule,
         VirtualScrollerModule,
+
+        AuthRoutingModule,
+        ReactiveFormsModule,
     ],
     declarations: [
         AppComponent,
@@ -275,7 +285,10 @@ import { RouterModule } from '@angular/router';
         DocumentationComponent,
         IconsComponent,
         BlocksComponent,
-        BlockViewer
+        BlockViewer,
+
+        AuthComponent,
+        LoginComponent,
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

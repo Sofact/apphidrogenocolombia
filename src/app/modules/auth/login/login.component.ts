@@ -13,6 +13,7 @@ export class LoginComponent {
   loginForm!: FormGroup;
   hasError: Boolean= false;
   hasErrorText: any = '';
+  generica = '123456';
 
   constructor( private fb: FormBuilder,
                 private authService: AuthService,
@@ -26,8 +27,8 @@ export class LoginComponent {
   }
 
   ngOnInit(): void {
-  
-    this.initForm();
+      this.initForm();
+      this.loginForm.controls.password.setValue('123456');
   }
 
 
