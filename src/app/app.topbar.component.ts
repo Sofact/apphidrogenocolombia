@@ -350,7 +350,7 @@ import { AuthService} from './modules/auth/_services/auth.service';
 									<i class="pi pi-angle-right"></i>
 								</li>
 								<li class="layout-submenu-footer">
-									<button class="signout-button" (click)="signout">Cerrar Sesión</button>
+									<button class="signout-button" (click)="signout()">Cerrar Sesión</button>
 									<button class="buy-mirage-button">Buy Mirage</button>
 								</li>
 							</ul>
