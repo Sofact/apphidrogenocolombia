@@ -32,6 +32,7 @@ import {AppTimelineDemoComponent} from './pages/app.timelinedemo.component';
 import {BlocksComponent} from './blocks/blocks/blocks.component';
 import {AuthGuard} from './modules/auth/_services/auth.guard';
 import { AuthComponent } from './modules/auth/auth.component';
+import { ChatPanelComponent } from './modules/chat-panel/chat-panel.component';
 
 export const routes: Routes = [
     {
@@ -40,11 +41,15 @@ export const routes: Routes = [
             import('./modules/auth/auth.module').then(m => m.AuthModule)
     },
     {
-        path: '',
+        path: 'dashboard',
         canActivate: [AuthGuard],
         component: AppMainComponent
       },
-   
+      {
+        path: 'chat',
+        canActivate: [AuthGuard],
+        component: ChatPanelComponent
+      },
     {
         path: '',
         redirectTo: '/dash',

@@ -151,6 +151,8 @@ import { RouterModule } from '@angular/router';
 import { AuthRoutingModule } from './modules/auth/auth-routing.module';
 import { AuthComponent } from './modules/auth/auth.component';
 import { LoginComponent } from './modules/auth/login/login.component';
+import { ChatPanelComponent } from './modules/chat-panel/chat-panel.component';
+import { ChatPanelModule } from './modules/chat-panel/chat-panel.module';
 
 
 @NgModule({
@@ -172,6 +174,7 @@ import { LoginComponent } from './modules/auth/login/login.component';
         CardModule,
         CarouselModule,
         CascadeSelectModule,
+        ChatPanelModule,
         ChartModule,
         CheckboxModule,
         ChipModule,
