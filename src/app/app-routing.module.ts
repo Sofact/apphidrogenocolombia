@@ -35,8 +35,10 @@ import { AuthComponent } from './modules/auth/auth.component';
 import { ChatPanelComponent } from './modules/chat-panel/chat-panel.component';
 
 export const routes: Routes = [
+    {path: 'login', component: AppLoginComponent},
+/*
     {
-        path: 'auth',
+        path: '',
         loadChildren: () =>
             import('./modules/auth/auth.module').then(m => m.AuthModule)
     },
@@ -44,11 +46,6 @@ export const routes: Routes = [
         path: 'dashboard',
         canActivate: [AuthGuard],
         component: AppMainComponent
-      },
-      {
-        path: 'chat',
-        canActivate: [AuthGuard],
-        component: ChatPanelComponent
       },
     {
         path: '',
@@ -58,7 +55,7 @@ export const routes: Routes = [
     {
         path:'**',
         redirectTo: 'error/404'
-    },
+    }, */
     {
         path: '', component: AppMainComponent,
         children: [
@@ -89,12 +86,11 @@ export const routes: Routes = [
             {path: 'documentation', component: DocumentationComponent},
             {path: 'blocks', component: BlocksComponent},
             
-        ]
+        ], canActivate: [AuthGuard]
     },
     {path: 'error', component: AppErrorComponent},
     {path: 'accessdenied', component: AppAccessdeniedComponent},
     {path: 'notfound', component: AppNotfoundComponent},
-    {path: 'login', component: AppLoginComponent},
     {path: '**', redirectTo: '/notfound'}
 
 ];
