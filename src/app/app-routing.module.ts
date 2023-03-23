@@ -34,8 +34,10 @@ import {AuthGuard} from './modules/auth/_services/auth.guard';
 import { AuthComponent } from './modules/auth/auth.component';
 
 export const routes: Routes = [
+    {path: 'login', component: AppLoginComponent},
+/*
     {
-        path: 'auth',
+        path: '',
         loadChildren: () =>
             import('./modules/auth/auth.module').then(m => m.AuthModule)
     },
@@ -44,7 +46,6 @@ export const routes: Routes = [
         canActivate: [AuthGuard],
         component: AppMainComponent
       },
-   
     {
         path: '',
         redirectTo: '/dash',
@@ -53,7 +54,7 @@ export const routes: Routes = [
     {
         path:'**',
         redirectTo: 'error/404'
-    },
+    }, */
     {
         path: '', component: AppMainComponent,
         children: [
@@ -84,12 +85,11 @@ export const routes: Routes = [
             {path: 'documentation', component: DocumentationComponent},
             {path: 'blocks', component: BlocksComponent},
             
-        ]
+        ], canActivate: [AuthGuard]
     },
     {path: 'error', component: AppErrorComponent},
     {path: 'accessdenied', component: AppAccessdeniedComponent},
     {path: 'notfound', component: AppNotfoundComponent},
-    {path: 'login', component: AppLoginComponent},
     {path: '**', redirectTo: '/notfound'}
 
 ];
