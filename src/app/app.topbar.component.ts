@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {AppMainComponent} from './app.main.component';
+import { AuthService} from './modules/auth/_services/auth.service';
 
 @Component({
     selector: 'app-topbar',
@@ -349,7 +350,7 @@ import {AppMainComponent} from './app.main.component';
 									<i class="pi pi-angle-right"></i>
 								</li>
 								<li class="layout-submenu-footer">
-									<button class="signout-button">Sign Out</button>
+									<button class="signout-button" (click)="signout()">Cerrar Sesión</button>
 									<button class="buy-mirage-button">Buy Mirage</button>
 								</li>
 							</ul>
@@ -364,11 +365,15 @@ export class AppTopBarComponent {
 
     activeItem: number;
 
-    constructor(public appMain: AppMainComponent) {}
+    constructor(public appMain: AppMainComponent,
+		private authService: AuthService) {}
 
     mobileMegaMenuItemClick(index) {
         this.appMain.megaMenuMobileClick = true;
         this.activeItem = this.activeItem === index ? null : index;
-    }
+	}
 
+	signout(){
+		this.authService.logout();
+	}
 }
