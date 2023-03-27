@@ -26,6 +26,7 @@ import {AppNotfoundComponent} from './pages/app.notfound.component';
 import {AppErrorComponent} from './pages/app.error.component';
 import {AppAccessdeniedComponent} from './pages/app.accessdenied.component';
 import {AppLoginComponent} from './pages/app.login.component';
+import {AppRegisterComponent} from './pages/app.register.component';
 import {AppCrudComponent} from './pages/app.crud.component';
 import {AppCalendarComponent} from './pages/app.calendar.component';
 import {AppTimelineDemoComponent} from './pages/app.timelinedemo.component';
@@ -36,6 +37,7 @@ import { ChatPanelComponent } from './modules/chat-panel/chat-panel.component';
 
 export const routes: Routes = [
     {path: 'login', component: AppLoginComponent},
+    {path: 'register', component: AppRegisterComponent},
 /*
     {
         path: '',

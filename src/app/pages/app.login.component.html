@@ -12,17 +12,14 @@
                 <form class="forms" [formGroup]="loginForm">
                     <div class="login-input-wrapper">
                         <input type="email" formControlName= "email" pInputText id="email" placeholder="Correo / email">
-                        <i class="pi pi-user"></i>
-                    </div>
-                    <div class="login-input-wrapper" hidden>
-                        <input type="password" formControlName= "password" class="form-control form-control-md" id="password" placeholder="123456">
-                        <i class="pi pi-lock"></i>
+                        <i class="pi pi-at"></i>
                     </div>
                     <ng-container *ngIf="hasError">
                             <p class="text-danger">{{hasErrorText}}</p>
                     </ng-container>
                     <div class="buttons">
                         <button pButton type="submit" class="btn font-weight-semibold" (click)="submit()" [disabled]="loginForm.invalid">Iniciar Sesión</button>
+                        <a href="#/register" class="secondary-button">Regístrate Aquí</a>
                     </div>
                 </form>                
             </div>

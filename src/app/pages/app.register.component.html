@@ -1,0 +1,42 @@
+<div class="login-body" [ngClass]="{'layout-dark': dark, 'layout-light': !dark}">
+
+    <div class="login-content">
+        <div class="login-panel">
+            <div class="login-panel-content">
+                <div class="logo">
+                    <img src="assets/layout/images/Logo_simplificado_transparente_80h.png" alt="mirage-layout" />
+                </div>
+                <h1>Registrar usuario</h1>
+                <p>Complete los datos para su registro</p>
+
+                <form class="forms" [formGroup]="registerForm">
+                    <div class="login-input-wrapper">
+                        <input type="email" formControlName= "email" pInputText id="email" placeholder="Correo / email">
+                        <i class="pi pi-at"></i>
+                    </div>
+                    <div class="login-input-wrapper">
+                        <input type="text" formControlName= "name" pInputText id="name" placeholder="Nombres y Apellidos">
+                        <i class="pi pi-user"></i>
+                    </div>
+                    <div class="login-input-wrapper">
+                        <input type="text" formControlName= "usr_empresa" pInputText id="usr_empresa" placeholder="Empresa">
+                        <i class="pi pi-building"></i>
+                    </div> 
+                    <div class="login-input-wrapper">
+                        <input type="text" formControlName= "usr_cargo" pInputText id="usr_cargo" placeholder="Cargo">
+                        <i class="pi pi-users"></i>
+                    </div>                                                             
+                    <ng-container *ngIf="hasError">
+                            <p class="text-danger">{{hasErrorText}}</p>
+                    </ng-container>
+                    <div class="buttons">
+                        <button pButton type="submit" class="btn font-weight-semibold" (click)="submit()" [disabled]="registerForm.invalid">Registrar</button>
+                        <a href="#/login" class="secondary-button">Inicia sesión Aquí</a>
+                    </div>
+                </form>                
+            </div>
+        </div>
+
+        <div class="desert"></div>
+    </div>
+</div>

@@ -42,14 +42,6 @@ this.loginForm = this.fb.group({
       Validators.minLength(6),
       Validators.maxLength(30)
       ])
-    ],
-    password:[
-      null,
-      Validators.compose([
-      Validators.required,
-      Validators.minLength(6),
-      Validators.maxLength(30)
-      ])
     ]
   })
 }
@@ -57,8 +49,8 @@ this.loginForm = this.fb.group({
 submit(){
   this.hasError= false;
 //  console.log(this.loginForm.value);
-  
-  this.authService.login(this.loginForm.value.email, this.loginForm.value.password)
+
+  this.authService.login(this.loginForm.value.email, this.generica)
     .subscribe((resp: any) => {
       console.log(resp);
       if(!resp.error && resp){

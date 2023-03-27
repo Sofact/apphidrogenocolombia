@@ -364,9 +364,16 @@ import { AuthService} from './modules/auth/_services/auth.service';
 export class AppTopBarComponent {
 
     activeItem: number;
+	usuario: string = '';
 
     constructor(public appMain: AppMainComponent,
-		private authService: AuthService) {}
+		private authService: AuthService) {
+
+			if(this.authService.isLogin()){
+				//this.authService.loadLocalStorage.
+			  }
+
+		}
 
     mobileMegaMenuItemClick(index) {
         this.appMain.megaMenuMobileClick = true;
@@ -376,4 +383,10 @@ export class AppTopBarComponent {
 	signout(){
 		this.authService.logout();
 	}
+
+	getuser()
+	{
+		
+	}
+
 }

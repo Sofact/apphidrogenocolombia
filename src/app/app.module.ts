@@ -95,6 +95,7 @@ import {AppNotfoundComponent} from './pages/app.notfound.component';
 import {AppErrorComponent} from './pages/app.error.component';
 import {AppAccessdeniedComponent} from './pages/app.accessdenied.component';
 import {AppLoginComponent} from './pages/app.login.component';
+import {AppRegisterComponent} from './pages/app.register.component';
 import {AppCrudComponent} from './pages/app.crud.component';
 import {AppCalendarComponent} from './pages/app.calendar.component';
 import {AppTimelineDemoComponent} from './pages/app.timelinedemo.component';
@@ -150,7 +151,6 @@ import { RouterModule } from '@angular/router';
 //Auth services
 import { AuthRoutingModule } from './modules/auth/auth-routing.module';
 import { AuthComponent } from './modules/auth/auth.component';
-import { LoginComponent } from './modules/auth/login/login.component';
 import { ChatPanelComponent } from './modules/chat-panel/chat-panel.component';
 import { ChatPanelModule } from './modules/chat-panel/chat-panel.module';
 
@@ -291,7 +291,7 @@ import { ChatPanelModule } from './modules/chat-panel/chat-panel.module';
         BlockViewer,
 
         AuthComponent,
-        LoginComponent,
+        AppRegisterComponent,
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

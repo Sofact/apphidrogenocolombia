@@ -31,6 +31,7 @@ export class AuthService {
       this.user=null;
     }
   }
+  
   login(email:string, password: string){
   
     let url = URL_SERVICIOS+'/login';
@@ -86,7 +87,6 @@ export class AuthService {
   }
 
   isLogin(){
-
     return localStorage.getItem("token") !== null;
   }
 }
