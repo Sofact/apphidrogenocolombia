@@ -12,7 +12,7 @@ export class AppLoginComponent {
   loginForm!: FormGroup;
   hasError: Boolean= false;
   hasErrorText: any = '';
-  generica = '123456';
+  generica = 'rHJ7$p583YL@';
   dark: boolean;
   checked: boolean;
 
@@ -29,7 +29,6 @@ if(this.authService.isLogin()){
 
 ngOnInit(): void {
 this.initForm();
-this.loginForm.controls.password.setValue('123456');
 }
 
 initForm(){

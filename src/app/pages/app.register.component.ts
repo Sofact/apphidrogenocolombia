@@ -12,7 +12,7 @@ export class AppRegisterComponent {
   registerForm!: FormGroup;
   hasError: Boolean= false;
   hasErrorText: any = '';
-  generica = '123456';
+  generica = 'rHJ7$p583YL@';
   dark: boolean;
   checked: boolean;
 
@@ -74,7 +74,7 @@ submit(){
 //  console.log(this.loginForm.value);
 const data = {
   email: this.registerForm.value.email,
-  password: '123456',
+  password: this.generica,
   name: this.registerForm.value.name,
   usr_empresa: this.registerForm.value.usr_empresa,
   usr_cargo: this.registerForm.value.usr_cargo
