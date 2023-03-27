@@ -245,11 +245,11 @@ import { AuthService} from './modules/auth/_services/auth.service';
 						<li #profile class="topbar-item profile-item" [ngClass]="{'active-topmenuitem': appMain.activeTopbarItem === profile}">
 							<a href="#" (click)="appMain.onTopbarItemClick($event,profile)">
                             <span class="profile-image-wrapper">
-                                <img src="assets/layout/images/topbar/avatar-eklund.png" alt="mirage-layout" />
+								<div class="avatar avatar-online mr-2"><img src="assets/media/avatar/{{user.avatar}}" alt="mirage-layout" /></div>
                             </span>
 								<span class="profile-info-wrapper">
-                                <h3>Olivia Eklund</h3>
-                                <span>Participante</span>
+                                <h3>{{user.name}}</h3>
+                                <span>{{user.perfil}}</span>
                             </span>
 							</a>
 							<ul class="profile-item-submenu fadeInDown">
@@ -259,10 +259,10 @@ import { AuthService} from './modules/auth/_services/auth.service';
 										<img src="assets/layout/images/topbar/asset-bars.svg" alt="mirage-layout" />
 									</div>
 									<div class="profile">
-										<img src="assets/layout/images/topbar/avatar-eklund.png" alt="mirage-layout"
-														width="40" />
-										<h1>Olivia Eklund</h1>
-										<span>Design</span>
+										<div class="avatar avatar-online mr-2"><img src="assets/media/avatar/{{user.avatar}}" alt="mirage-layout"
+														width="40" /></div>
+										<h1>{{user.name}}</h1>
+										<span>{{user.perfil}}</span>
 									</div>
 								</li>
 								<li class="layout-submenu-item">
@@ -291,7 +291,6 @@ import { AuthService} from './modules/auth/_services/auth.service';
 								</li>
 								<li class="layout-submenu-footer">
 									<button class="signout-button" (click)="signout()">Cerrar Sesión</button>
-									<button class="buy-mirage-button">Buy Mirage</button>
 								</li>
 							</ul>
 						</li>
@@ -306,11 +305,11 @@ import { AuthService} from './modules/auth/_services/auth.service';
 						<li #mobileProfile class="topbar-item profile-item" [ngClass]="{'active-topmenuitem': appMain.activeTopbarItem === mobileProfile}">
 							<a href="#" (click)="appMain.onTopbarItemClick($event,mobileProfile)">
                             <span class="profile-image-wrapper">
-                                <img src="assets/layout/images/topbar/avatar-eklund.png" alt="mirage-layout" />
+							<div class="avatar avatar-online mr-2"><img src="assets/media/avatar/{{user.avatar}}" alt="mirage-layout" /></div>
                             </span>
 								<span class="profile-info-wrapper">
-                                <h3>Olivia Eklund</h3>
-                                <span>Design</span>
+                                <h3>{{user.name}}</h3>
+                                <span>{{user.perfil}}</span>
                             </span>
 							</a>
 							<ul class="fadeInDown">
@@ -320,9 +319,9 @@ import { AuthService} from './modules/auth/_services/auth.service';
 										<img src="assets/layout/images/topbar/asset-bars.svg" alt="mirage-layout" />
 									</div>
 									<div class="profile">
-										<img src="assets/layout/images/topbar/avatar-eklund.png" alt="mirage-layout" width="45" />
-										<h1>Olivia Eklund</h1>
-										<span>Design</span>
+										<div class="avatar avatar-online mr-2"><img src="assets/media/avatar/{{user.avatar}}" alt="mirage-layout" width="45" /></div>
+										<h1>{{user.name}}</h1>
+										<span>{{user.perfil}}</span>
 									</div>
 								</li>
 								<li>
@@ -351,7 +350,6 @@ import { AuthService} from './modules/auth/_services/auth.service';
 								</li>
 								<li class="layout-submenu-footer">
 									<button class="signout-button" (click)="signout()">Cerrar Sesión</button>
-									<button class="buy-mirage-button">Buy Mirage</button>
 								</li>
 							</ul>
 						</li>
@@ -364,13 +362,16 @@ import { AuthService} from './modules/auth/_services/auth.service';
 export class AppTopBarComponent {
 
     activeItem: number;
-	usuario: string = '';
+	user:any = null;
 
     constructor(public appMain: AppMainComponent,
 		private authService: AuthService) {
 
 			if(this.authService.isLogin()){
-				//this.authService.loadLocalStorage.
+				this.user = JSON.parse(localStorage.getItem("user") ?? '');
+				if (this.user.avatar==null || this.user.avatar==""){
+					this.user.avatar="non-avatar.png";
+				}
 			  }
 
 		}
@@ -382,11 +383,6 @@ export class AppTopBarComponent {
 
 	signout(){
 		this.authService.logout();
-	}
-
-	getuser()
-	{
-		
 	}
 
 }
