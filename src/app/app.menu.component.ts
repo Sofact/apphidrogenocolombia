@@ -64,11 +64,17 @@ export class AppMenuComponent implements OnInit {
                 ]
             },
             {
-                label: 'chat', icon: 'pi pi-fw pi-send', routerLink: ['chat'],
+                label: 'Chat', icon: 'pi pi-fw pi-send', routerLink: ['chat'],
                 items: [
                     {label: 'Mensajes', icon: 'pi pi-fw pi-inbox', routerLink: ['chat']},
                                     ]
             },
+            {
+                label: 'Usuarios', icon: 'pi pi-fw pi-user', routerLink: ['register'],
+                items: [
+                    {label: 'Registrar', icon: 'pi pi-fw pi-user-plus', routerLink: ['register']},
+                                    ]
+            }, 
             /*,
             {
                 label: 'Hierarchy', icon: 'pi pi-fw pi-sitemap',
