@@ -87,6 +87,7 @@ export const routes: Routes = [
             {path: 'components/file', component: FileDemoComponent},
             {path: 'documentation', component: DocumentationComponent},
             {path: 'blocks', component: BlocksComponent},
+            {path: 'chat', loadChildren: () => import('src/app/modules/chat-panel/chat-panel.module').then(m => m.ChatPanelModule)}
             
         ], canActivate: [AuthGuard]
     },

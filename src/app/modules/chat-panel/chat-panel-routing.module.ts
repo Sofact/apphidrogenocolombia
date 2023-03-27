@@ -7,12 +7,9 @@ const routes: Routes = [
 
   {
     path: '',
-    component: ChatPanelComponent,
+    component: ChatPanelBodyComponent,
     children:[
-      {
-        path: 'chat-content',
-        component: ChatPanelBodyComponent
-      },
+     
       {
         path: '', redirectTo: 'chat-content', pathMatch: 'full'
       },

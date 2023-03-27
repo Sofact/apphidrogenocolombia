@@ -64,9 +64,9 @@ export class AppMenuComponent implements OnInit {
                 ]
             },
             {
-                label: 'chat', icon: 'pi pi-fw pi-send', routerLink: ['/chat-content'],
+                label: 'chat', icon: 'pi pi-fw pi-send', routerLink: ['chat'],
                 items: [
-                    {label: 'Mensajes', icon: 'pi pi-fw pi-inbox', routerLink: ['chat-content']},
+                    {label: 'Mensajes', icon: 'pi pi-fw pi-inbox', routerLink: ['chat']},
                                     ]
             },
             /*,
