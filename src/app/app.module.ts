@@ -5,6 +5,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 
+
 // PrimeNG Components for demos
 import {AccordionModule} from 'primeng/accordion';
 import {AutoCompleteModule} from 'primeng/autocomplete';
@@ -153,10 +154,13 @@ import { AuthRoutingModule } from './modules/auth/auth-routing.module';
 import { AuthComponent } from './modules/auth/auth.component';
 import { ChatPanelComponent } from './modules/chat-panel/chat-panel.component';
 import { ChatPanelModule } from './modules/chat-panel/chat-panel.module';
-
+import { authInterceptorProviders } from './modules/chat-panel/services/authInterceptor';
+import * as bootstrap from 'bootstrap';
+import * as $ from 'jquery';
 
 @NgModule({
     imports: [
+        FormsModule ,
         BrowserModule,
         FormsModule,
         AppRoutingModule,
@@ -293,7 +297,7 @@ import { ChatPanelModule } from './modules/chat-panel/chat-panel.module';
         AuthComponent,
         AppRegisterComponent,
     ],
-    providers: [
+    providers: [authInterceptorProviders,
         {provide: LocationStrategy, useClass: HashLocationStrategy},
         CountryService, CustomerService, EventService, IconService, NodeService,
         PhotoService, ProductService, MenuService, BreadcrumbService, ConfigService

@@ -54,6 +54,8 @@ export class AuthService {
       )
   }
 
+
+
   storeLocalStorageToken(auth: any){
 
     if(auth.access_token){
@@ -89,4 +91,9 @@ export class AuthService {
   isLogin(){
     return localStorage.getItem("token") !== null;
   }
+
+  public getToken(): string | null {
+   
+    return localStorage.getItem("token");
+}
 }

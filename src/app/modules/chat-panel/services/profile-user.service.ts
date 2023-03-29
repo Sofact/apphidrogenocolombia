@@ -10,13 +10,14 @@ export class ProfileUserService {
 
   constructor(
       public http: HttpClient,
-      public authServicese: AuthService,
+      public authService: AuthService,
     ) { }
 
     
     ContactUsers(){
-      let headers =  new HttpHeaders({'Autorization': 'Bearer'+ this.authServicese.token});
-      let LINK = URL_SERVICIOS+"/users/contact-users";
+      console.log("autorizaciobn::"+ this.authService.token);
+      let headers =  new HttpHeaders({'Authorization': 'Bearer'+ this.authService.token});
+      let LINK = URL_SERVICIOS+"/users/contact";
       return this.http.get(LINK,{ headers: headers});
     }
 }

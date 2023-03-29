@@ -369,9 +369,9 @@ export class AppTopBarComponent {
 
 			if(this.authService.isLogin()){
 				this.user = JSON.parse(localStorage.getItem("user") ?? '');
-				if (this.user.avatar==null || this.user.avatar==""){
-					this.user.avatar="non-avatar.png";
-				}
+			/*	if (this.user.usr_avatar==null || this.user.usr_avatar==""){
+					this.user.usr_avatar="src/assets/media/avatar/non-avatar.png";
+				}*/
 			  }
 
 		}
