@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../modules/auth/_services/auth.service';
 import swal from 'sweetalert2'
@@ -9,7 +9,12 @@ import swal from 'sweetalert2'
   templateUrl: './app.register.component.html',
 })
 export class AppRegisterComponent {
-  registerForm!: FormGroup;
+  registerForm: FormGroup;
+  get email() { return this.registerForm.get('email'); };
+  get name() { return this.registerForm.get('name'); };
+  get usr_empresa() { return this.registerForm.get('usr_empresa'); };
+  get usr_cargo() { return this.registerForm.get('usr_cargo'); };
+
   hasError: Boolean= false;
   hasErrorText: any = '';
   generica = 'rHJ7$p583YL@';
@@ -32,41 +37,12 @@ this.initForm();
 }
 
 initForm(){
-this.registerForm = this.fb.group({
-    email:[
-      null,
-      Validators.compose([
-      Validators.required,
-      Validators.email,
-      Validators.minLength(6),
-      Validators.maxLength(30)
-      ])
-    ],
-    name:[
-      null,
-      Validators.compose([
-      Validators.required,
-      Validators.minLength(6),
-      Validators.maxLength(50)
-      ])
-    ],
-    usr_empresa:[
-      null,
-      Validators.compose([
-      Validators.required,
-      Validators.minLength(6),
-      Validators.maxLength(200)
-      ])
-    ],
-    usr_cargo:[
-      null,
-      Validators.compose([
-      Validators.required,
-      Validators.minLength(6),
-      Validators.maxLength(200)
-      ])
-    ]
-  })
+ this.registerForm = this.fb.group({
+    email:[null, [Validators.required, Validators.email, Validators.minLength(6), Validators.maxLength(100)]],
+    name:[null, [Validators.required, Validators.minLength(6), Validators.maxLength(100)]],
+    usr_empresa:[null, [Validators.required, Validators.maxLength(200)]],
+    usr_cargo:[null, [Validators.required, Validators.maxLength(200)]]
+  }) 
 }
 
 submit(){

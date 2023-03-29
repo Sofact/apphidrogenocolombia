@@ -17,9 +17,9 @@
                     <ng-container *ngIf="hasError">
                             <p class="text-danger">{{hasErrorText}}</p>
                     </ng-container>
-                    <div class="buttons">
+                    <div class="buttons" style="display: flex; justify-content: center;">
                         <button pButton type="submit" class="btn font-weight-semibold" (click)="submit()" [disabled]="loginForm.invalid">Iniciar Sesión</button>
-                        <a href="#/register" class="secondary-button">Regístrate Aquí</a>
+                        <!-- <a href="#/register" class="secondary-button">Regístrate Aquí</a> -->
                     </div>
                 </form>                
             </div>

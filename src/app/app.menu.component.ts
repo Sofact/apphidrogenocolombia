@@ -13,7 +13,7 @@ export class AppMenuComponent implements OnInit {
 
     ngOnInit() {
         this.model = [
-            {label: 'Hidrógeno Colombia', icon: 'pi pi-fw pi-home', routerLink: ['/']},
+            {label: 'Hidrógeno Colombia', icon: 'pi pi-fw pi-home', routerLink: ['dash']},
             {
                 label: 'Agenda', icon: 'pi pi-fw pi-star-fill', routerLink: ['/uikit'],
                 items: [
@@ -72,7 +72,7 @@ export class AppMenuComponent implements OnInit {
             {
                 label: 'Usuarios', icon: 'pi pi-fw pi-user', routerLink: ['register'],
                 items: [
-                    {label: 'Registrar', icon: 'pi pi-fw pi-user-plus', routerLink: ['register']},
+                    {label: 'Registrar', icon: 'pi pi-fw pi-user-plus', routerLink: ['pages/register']},
                                     ]
             }, 
             /*,

@@ -131,6 +131,7 @@ import {DocumentationComponent} from './demo/view/documentation.component';
 import {IconsComponent} from './utilities/icons.component';
 import {BlocksComponent} from './blocks/blocks/blocks.component';
 import {BlockViewer} from './blocks/blockviewer/blockviewer.component';
+import {RegisterComponent} from './demo/view/register.component';
 
 // Demo services
 import {CountryService} from './demo/service/countryservice';
@@ -296,6 +297,7 @@ import * as $ from 'jquery';
 
         AuthComponent,
         AppRegisterComponent,
+        RegisterComponent
     ],
     providers: [authInterceptorProviders,
         {provide: LocationStrategy, useClass: HashLocationStrategy},
