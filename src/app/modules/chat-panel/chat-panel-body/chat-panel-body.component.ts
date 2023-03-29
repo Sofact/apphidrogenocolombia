@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { ProfileUserService } from '../services/profile-user.service';
 import { ChatPanelService } from '../_services/chat-panel.service';
 
@@ -7,16 +7,24 @@ import { ChatPanelService } from '../_services/chat-panel.service';
   selector: 'app-chat-panel-body',
   templateUrl: './chat-panel-body.component.html'
 })
-export class ChatPanelBodyComponent implements OnInit {
+export class ChatPanelBodyComponent {
 
   lado: string= '';
-  message_text_area: string= 'miguel';
+  mensaje: string;
   users_contacts:any =[];
   path: string = '/assets/media/avatar/';
   to_user: any;
   loadChatPanelContent: boolean = true;
 
+  sendMessageTexto(){
 
+    let test=0;
+    console.log(this.mensaje);
+     //this._chatPanelService.sendMessageTxt(data)
+   /* .subscribe((resp) =>{
+      console.log(resp);
+    })*/
+  }
 
   constructor(
               private _userProfileService: ProfileUserService,
@@ -54,13 +62,5 @@ export class ChatPanelBodyComponent implements OnInit {
       })
     }
 
-    sendMessageTexto(){
 
-      let test=0;
-      console.log(this.message_text_area);
-       //this._chatPanelService.sendMessageTxt(data)
-     /* .subscribe((resp) =>{
-        console.log(resp);
-      })*/
-    }
 }

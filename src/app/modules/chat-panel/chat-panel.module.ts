@@ -9,8 +9,8 @@ import { ChatContentPanelComponent } from './chat-panel-body/cp/chat-content-pan
 
 @NgModule({
   declarations: [
-    ChatPanelComponent,
-    ChatPanelBodyComponent,
+    //ChatPanelComponent,
+    //ChatPanelBodyComponent,
     ChatContentPanelComponent
   ],
   imports: [

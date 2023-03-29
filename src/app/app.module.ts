@@ -132,6 +132,8 @@ import {IconsComponent} from './utilities/icons.component';
 import {BlocksComponent} from './blocks/blocks/blocks.component';
 import {BlockViewer} from './blocks/blockviewer/blockviewer.component';
 import {RegisterComponent} from './demo/view/register.component';
+import { ChatPanelComponent } from './modules/chat-panel/chat-panel.component';
+import { ChatPanelBodyComponent } from './modules/chat-panel/chat-panel-body/chat-panel-body.component';
 
 // Demo services
 import {CountryService} from './demo/service/countryservice';
@@ -153,7 +155,6 @@ import { RouterModule } from '@angular/router';
 //Auth services
 import { AuthRoutingModule } from './modules/auth/auth-routing.module';
 import { AuthComponent } from './modules/auth/auth.component';
-import { ChatPanelComponent } from './modules/chat-panel/chat-panel.component';
 import { ChatPanelModule } from './modules/chat-panel/chat-panel.module';
 import { authInterceptorProviders } from './modules/chat-panel/services/authInterceptor';
 import * as bootstrap from 'bootstrap';
@@ -297,7 +298,9 @@ import * as $ from 'jquery';
 
         AuthComponent,
         AppRegisterComponent,
-        RegisterComponent
+        RegisterComponent,
+        ChatPanelComponent,
+        ChatPanelBodyComponent
     ],
     providers: [authInterceptorProviders,
         {provide: LocationStrategy, useClass: HashLocationStrategy},
