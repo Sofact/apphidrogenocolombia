@@ -1,10 +1,11 @@
 import { environment } from "src/environments/environment";
+import Echo from "laravel-echo"
 
 export const URL_BACKEND = environment.URL_BACKEND;
 export const URL_SERVICIOS = environment.URL_SERVICIOS;
 export const URL_FRONTEND   = environment.URL_FRONTEND;
 
-/*
+
 export function ECHO_PUSHER (token:any){
     return new Echo ({
         broadcaster: 'pusher',
@@ -25,4 +26,4 @@ export function ECHO_PUSHER (token:any){
         },
       });
   }
-  */
+  

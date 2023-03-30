@@ -1,6 +1,8 @@
 import { Component} from '@angular/core';
 import { ProfileUserService } from '../services/profile-user.service';
 import { ChatPanelService } from '../_services/chat-panel.service';
+import { Message } from 'primeng/api';
+import { ECHO_PUSHER } from '../../../config/config';
 
 
 @Component({
@@ -18,9 +20,18 @@ export class ChatPanelBodyComponent {
 
   sendMessageTexto(){
 
-    let test=0;
+    let data= {
+      
+      chat_room_id: this.to_user.room_id,
+      message:this.mensaje,
+      to_user_id : this.to_user.user.id
+
+
+    }
     console.log(this.mensaje);
-     //this._chatPanelService.sendMessageTxt(data)
+     this._chatPanelService.sendMessageTxt(data).subscribe((resp:any) => {
+      console.log(resp);
+    })
    /* .subscribe((resp) =>{
       console.log(resp);
     })*/
@@ -34,6 +45,8 @@ export class ChatPanelBodyComponent {
    // $("#messageInput").emojioneArea();
     this.ContactsUsers();
 
+    const ECHO_PUSHER_INST = ECHO_PUSHER(this._chatPanelService.authService.token);
+    
     
   }
 
@@ -57,6 +70,10 @@ export class ChatPanelBodyComponent {
       
         console.log("larespuesta::",resp);
         this.loadChatPanelContent = true;
+        /*
+        setTimeout(() =>{
+          $("#messageInput").emojioneArea();
+        },50);*/
         $("#startConversation").modal("hide");
         this.to_user = resp;
       })

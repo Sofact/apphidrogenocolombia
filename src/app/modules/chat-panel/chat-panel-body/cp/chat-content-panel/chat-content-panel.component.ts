@@ -9,15 +9,20 @@ export class ChatContentPanelComponent implements OnInit{
  
   @Input() to_user:any = null;
   user: any;
+  LIST_MESSAGES: any = [];
 
   constructor(  private _chatPanelService: ChatPanelService
     ){}
 
 
   ngOnInit(): void {
-   // this.user = this._chatPanelService.authService.user;
-    console.log(this.to_user);
-
+    this.user = this._chatPanelService.authService.user;
+    console.log("El id del usuario",this.user);
+    this.to_user.messages.forEach((element: any) =>{
+      this.LIST_MESSAGES.unshift(element);
+    }
+    
+    )
   }
 
 

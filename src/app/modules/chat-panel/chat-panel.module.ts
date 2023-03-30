@@ -11,7 +11,7 @@ import { ChatContentPanelComponent } from './chat-panel-body/cp/chat-content-pan
   declarations: [
     //ChatPanelComponent,
     //ChatPanelBodyComponent,
-    ChatContentPanelComponent
+    //ChatContentPanelComponent
   ],
   imports: [
     CommonModule,

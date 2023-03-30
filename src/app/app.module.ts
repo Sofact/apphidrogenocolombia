@@ -159,6 +159,7 @@ import { ChatPanelModule } from './modules/chat-panel/chat-panel.module';
 import { authInterceptorProviders } from './modules/chat-panel/services/authInterceptor';
 import * as bootstrap from 'bootstrap';
 import * as $ from 'jquery';
+import { ChatContentPanelComponent } from './modules/chat-panel/chat-panel-body/cp/chat-content-panel/chat-content-panel.component';
 
 @NgModule({
     imports: [
@@ -272,6 +273,7 @@ import * as $ from 'jquery';
         AppCrudComponent,
         AppCalendarComponent,
         AppTimelineDemoComponent,
+        ChatContentPanelComponent,
         DashboardDemoComponent,
         FormLayoutDemoComponent,
         FloatLabelDemoComponent,

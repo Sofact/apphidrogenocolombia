@@ -1,16 +1,17 @@
 <div class="chat-content p-2">
     <div class="container" >
 
+
         <!-- Message Day Start -->
         <div class="message-day">
 
-            <ng-container *ngFor="let message of to_user.messages">
+            <ng-container *ngFor="let message of LIST_MESSAGES">
                  <!-- Received Message Start -->
                  
-                 <div class="message" >
+                 <div class="message" *ngIf="message.sender.id != user.id">
                      <div class="message-wrapper">
                          <div class="message-content">
-                             <h6 class="text-dark">{{message.sender.id}}</h6>
+                             <h6 class="text-dark">{{message.sender.full_name}}</h6>
                              <span>{{message.message}}</span>
                          </div>
                      </div>
@@ -88,7 +89,10 @@
                  <!-- Self Message Start -->
                  <div class="message self" *ngIf="message.sender.id == user.id">
                      <div class="message-wrapper">
-                         <div class="message-content"> {{message.message}}</div>
+                         <div class="message-content"> 
+                          
+                             <span>{{message.message}}</span>
+                         </div>
                      </div>
                      <div class="message-options">
                          <div class="avatar avatar-sm"><img alt="" [src]="message.sender.avatar"></div>

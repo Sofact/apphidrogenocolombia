@@ -11,6 +11,7 @@ export class AuthService {
 
   token:any = '';
   user:any = null;
+  id: any = null;
 
   constructor( private http: HttpClient,
                 private router: Router
@@ -61,8 +62,10 @@ export class AuthService {
     if(auth.access_token){
       localStorage.setItem("token", auth.access_token);
       localStorage.setItem("user",  JSON.stringify( auth.user));
+      localStorage.setItem("id",  JSON.stringify( auth.id))
       this.token = auth.access_token;
       this.user = auth.user;
+      this.id= auth.id;
       return true;
     }else{
       return false;
