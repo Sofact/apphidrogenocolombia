@@ -11,6 +11,7 @@ import { ECHO_PUSHER } from '../../../config/config';
 })
 export class ChatPanelBodyComponent {
 
+  user:any;
   lado: string= '';
   mensaje: string;
   users_contacts:any =[];
@@ -44,9 +45,8 @@ export class ChatPanelBodyComponent {
   ngOnInit(): void {
    // $("#messageInput").emojioneArea();
     this.ContactsUsers();
+    this.user = this._chatPanelService.authService.user;
 
-    const ECHO_PUSHER_INST = ECHO_PUSHER(this._chatPanelService.authService.token);
-    
     
   }
 

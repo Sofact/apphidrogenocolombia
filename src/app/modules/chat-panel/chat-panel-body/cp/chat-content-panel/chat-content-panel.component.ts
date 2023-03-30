@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ECHO_PUSHER } from 'src/app/config/config';
 import { ChatPanelService } from '../../../_services/chat-panel.service';
 
 @Component({
@@ -10,6 +11,7 @@ export class ChatContentPanelComponent implements OnInit{
   @Input() to_user:any = null;
   user: any;
   LIST_MESSAGES: any = [];
+  path: string = '/assets/media/avatar/';
 
   constructor(  private _chatPanelService: ChatPanelService
     ){}
@@ -23,6 +25,12 @@ export class ChatContentPanelComponent implements OnInit{
     }
     
     )
+
+    const ECHO_PUSHER_INST = ECHO_PUSHER(this._chatPanelService.authService.token);
+    ECHO_PUSHER_INST.private("chat.room."+this.to_user.room_uniqd)
+      .listen('SendMessageChat', (e:any) => {
+        console.log(e);
+      });
   }
 
 

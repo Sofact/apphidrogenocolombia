@@ -16,7 +16,7 @@
                          </div>
                      </div>
                      <div class="message-options">
-                         <div class="avatar avatar-sm"><img alt="" src={{message.sender.avatar}}></div>
+                         <div class="avatar avatar-sm"><img alt="" src={{path}}{{message.sender.avatar}}></div>
                          <span class="message-date">{{message.time}}</span>
                          <div class="dropdown">
                              <a class="text-muted" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -95,8 +95,8 @@
                          </div>
                      </div>
                      <div class="message-options">
-                         <div class="avatar avatar-sm"><img alt="" [src]="message.sender.avatar"></div>
-     
+                         <div class="avatar avatar-sm"><img alt="" src="{{path}}{{user.avatar}}"></div>
+                        
                          <span class="message-date">{{message.time}}</span>
                          <span class="message-status">Edited</span>
      
