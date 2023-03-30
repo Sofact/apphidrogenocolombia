@@ -134,6 +134,7 @@ import {BlockViewer} from './blocks/blockviewer/blockviewer.component';
 import {RegisterComponent} from './demo/view/register.component';
 import { ChatPanelComponent } from './modules/chat-panel/chat-panel.component';
 import { ChatPanelBodyComponent } from './modules/chat-panel/chat-panel-body/chat-panel-body.component';
+import { AgendaComponent } from './demo/view/agenda.component';
 
 // Demo services
 import {CountryService} from './demo/service/countryservice';
@@ -144,13 +145,13 @@ import {PhotoService} from './demo/service/photoservice';
 import {ProductService} from './demo/service/productservice';
 import {IconService} from './demo/service/iconservice';
 import {ConfigService} from './demo/service/app.config.service';
+import {AgendaService} from './demo/service/agenda.service';
 
 // Application services
 import {BreadcrumbService} from './breadcrumb.service';
 import {MenuService} from './app.menu.service';
 import {AppCodeModule} from './blocks/app-code/app.code.component';
 import { RouterModule } from '@angular/router';
-
 
 //Auth services
 import { AuthRoutingModule } from './modules/auth/auth-routing.module';
@@ -300,12 +301,13 @@ import * as $ from 'jquery';
         AppRegisterComponent,
         RegisterComponent,
         ChatPanelComponent,
-        ChatPanelBodyComponent
+        ChatPanelBodyComponent,
+        AgendaComponent
     ],
     providers: [authInterceptorProviders,
         {provide: LocationStrategy, useClass: HashLocationStrategy},
         CountryService, CustomerService, EventService, IconService, NodeService,
-        PhotoService, ProductService, MenuService, BreadcrumbService, ConfigService
+        PhotoService, ProductService, MenuService, AgendaService, BreadcrumbService, ConfigService
     ],
     bootstrap: [AppComponent]
 })

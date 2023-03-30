@@ -21,6 +21,7 @@ import {FileDemoComponent} from './demo/view/filedemo.component';
 import {DocumentationComponent} from './demo/view/documentation.component';
 import {IconsComponent} from './utilities/icons.component';
 import {RegisterComponent} from './demo/view/register.component';
+import {AgendaComponent} from './demo/view/agenda.component';
 
 import {AppMainComponent} from './app.main.component';
 import {AppNotfoundComponent} from './pages/app.notfound.component';
@@ -90,6 +91,7 @@ export const routes: Routes = [
             {path: 'blocks', component: BlocksComponent},
             {path: 'chat', loadChildren: () => import('src/app/modules/chat-panel/chat-panel.module').then(m => m.ChatPanelModule)},
             {path: 'pages/register', component: RegisterComponent},
+            {path: 'pages/agenda', component: AgendaComponent},
             
         ], canActivate: [AuthGuard]
     },

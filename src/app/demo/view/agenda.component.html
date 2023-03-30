@@ -1,0 +1,36 @@
+<div class="grid p-fluid">
+    <div class="col-12">
+        <div class="card">
+            <h5>Dia 1 - Abril 20</h5>
+            <p-table [value]="listaAgenda1" sortMode="single" responsiveLayout="scroll" [scrollable]="true" scrollHeight="400px">
+				<ng-template pTemplate="body" let-agenda let-rowIndex="rowIndex">
+					<tr>
+						<td>
+							{{agenda.eve_hora}}
+						</td>
+						<td>
+                            <div class="text-green-500" [innerHTML]><b>{{agenda.eve_tipo}}</b></div>
+							{{agenda.eve_descripcion}}
+						</td>
+					</tr>
+				</ng-template>
+			</p-table>          
+        </div>
+        <div class="card">
+            <h5>Dia 2 - Abril 21</h5>
+            <p-table [value]="listaAgenda2" sortMode="single" responsiveLayout="scroll" [scrollable]="true" scrollHeight="400px">
+				<ng-template pTemplate="body" let-agenda let-rowIndex="rowIndex">
+					<tr>
+                        <td>
+							{{agenda.eve_hora}}
+						</td>
+						<td>
+                            <div class="text-green-500" [innerHTML]><b>{{agenda.eve_tipo}}</b></div>
+							{{agenda.eve_descripcion}}
+						</td>
+					</tr>
+				</ng-template>
+			</p-table>          
+        </div>        
+    </div>
+</div>
