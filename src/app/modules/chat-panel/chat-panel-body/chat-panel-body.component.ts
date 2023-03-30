@@ -20,6 +20,7 @@ export class ChatPanelBodyComponent {
   loadChatPanelContent: boolean = true;
 
   sendMessageTexto(){
+    console.log(this.mensaje);
 
     let data= {
       

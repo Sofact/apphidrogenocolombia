@@ -29,7 +29,8 @@ export class ChatContentPanelComponent implements OnInit{
     const ECHO_PUSHER_INST = ECHO_PUSHER(this._chatPanelService.authService.token);
     ECHO_PUSHER_INST.private("chat.room."+this.to_user.room_uniqd)
       .listen('SendMessageChat', (e:any) => {
-        console.log(e);
+        console.log("respuseta del echo_pusher::::",e);
+        this.LIST_MESSAGES.push(e);
       });
   }
 
