@@ -39,7 +39,7 @@ this.loginForm = this.fb.group({
       Validators.required,
       Validators.email,
       Validators.minLength(6),
-      Validators.maxLength(30)
+      Validators.maxLength(100)
       ])
     ]
   })
