@@ -22,6 +22,7 @@ import {DocumentationComponent} from './demo/view/documentation.component';
 import {IconsComponent} from './utilities/icons.component';
 import {RegisterComponent} from './demo/view/register.component';
 import {AgendaComponent} from './demo/view/agenda.component';
+import {ParticipantesComponent} from './demo/view/participantes.component';
 
 import {AppMainComponent} from './app.main.component';
 import {AppNotfoundComponent} from './pages/app.notfound.component';
@@ -92,6 +93,7 @@ export const routes: Routes = [
             {path: 'chat', loadChildren: () => import('src/app/modules/chat-panel/chat-panel.module').then(m => m.ChatPanelModule)},
             {path: 'pages/register', component: RegisterComponent},
             {path: 'pages/agenda', component: AgendaComponent},
+            {path: 'pages/participantes', component: ParticipantesComponent},
             
         ], canActivate: [AuthGuard]
     },

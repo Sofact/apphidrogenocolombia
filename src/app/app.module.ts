@@ -135,6 +135,7 @@ import {RegisterComponent} from './demo/view/register.component';
 import { ChatPanelComponent } from './modules/chat-panel/chat-panel.component';
 import { ChatPanelBodyComponent } from './modules/chat-panel/chat-panel-body/chat-panel-body.component';
 import { AgendaComponent } from './demo/view/agenda.component';
+import { ParticipantesComponent } from './demo/view/participantes.component';
 
 // Demo services
 import {CountryService} from './demo/service/countryservice';
@@ -146,6 +147,7 @@ import {ProductService} from './demo/service/productservice';
 import {IconService} from './demo/service/iconservice';
 import {ConfigService} from './demo/service/app.config.service';
 import {AgendaService} from './demo/service/agenda.service';
+
 
 // Application services
 import {BreadcrumbService} from './breadcrumb.service';
@@ -304,7 +306,8 @@ import { ChatContentPanelComponent } from './modules/chat-panel/chat-panel-body/
         RegisterComponent,
         ChatPanelComponent,
         ChatPanelBodyComponent,
-        AgendaComponent
+        AgendaComponent,
+        ParticipantesComponent
     ],
     providers: [authInterceptorProviders,
         {provide: LocationStrategy, useClass: HashLocationStrategy},
