@@ -111,7 +111,7 @@
                         <!-- Chat Contact List Start -->
                         <ul class="contacts-list" id="chatContactTab" data-chat-list="">
                             <!-- Chat Item Start -->
-                            <li class="contacts-item friends">
+                        <!--     <li class="contacts-item friends">
                                 <a class="contacts-link" href="./chat-1.html">
                                     <div class="avatar avatar-online">
                                         <img src="./assets/media/avatar/Monica-Gasca.png" alt="">
@@ -127,87 +127,47 @@
                                     </div>
                                 </a>
                             </li>
-                            <!-- Chat Item End -->
+                        -->
+                           <!-- Chat Item End -->
 
                             <!-- Chat Item Start -->
-                            <li class="contacts-item groups active">
-                                <a class="contacts-link"  href="javascript:;">
-                                    <div class="avatar bg-success text-light">
-                                        <span>
-                                            <!-- Default :: 
-                                            <svg class="hw-24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
-                                            </svg>
-                                            Inline SVG -->
-                                            <!-- Alternate :: External File link -->
-                                             <img class="injectable" src="{{path}}non-avatar.png" alt=""> 
-                                        </span>
-                                    </div>
-                                    <div class="contacts-content">
-                                        <div class="contacts-info">
-                                            <h6 class="chat-name">Conferencia (Sostenibilidad e innovación)</h6>
-                                            <div class="chat-time"><span>10:20 pm</span></div>
-                                        </div>
-                                        <div class="contacts-texts">
-                                            <p class="text-truncate"><span>Luisa: </span>Cual consideran que es el primer paso para para seguir el camino del Hidrógeno?</p>
-                                            <div class="d-inline-flex align-items-center ml-1">
-                                                <!-- Default :: Inline SVG -->
-                                                <svg class="hw-16 text-muted" viewBox="0 0 20 20" fill="currentColor">
-                                                    <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/>
-                                                </svg>
+                            <ng-container *ngFor="let item of chat_chat_rooms">
 
-                                                <!-- Alternate :: External File link -->
-                                                <!-- <img class="injectable hw-16 text-muted" src="./assets/media/heroicons/solid/lock-closed.svg" alt=""> -->
+                                <li class="contacts-item groups" [ngClass]="{'unread': item.count_message > 0}" >
+                                    <a class="contacts-link"  href="javascript:;" (click)="loadMyChat(item)" [ngClass]="{'prymary': item.is_chat_active}">
+                                        <div class="avatar bg-success text-light">
+                                            <span *ngIf="item.friend_first">
+
+                                                 <img class="injectable" src="{{path}}{{item.friend_first.avatar}}"/> 
+                                            </span>
+                                            <span *ngIf="item.friend_second">
+
+                                                <img class="injectable" src="{{path}}{{item.friend_second.avatar}}"/> 
+                                           </span>
+                                        </div>
+                                        <div class="contacts-content">
+                                            <div class="contacts-info">
+                                                <h6 class="chat-name" *ngIf="item.friend_first">{{item.friend_first.full_name}}</h6>
+                                                <h6 class="chat-name" *ngIf="item.friend_second">{{item.friend_second.full_name}}</h6>
+                                               
+                                                <div class="chat-time"><span>{{item.last_time}}</span></div>
+                                            </div>
+                                            <div class="contacts-texts">
+                                                <p class="text-truncate">
+                                                    <span  *ngIf="item.last_message_is_my">YO: </span>
+                                                    <span   *ngIf="!item.last_message_is_my">DICE: </span>
+                                                    {{item.last_message}}
+                                                   <div class="badge badge-rounded badge-primary ml-1" *ngIf="item.count_message >0 ">{{item.count_message}}</div> 
                                             </div>
                                         </div>
-                                    </div>
-                                </a>
-                            </li>
+                                    </a>
+                                </li>
+                            </ng-container>
+                            
+                            
                             <!-- Chat Item End -->
                             
-                            <!-- Chat Item Start -->
-                            <li class="contacts-item friends unread">
-                                <a class="contacts-link" href="#">
-                                    <div class="avatar avatar-offline bg-info text-light">
-                                        <span>MR</span>
-                                    </div>
-                                    <div class="contacts-content">
-                                        <div class="contacts-info">
-                                            <h6 class="chat-name">Maria Antonia Rendón</h6>
-                                            <div class="chat-time">09:36 am</div>
-                                        </div>
-                                        <div class="contacts-texts">
-                                            <p class="text-truncate">Me gustaría coordinar una reunión</p>
-                                            <div class="badge badge-rounded badge-primary ml-1">2</div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <!-- Chat Item End -->
-
-                            <!-- Chat Item Start -->
-                            <li class="contacts-item friends">
-                                <a class="contacts-link" href="#">
-                                    <div class="avatar avatar-busy"><img src="./assets/media/avatar/Juan-Camilo-Vallejo-Lorza.png" alt=""></div>
-                                    <div class="contacts-content">
-                                        <div class="contacts-info">
-                                            <h6 class="chat-name">Juan Camilo Vallejo</h6>
-                                            <div class="chat-time"><span>Yesterday</span></div>
-                                        </div>
-                                        <div class="contacts-texts">
-                                            <!-- Default :: Inline SVG -->
-                                            <svg class="hw-20 text-muted" viewBox="0 0 20 20" fill="currentColor">
-                                                <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd"/>
-                                            </svg>
-                                            
-                                            <!-- Alternate :: External File link -->
-                                            <!-- <img class="injectable hw-20 text-muted" src="./assets/media/heroicons/solid/photograph.svg" alt=""> -->
-                                            <p class="text-truncate">Photo</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <!-- Chat Item End -->
+                           
 
                             <!-- Chat Item End -->
                         </ul>

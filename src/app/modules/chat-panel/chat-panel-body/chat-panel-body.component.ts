@@ -3,6 +3,7 @@ import { ProfileUserService } from '../services/profile-user.service';
 import { ChatPanelService } from '../_services/chat-panel.service';
 import { Message } from 'primeng/api';
 import { ECHO_PUSHER } from '../../../config/config';
+import { AuthService } from '../../auth/_services/auth.service';
 
 
 @Component({
@@ -18,6 +19,8 @@ export class ChatPanelBodyComponent {
   path: string = '/assets/media/avatar/';
   to_user: any;
   loadChatPanelContent: boolean = true;
+  chat_chat_rooms:any =[];
+
 
   sendMessageTexto(){
     console.log(this.mensaje);
@@ -31,6 +34,7 @@ export class ChatPanelBodyComponent {
 
     }
     console.log(this.mensaje);
+    this.mensaje = null;
      this._chatPanelService.sendMessageTxt(data).subscribe((resp:any) => {
       console.log(resp);
     })
@@ -48,7 +52,16 @@ export class ChatPanelBodyComponent {
     this.ContactsUsers();
     this.user = this._chatPanelService.authService.user;
 
-    
+    this.listMyFriends();
+
+    const ECHO_PUSHER_INST = ECHO_PUSHER(this._chatPanelService.authService.token);
+    ECHO_PUSHER_INST.private("chat.refresh.room."+this._userProfileService.authService.id)
+      .listen('RefreshMyChatRoom', (e:any) => {
+        console.log("respuseta del refreshh::::",e);
+        this.chat_chat_rooms = [];
+        this.chat_chat_rooms  = e.chatrooms;
+     //  this.LIST_MESSAGES.push(e);
+      });
   }
 
 
@@ -80,5 +93,27 @@ export class ChatPanelBodyComponent {
       })
     }
 
+    listMyFriends(){
+      
+      this._chatPanelService.listMyChatRooms({}).subscribe((resp: any)=>{
+      
+        console.log("larespuesta::",resp);
+        this.chat_chat_rooms = resp.chatrooms;
+      }
+        
+      )
+    }
 
+    loadMyChat(item: any){
+      let to_user = 0;
+      item.count_message =0;
+      if(item.friend_first){
+          to_user = item.friend_first.id;
+        }else{
+          to_user = item.friend_second.id;
+        }
+        item.is_chat_Active = true;
+
+      this.startChat(to_user);
+    }
 }

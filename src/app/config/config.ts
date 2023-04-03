@@ -18,12 +18,11 @@ export function ECHO_PUSHER (token:any){
         forceTLS: environment.production,
         disableStats: true,
         // enabledTransports: ['ws', 'wss'],
-        authEndpoint: `${URL_SERVICIOS}/broadcasting/auth`,
+        authEndpoint: `${URL_SERVICIOS}/broadcasting/autho`,
         auth: {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+          headers: {Authorization:`Bearer ${token}`}
+          
         },
       });
   }
-  
+   
