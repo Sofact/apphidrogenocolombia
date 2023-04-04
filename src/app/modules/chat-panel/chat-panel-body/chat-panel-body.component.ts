@@ -22,7 +22,7 @@ export class ChatPanelBodyComponent {
   chat_chat_rooms:any =[];
   step: string='';
   contador: number =0;
-  groupName:string = '';
+  nombreChatGrupal:string = '';
 
 
   sendMessageTexto(){
@@ -121,8 +121,12 @@ export class ChatPanelBodyComponent {
     }
 
     createGroup(step: string){
-      console.log("grupo creado", this.groupName);
+      console.log("grupo creado", this.nombreChatGrupal, "::desoues del nombre");
       this.contador++;
+      if(this.contador == 1){
+        console.log("el item en cero");
+      }
+
       if(this.contador == 2){
         console.log("Ahora si se crea");
         this.contador=0;
