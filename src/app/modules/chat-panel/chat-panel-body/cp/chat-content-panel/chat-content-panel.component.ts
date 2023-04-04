@@ -29,9 +29,9 @@ export class ChatContentPanelComponent implements OnInit{
 
     console.log("el token antes de authenticar el boadcast::::",this.authService.token);
     const ECHO_PUSHER_INST = ECHO_PUSHER(this.authService.token);
-    ECHO_PUSHER_INST.private("chat.room."+this.to_user.room_uniqd)
+    ECHO_PUSHER_INST.channel("chat.room."+this.to_user.room_uniqd)
       .listen('SendMessageChat', (e:any) => {
-        //console.log("respuseta del echo_pusher::::",e);
+        console.log("respuseta del echo_pusher::::",e);
         this.LIST_MESSAGES.push(e);
       });
   }
