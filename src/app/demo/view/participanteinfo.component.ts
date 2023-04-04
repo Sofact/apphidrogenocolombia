@@ -15,7 +15,7 @@ import { MessageService, ConfirmationService } from 'primeng/api';
 export class ParticipanteInfoComponent {
     listaPersona: any = [];
     listaInfo: any = [];
-    per_id: number = 0;
+    per_id: string = '';
     //listaAgenda2: any = [];
     @ViewChild('dt') table: Table;
     id: string='';
@@ -38,6 +38,9 @@ export class ParticipanteInfoComponent {
         
         initForm(){
           this.cargarDatosParticipantes();
+          this.router.paramMap.subscribe(params => {
+            this.per_id = params.get('id');
+          });
         }
         
         cargarDatosParticipantes(){
