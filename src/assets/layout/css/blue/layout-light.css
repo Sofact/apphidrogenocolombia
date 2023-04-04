@@ -10208,7 +10208,7 @@ a {
   transition: color 0.15s;
 }
 .widget-store-items .store-cards-container .store-cards {
-  max-height: 489px;
+  /*max-height: 489px; */
   overflow: auto;
 }
 .widget-store-items .store-cards-container .store-cards .store-card {
