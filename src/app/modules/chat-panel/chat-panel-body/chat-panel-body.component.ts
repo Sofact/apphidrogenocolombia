@@ -20,6 +20,9 @@ export class ChatPanelBodyComponent {
   to_user: any;
   loadChatPanelContent: boolean = true;
   chat_chat_rooms:any =[];
+  step: string='';
+  contador: number =0;
+  groupName:string = '';
 
 
   sendMessageTexto(){
@@ -115,5 +118,14 @@ export class ChatPanelBodyComponent {
         item.is_chat_Active = true;
 
       this.startChat(to_user);
+    }
+
+    createGroup(step: string){
+      console.log("grupo creado", this.groupName);
+      this.contador++;
+      if(this.contador == 2){
+        console.log("Ahora si se crea");
+        this.contador=0;
+      }
     }
 }

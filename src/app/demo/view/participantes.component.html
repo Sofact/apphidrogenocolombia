@@ -14,7 +14,7 @@
 								<ng-template pTemplate="body" let-persona let-rowIndex="rowIndex">
 									<tr>
 										<td>
-											<a style="color: black;" (click)="irAPaginaDestino(persona.per_id)">
+											<a style="color: black;" [routerLink]="pages/participanteinfo">
 												<div class="avatar avatar-md mr-2"><img src="assets/media/participantes/{{persona.per_foto}}" alt="mirage-layout" /></div>
 											</a>
 										</td>

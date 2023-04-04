@@ -613,8 +613,8 @@
                                     
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <label for="groupName">Group name</label>
-                                            <input type="text" class="form-control form-control-md" id="groupName" placeholder="Type group name here">
+                                            <label for="groupName">Nombre del Grupo</label>
+                                            <input type="text" class="form-control form-control-md" id="groupName" [ngModel]="groupName" placeholder="Type group name here">
                                         </div>
                                     </div>
                                     <div class="col-12">
@@ -742,7 +742,7 @@
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-link text-muted js-btn-step mr-auto" data-orientation="cancel" data-dismiss="modal"></button>
                                 <button type="button" class="btn btn-secondary  js-btn-step" data-orientation="previous"></button>
-                                <button type="button" class="btn btn-primary js-btn-step" data-orientation="next"></button>
+                                <button type="button" class="btn btn-primary js-btn-step"  data-orientation="next" (click)="createGroup(step)"></button>
                             </div>
                         </div>
                     </div>

@@ -18,6 +18,7 @@ export class ParticipanteInfoComponent {
     per_id: number = 0;
     //listaAgenda2: any = [];
     @ViewChild('dt') table: Table;
+    id: string='';
 
 
     constructor( private fb: FormBuilder,
@@ -26,6 +27,8 @@ export class ParticipanteInfoComponent {
         private router: ActivatedRoute,
         private agenda: AgendaService
         ){
+
+          this.id =this.router.snapshot.paramMap.get('id');
         
     }
 
