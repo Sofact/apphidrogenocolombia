@@ -1,24 +1,48 @@
 <div class="grid p-fluid">
 	<div class="col-12">
 		<div class="card widget-store-items">
-			<div class="grid grid-nogutter">
-				<div class="col-6 title">
-					<h5>Participante Información</h5>
-				</div>
-			</div>									
-			<div class="">
+			<div class="store-cards-container">
 				<div class="grid store-cards" *ngFor="let persona of listaInfo">
 					<div class="col-12 lg:col-6 md:col-6">
-						<div class="store-card-image">
-							<img src="assets/media/participantes/{{persona.per_foto}}" alt="mirage-layout" />
-						</div>						
-						<div class="store-card-content">
-							<h5>{{persona.per_nombre}}</h5>
-							<span>{{persona.per_cargo}}</span>	
-						</div>
+                        <div class="store-card">
+                            <div class="store-card-icons">
+                                <div class="grid grid-nogutter">
+                                    <div class="col-4">
+                                    </div>
+									<div class="col-4">
+                                        <a [href]="'mailto:{{persona.email}}?subject=Contacto 2do congreso'"><i class="pi pi-envelope"></i></a>
+									</div>
+                                    <div class="col-4">
+                                    </div>
+                                </div>
+                            </div>
+							<div class="store-card-image">
+								<img src="assets/media/participantes/{{persona.per_foto}}" alt="mirage-layout" />
+							</div>						
+							<div class="store-card-content">
+								<h5>{{persona.per_nombre}}</h5>
+								<span>{{persona.per_cargo}}</span>	
+							</div>
+                        </div>	
 					</div>								
 				</div>
 			</div>
 		</div>
+		<div class="card widget-store-items">
+			<div class="store-cards-container">
+				<div class="grid store-cards" *ngFor="let persona of listaInfo">
+					<div class="col-12 lg:col-6 md:col-6">
+                        <div class="store-card">
+                            <div class="store-card-icons">
+								<h5>{{persona.per_empresa}}</h5>
+                            </div>
+							<div class="store-card-content" style="text-align: justify; padding: 15px;">
+								<span>{{persona.per_bio}}</span>	
+							</div>
+                        </div>	
+					</div>								
+				</div>
+			</div>
+		</div>	
 	</div>							
 </div>

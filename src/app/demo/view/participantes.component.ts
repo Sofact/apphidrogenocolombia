@@ -53,6 +53,6 @@ export class ParticipantesComponent {
         }
 
         irAPaginaDestino(id: number) {
-          this.route.navigate(['pages/participanteinfo',{id: id}]);
+          this.route.navigate(['pages/participanteinfo', id]);
         }
 }
