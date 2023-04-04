@@ -9,12 +9,13 @@ import { Table} from 'primeng/table';
 import { MessageService, ConfirmationService } from 'primeng/api';
 
 @Component({
-    selector: 'participantes',
-    templateUrl: './participantes.component.html'
+    selector: 'participanteinfo',
+    templateUrl: './participanteinfo.component.html'
 })
-export class ParticipantesComponent {
+export class ParticipanteInfoComponent {
     listaPersona: any = [];
-    //listaAgenda1: any = [];
+    listaInfo: any = [];
+    per_id: number = 0;
     //listaAgenda2: any = [];
     @ViewChild('dt') table: Table;
 
@@ -42,7 +43,7 @@ export class ParticipantesComponent {
             if(!resp.error && resp){
               console.log("Ingreso a poblar la lista");
                     this.listaPersona=resp.persona;
-                    //this.listaAgenda1=this.listaAgenda.filter(p => p.eve_dia==1);
+                    this.listaInfo=this.listaPersona.filter(p => p.per_id==this.per_id);
                     //this.listaAgenda2=this.listaAgenda.filter(p => p.eve_dia==2);
             }else{
               if(resp.error == 'Unauthorized'){
@@ -50,9 +51,5 @@ export class ParticipantesComponent {
               }
             }
           })
-        }
-
-        irAPaginaDestino(id: number) {
-          this.route.navigate(['pages/participanteinfo',{id: id}]);
         }
 }
