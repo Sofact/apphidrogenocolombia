@@ -4,6 +4,7 @@ import { ChatPanelService } from '../_services/chat-panel.service';
 import { Message } from 'primeng/api';
 import { ECHO_PUSHER } from '../../../config/config';
 import { AuthService } from '../../auth/_services/auth.service';
+import { CrearChatGrupalService } from '../services/crear-chat-grupal.service';
 
 
 @Component({
@@ -48,7 +49,8 @@ export class ChatPanelBodyComponent {
 
   constructor(
               private _userProfileService: ProfileUserService,
-              private _chatPanelService: ChatPanelService
+              private _chatPanelService: ChatPanelService,
+              private _crearChatGrupalService: CrearChatGrupalService
               ) { }
   ngOnInit(): void {
    // $("#messageInput").emojioneArea();
@@ -112,24 +114,36 @@ export class ChatPanelBodyComponent {
       item.count_message =0;
       if(item.friend_first){
           to_user = item.friend_first.id;
-        }else{
+        }if(item.friend_second){
           to_user = item.friend_second.id;
+        }else{
+          to_user = item.group_chat.id;
         }
         item.is_chat_Active = true;
 
       this.startChat(to_user);
     }
 
-    createGroup(step: string){
+    createGroup(){
+
+     
       console.log("grupo creado", this.nombreChatGrupal, "::desoues del nombre");
       this.contador++;
       if(this.contador == 1){
-        console.log("el item en cero");
+        console.log("el item en cero", this.contador);
+        let data = {
+          nombreGrupo: this.nombreChatGrupal,
+        }
+  
+        this._crearChatGrupalService.CreateGroupChat(data)
+          .subscribe((resp:any) => {
+            console.log("larespuesta::",resp);
+          })
       }
 
       if(this.contador == 2){
         console.log("Ahora si se crea");
-        this.contador=0;
+      //  this.contador=0;
       }
     }
 }

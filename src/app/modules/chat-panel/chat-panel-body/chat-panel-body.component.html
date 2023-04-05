@@ -144,12 +144,16 @@
 
                                                 <img class="injectable" src="{{path}}{{item.friend_second.avatar}}"/> 
                                            </span>
+                                           <span *ngIf="item.group_chat">
+
+                                            <img class="injectable" src="{{path}}{{item.group_chat.avatar}}"/> 
+                                       </span>
                                         </div>
                                         <div class="contacts-content">
                                             <div class="contacts-info">
                                                 <h6 class="chat-name" *ngIf="item.friend_first">{{item.friend_first.full_name}}</h6>
                                                 <h6 class="chat-name" *ngIf="item.friend_second">{{item.friend_second.full_name}}</h6>
-                                               
+                                                <h6 class="chat-name" *ngIf="item.group_chat">{{item.group_chat.full_name}}</h6>
                                                 <div class="chat-time"><span>{{item.last_time}}</span></div>
                                             </div>
                                             <div class="contacts-texts">
@@ -742,7 +746,7 @@
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-link text-muted js-btn-step mr-auto" data-orientation="cancel" data-dismiss="modal"></button>
                                 <button type="button" class="btn btn-secondary  js-btn-step" data-orientation="previous"></button>
-                                <button type="button" class="btn btn-primary js-btn-step"  data-orientation="next" (click)="createGroup(step)"></button>
+                                <button type="button" class="btn btn-primary js-btn-step"  data-orientation="next" (click)="createGroup()"></button>
                             </div>
                         </div>
                     </div>
