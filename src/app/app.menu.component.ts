@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppMainComponent } from './app.main.component';
+import { AuthService} from './modules/auth/_services/auth.service';
 
 @Component({
     selector: 'app-menu',
@@ -8,13 +9,21 @@ import { AppMainComponent } from './app.main.component';
 export class AppMenuComponent implements OnInit {
 
     model: any[];
+    user: any = null;
 
-    constructor(public appMain: AppMainComponent) {}
+    constructor(public appMain: AppMainComponent,
+		private authService: AuthService
+        ) {
+        }
 
     ngOnInit() {
         this.model = [
             {label: 'Hidrógeno Colombia', icon: 'pi pi-fw pi-home', routerLink: ['dash']},
-            {
+            {label: 'Agenda', icon: 'pi pi-fw pi-calendar', routerLink: ['pages/agenda']},
+            {label: 'Conferencistas', icon: 'pi pi-fw pi-megaphone', routerLink: ['pages/participantes']},
+            {label: 'Networking', icon: 'pi pi-fw pi-send', routerLink: ['chat']},
+            {label: 'Patrocinadores', icon: 'pi pi-fw pi-bars', routerLink: ['pages/sponsors']},
+/*             {
                 label: 'Agenda', icon: 'pi pi-fw pi-star-fill', routerLink: ['/uikit'],
                 items: [
                     {label: 'Form Layout', icon: 'pi pi-fw pi-id-card', routerLink: ['/uikit/formlayout']},
@@ -34,8 +43,8 @@ export class AppMenuComponent implements OnInit {
                     {label: 'Chart', icon: 'pi pi-fw pi-chart-bar', routerLink: ['/uikit/charts']},
                     {label: 'Misc', icon: 'pi pi-fw pi-circle-off', routerLink: ['/uikit/misc']}
                 ]
-            },
-            {
+            }, */
+/*             {
                 label:'Participantes', icon:'pi pi-fw pi-prime', routerLink: ['/blocks'],
                 items:[
                     {label: 'Free Blocks', icon: 'pi pi-fw pi-eye', routerLink: ['/blocks']},
@@ -62,19 +71,14 @@ export class AppMenuComponent implements OnInit {
                     {label: 'Access Denied', icon: 'pi pi-fw pi-ban', routerLink: ['/accessdenied'], target: '_blank'},
                     { label: 'Empty', icon: 'pi pi-fw pi-clone', routerLink: ['/pages/empty'] },
                 ]
-            },
-            {
+            }, */
+/*             {
                 label: 'Chat', icon: 'pi pi-fw pi-send', routerLink: ['chat'],
                 items: [
                     {label: 'Mensajes', icon: 'pi pi-fw pi-inbox', routerLink: ['chat']},
                                     ]
-            },
-            {
-                label: 'Usuarios', icon: 'pi pi-fw pi-user', routerLink: ['register'],
-                items: [
-                    {label: 'Registrar', icon: 'pi pi-fw pi-user-plus', routerLink: ['pages/register']},
-                                    ]
-            }, 
+            }, */
+            {label: 'Registrar Usuario', icon: 'pi pi-fw pi-user-plus', routerLink: ['pages/register']},
             /*,
             {
                 label: 'Hierarchy', icon: 'pi pi-fw pi-sitemap',
@@ -126,7 +130,16 @@ export class AppMenuComponent implements OnInit {
             }
  */
         ];
-           
+
+        if(this.authService.isLogin()){
+            this.user = JSON.parse(localStorage.getItem("user") ?? '');
+            if (this.user.perfil==null || this.user.perfil=="Invitado"){
+                const index = this.model.findIndex(p => p.label === 'Registrar Usuario');
+                if (index !== -1) {
+                    this.model.splice(index, 1);
+                }
+            }
+          };        
     }
 
     onMenuClick() {

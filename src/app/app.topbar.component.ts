@@ -105,6 +105,7 @@ import { AuthService} from './modules/auth/_services/auth.service';
                 </div>
                 <div class="layout-topbar-right fadeInDown">
 					<ul class="layout-topbar-actions">
+					<!--
 						<li #search class="search-item topbar-item" [ngClass]="{'active-topmenuitem': appMain.activeTopbarItem === search}">
 							<a href="#" class="topbar-search-mobile-button" (click)="appMain.onTopbarItemClick($event,search)">
 								<i class="topbar-icon pi pi-search"></i>
@@ -118,6 +119,7 @@ import { AuthService} from './modules/auth/_services/auth.service';
                                 </li>
                             </ul>
                         </li>
+					-->
 						<li #calendar class="topbar-item" [ngClass]="{'active-topmenuitem': appMain.activeTopbarItem === calendar}">
 							<a href="#" (click)="appMain.onTopbarItemClick($event,calendar)">
 								<i class="topbar-icon pi pi-calendar"></i>
@@ -255,7 +257,7 @@ import { AuthService} from './modules/auth/_services/auth.service';
 							<ul class="profile-item-submenu fadeInDown">
 								<li class="profile-submenu-header">
 									<div class="performance">
-										<span>Weekly Performance</span>
+										<!--<span>Weekly Performance</span>-->
 										<img src="assets/layout/images/topbar/asset-bars.svg" alt="mirage-layout" />
 									</div>
 									<div class="profile">
@@ -265,6 +267,7 @@ import { AuthService} from './modules/auth/_services/auth.service';
 										<span>{{user.perfil}}</span>
 									</div>
 								</li>
+<!--
 								<li class="layout-submenu-item">
 									<i class="pi pi-list icon icon-1"></i>
 									<div class="menu-text">
@@ -289,16 +292,19 @@ import { AuthService} from './modules/auth/_services/auth.service';
 									</div>
 									<i class="pi pi-angle-right"></i>
 								</li>
+-->								
 								<li class="layout-submenu-footer">
 									<button class="signout-button" (click)="signout()">Cerrar Sesión</button>
 								</li>
 							</ul>
 						</li>
+					<!--
 						<li>
 							<a href="#" class="layout-rightpanel-button" (click)="appMain.onRightPanelButtonClick($event)">
 								<i class="pi pi-arrow-left"></i>
 							</a>
 						</li>
+					-->
                     </ul>
 
 					<ul class="profile-mobile-wrapper">
@@ -315,7 +321,7 @@ import { AuthService} from './modules/auth/_services/auth.service';
 							<ul class="fadeInDown">
 								<li class="profile-submenu-header">
 									<div class="performance">
-										<span>Weekly Performance</span>
+										<!--<span>Weekly Performance</span>-->
 										<img src="assets/layout/images/topbar/asset-bars.svg" alt="mirage-layout" />
 									</div>
 									<div class="profile">
@@ -324,7 +330,7 @@ import { AuthService} from './modules/auth/_services/auth.service';
 										<span>{{user.perfil}}</span>
 									</div>
 								</li>
-								<li>
+<!-- 								<li>
 									<i class="pi pi-list icon icon-1"></i>
 									<div class="menu-text">
 										<p>Tasks</p>
@@ -348,6 +354,7 @@ import { AuthService} from './modules/auth/_services/auth.service';
 									</div>
 									<i class="pi pi-angle-right"></i>
 								</li>
+-->								
 								<li class="layout-submenu-footer">
 									<button class="signout-button" (click)="signout()">Cerrar Sesión</button>
 								</li>

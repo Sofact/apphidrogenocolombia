@@ -15,7 +15,7 @@
                         <i class="pi pi-at"></i>
                     </div>
                     <ng-container *ngIf="hasError">
-                            <p class="text-danger">{{hasErrorText}}</p>
+                            <p class="text-danger text-center"><small>{{hasErrorText}}</small></p>
                     </ng-container>
                     <div class="buttons" style="display: flex; justify-content: center;">
                         <button pButton type="submit" class="btn font-weight-semibold" (click)="submit()" [disabled]="loginForm.invalid">Iniciar Sesión</button>
