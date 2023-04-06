@@ -11,6 +11,7 @@ export class ChatContentPanelComponent implements OnInit{
  
   @Input() to_user:any = null;
   user: any;
+  group: any; 
   LIST_MESSAGES: any = [];
   path: string = '/assets/media/avatar/';
 
@@ -22,6 +23,12 @@ export class ChatContentPanelComponent implements OnInit{
 
   ngOnInit(): void {
     this.user = this._chatPanelService.authService.user;
+
+    this.group = this._chatPanelService.listMyGroups()
+      .subscribe((response: any) =>{
+        console.log("Mis grupos:::",response);
+      })
+
     console.log("El id del usuario",this.user);
     this.to_user.messages.forEach((element: any) =>{
       this.LIST_MESSAGES.unshift(element);

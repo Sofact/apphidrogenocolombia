@@ -27,6 +27,13 @@ export class ChatPanelService {
     return this.http.post(URL, data, {headers:headers});
   }
 
+  listMyGroups(){
+  
+    let headers = new HttpHeaders({'Authorization': 'Bearer '+this.authService.token});
+    let URL = URL_SERVICIOS+ "/grupo";
+    return this.http.get(URL,  {headers:headers});
+  }
+
   sendMessageTxt(data:any){
   
     let headers = new HttpHeaders({'Authorization': 'Bearer '+this.authService.token});

@@ -17,6 +17,7 @@ export class ChatPanelBodyComponent {
   lado: string= '';
   mensaje: string;
   users_contacts:any =[];
+  groups: any[];
   path: string = '/assets/media/avatar/';
   to_user: any;
   loadChatPanelContent: boolean = true;
@@ -27,7 +28,7 @@ export class ChatPanelBodyComponent {
 
 
   sendMessageTexto(){
-    console.log(this.mensaje);
+    console.log("El to_user::::",this.to_user);
 
     let data= {
       
@@ -55,6 +56,7 @@ export class ChatPanelBodyComponent {
   ngOnInit(): void {
    // $("#messageInput").emojioneArea();
     this.ContactsUsers();
+    this.GetGroups();
     this.user = this._chatPanelService.authService.user;
 
     this.listMyFriends();
@@ -76,6 +78,16 @@ export class ChatPanelBodyComponent {
         console.log(resp);
                 this.users_contacts = resp.users;
       })
+    }
+
+    GetGroups(){
+    
+      this._chatPanelService.listMyGroups()
+        .subscribe((response: any) =>{
+          console.log(response);
+          this.groups = response.grupo;
+        })
+    
     }
 
     startChat(value: number){
