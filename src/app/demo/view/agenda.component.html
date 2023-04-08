@@ -11,8 +11,10 @@
 							</a>
 						</td>
 						<td>
-                            <div class="text-green-500" [innerHTML]><b>{{agenda.eve_tipo}}</b></div>
-							{{agenda.eve_descripcion}}
+							<a (click)="irAPaginaDestino(agenda.eve_id)">
+								<div class="text-green-500" [innerHTML]><b>{{agenda.eve_tipo}}</b></div>
+								{{agenda.eve_descripcion}}
+							</a>
 						</td>
 					</tr>
 				</ng-template>
@@ -29,8 +31,10 @@
 							</a>
 						</td>
 						<td>
-                            <div class="text-green-500" [innerHTML]><b>{{agenda.eve_tipo}}</b></div>
-							{{agenda.eve_descripcion}}
+							<a (click)="irAPaginaDestino(agenda.eve_id)">
+								<div class="text-green-500" [innerHTML]><b>{{agenda.eve_tipo}}</b></div>
+								{{agenda.eve_descripcion}}
+							</a>
 						</td>
 					</tr>
 				</ng-template>
