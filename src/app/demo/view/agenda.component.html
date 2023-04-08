@@ -6,7 +6,9 @@
 				<ng-template pTemplate="body" let-agenda let-rowIndex="rowIndex">
 					<tr>
 						<td  style="width: 15%;">
-							{{agenda.eve_hora}}
+							<a (click)="irAPaginaDestino(agenda.eve_id)">
+								{{agenda.eve_hora}}
+							</a>
 						</td>
 						<td>
                             <div class="text-green-500" [innerHTML]><b>{{agenda.eve_tipo}}</b></div>
@@ -22,7 +24,9 @@
 				<ng-template pTemplate="body" let-agenda let-rowIndex="rowIndex">
 					<tr>
                         <td  style="width: 15%;">
-							{{agenda.eve_hora}}
+							<a (click)="irAPaginaDestino(agenda.eve_id)">
+								{{agenda.eve_hora}}
+							</a>
 						</td>
 						<td>
                             <div class="text-green-500" [innerHTML]><b>{{agenda.eve_tipo}}</b></div>

@@ -9,13 +9,15 @@ import { Table} from 'primeng/table';
 import { MessageService, ConfirmationService } from 'primeng/api';
 
 @Component({
-    selector: 'agenda',
-    templateUrl: './agenda.component.html'
+    selector: 'sponsors',
+    templateUrl: './sponsors.component.html'
 })
-export class AgendaComponent {
-    listaAgenda: any = [];
-    listaAgenda1: any = [];
-    listaAgenda2: any = [];
+export class SponsorsComponent {
+    listaSponsors: any = [];
+    listaSponsors1: any = [];
+    listaSponsors2: any = [];
+    listaSponsors3: any = [];
+    //listaAgenda2: any = [];
     @ViewChild('dt') table: Table;
 
 
@@ -33,17 +35,19 @@ export class AgendaComponent {
         }
         
         initForm(){
-          this.cargarDatosAgenda();
+          this.cargarDatosSponsors();
         }
         
-        cargarDatosAgenda(){
-          this.agenda.get_agenda(null).subscribe((resp: any) => {
+        cargarDatosSponsors(){
+          this.agenda.get_sponsor(null).subscribe((resp: any) => {
             console.log(resp);
             if(!resp.error && resp){
               console.log("Ingreso a poblar la lista");
-                    this.listaAgenda=resp.agenda;
-                    this.listaAgenda1=this.listaAgenda.filter(p => p.eve_dia==1);
-                    this.listaAgenda2=this.listaAgenda.filter(p => p.eve_dia==2);
+                    this.listaSponsors=resp.sponsor;
+                    this.listaSponsors1=this.listaSponsors.filter(p => p.spo_tipo==1);
+                    this.listaSponsors2=this.listaSponsors.filter(p => p.spo_tipo==2);
+                    this.listaSponsors3=this.listaSponsors.filter(p => p.spo_tipo==3);
+                    //this.listaAgenda2=this.listaAgenda.filter(p => p.eve_dia==2);
             }else{
               if(resp.error == 'Unauthorized'){
                 console.log("Usuario no Autorizado");
@@ -51,8 +55,4 @@ export class AgendaComponent {
             }
           })
         }
-
-        irAPaginaDestino(id: number) {
-          this.route.navigate(['pages/evento', id]);
-        } 
 }

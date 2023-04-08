@@ -24,6 +24,8 @@ import {RegisterComponent} from './demo/view/register.component';
 import {AgendaComponent} from './demo/view/agenda.component';
 import {ParticipantesComponent} from './demo/view/participantes.component';
 import {ParticipanteInfoComponent} from './demo/view/participanteinfo.component';
+import {EventoComponent} from './demo/view/evento.component';
+import {SponsorsComponent} from './demo/view/sponsors.component';
 
 import {AppMainComponent} from './app.main.component';
 import {AppNotfoundComponent} from './pages/app.notfound.component';
@@ -96,6 +98,8 @@ export const routes: Routes = [
             {path: 'pages/agenda', component: AgendaComponent},
             {path: 'pages/participantes', component: ParticipantesComponent},
             {path: 'pages/participanteinfo/:id', component: ParticipanteInfoComponent},
+            {path: 'pages/evento/:id', component: EventoComponent},
+            {path: 'pages/sponsors', component: SponsorsComponent},
         ], canActivate: [AuthGuard]
     },
     {path: 'error', component: AppErrorComponent},
