@@ -13,12 +13,12 @@ export function ECHO_PUSHER (token:any){
         cluster: 'mt1',
         key: 'ASDEFGRG1231',
         wsHost: environment.HOST_BACKEND,
-        wsPort: 6001,
+        wsPort: environment.WSS_PORT,
         wssPort: 443,
-        forceTLS: environment.production,
+        forceTLS: environment.SSL_WSS,
         disableStats: true,
         // enabledTransports: ['ws', 'wss'],
-        authEndpoint: `${URL_SERVICIOS}/broadcasting/autho`,
+        authEndpoint: `${URL_SERVICIOS}/broadcasting/auth`,
         auth: {
           headers: {Authorization:`Bearer ${token}`}
           
