@@ -18,7 +18,7 @@ export function ECHO_PUSHER (token:any){
         wssPort: 443,
         forceTLS: environment.SSL_WSS,
         disableStats: true,
-        enabledTransports: ['ws'],
+        //enabledTransports: ['ws'],
         authEndpoint: `${URL_SERVICIOS}/broadcasting/auth`,
         auth: {
           headers: {Authorization:`Bearer ${token}`}
