@@ -2,7 +2,7 @@ import { Component} from '@angular/core';
 import { ProfileUserService } from '../services/profile-user.service';
 import { ChatPanelService } from '../_services/chat-panel.service';
 import { Message } from 'primeng/api';
-import { ECHO_PUSHER } from '../../../config/config';
+import { ECHO_PUSHER } from 'src/app/config/config';
 import { AuthService } from '../../auth/_services/auth.service';
 import { CrearChatGrupalService } from '../services/crear-chat-grupal.service';
 
@@ -62,12 +62,12 @@ export class ChatPanelBodyComponent {
     this.listMyFriends();
 
     const ECHO_PUSHER_INST = ECHO_PUSHER(this._chatPanelService.authService.token);
-    ECHO_PUSHER_INST.private("chat.refresh.room."+this._userProfileService.authService.id)
+    ECHO_PUSHER_INST.private("chat.refresh.room."+this._userProfileService.authService.user.id)
       .listen('RefreshMyChatRoom', (e:any) => {
-        console.log("respuseta del refreshh::::",e);
+        console.log(e);
         this.chat_chat_rooms = [];
-        this.chat_chat_rooms  = e.chatrooms;
-     //  this.LIST_MESSAGES.push(e);
+        this.chat_chat_rooms = e.chatrooms;
+
       });
   }
 
@@ -126,7 +126,7 @@ export class ChatPanelBodyComponent {
       item.count_message =0;
       if(item.friend_first){
           to_user = item.friend_first.id;
-        }if(item.friend_second){
+        }else if(item.friend_second){
           to_user = item.friend_second.id;
         }else{
           to_user = item.group_chat.id;

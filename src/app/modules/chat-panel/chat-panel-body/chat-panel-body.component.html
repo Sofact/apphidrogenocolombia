@@ -136,7 +136,7 @@
 
                                 <li class="contacts-item groups" [ngClass]="{'unread': item.count_message > 0}" >
                                     <a class="contacts-link"  href="javascript:;" (click)="loadMyChat(item)" [ngClass]="{'prymary': item.is_chat_active}">
-                                        <div class="avatar bg-success text-light">
+                                        <div class="avatar bg-success text-light" [ngClass]="{'avatar-busy': !item.is_active, 'avatar-online': item.is_active}">
                                             <span *ngIf="item.friend_first">
 
                                                  <img class="injectable" src="{{path}}{{item.friend_first.avatar}}"/> 
