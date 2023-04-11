@@ -22,25 +22,27 @@ export class ChatContentPanelComponent implements OnInit{
 
 
   ngOnInit(): void {
-    this.user = this._chatPanelService.authService.user;
-
-    this.group = this._chatPanelService.listMyGroups()
-      .subscribe((response: any) =>{
-        console.log("Mis grupos:::",response);
-      })
+    this.user = this.authService.user;
 
     console.log("El id del usuario",this.user);
     this.to_user.messages.forEach((element: any) =>{
       this.LIST_MESSAGES.unshift(element);
     });0
 
-    console.log("el token antes de authenticar el boadcast::::",this.authService.token);
-    const ECHO_PUSHER_INST = ECHO_PUSHER(this.authService.token);
+
+    console.log("EL uniqd:::",this.to_user.room_uniqd );
+
+    const ECHO_PUSHER_INST = ECHO_PUSHER(this._chatPanelService.authServices.token);
     ECHO_PUSHER_INST.channel("chat.room."+this.to_user.room_uniqd)
       .listen('SendMessageChat', (e:any) => {
-        console.log("respuseta del echo_pusher::::",e);
+        console.log("La respuesta en el chatRoom:::::",e);
         this.LIST_MESSAGES.push(e);
       });
+
+      this.group = this._chatPanelService.listMyGroups()
+      .subscribe((response: any) =>{
+        console.log("Mis grupos:::",response);
+      })
   }
 
 

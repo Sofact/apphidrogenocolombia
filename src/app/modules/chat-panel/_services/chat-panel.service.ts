@@ -10,35 +10,34 @@ export class ChatPanelService {
 
   constructor(
     public http: HttpClient,
-    public authService: AuthService,
+    public authServices: AuthService,
   ) { }
-
   startChat(data:any){
-  
-    let headers = new HttpHeaders({'Authorization': 'Bearer '+this.authService.token});
-    let URL = URL_SERVICIOS+ "/start-chat";
-    return this.http.post(URL, data, {headers:headers});
+    let headers = new HttpHeaders({'Authorization': "Bearer "+this.authServices.token});
+    let URL = URL_SERVICIOS+ "/chat/start-chat";
+    return this.http.post(URL,data,{headers: headers});
+  }
+  listMyChatRooms(data:any){
+    let headers = new HttpHeaders({'Authorization': "Bearer "+this.authServices.token});
+    let URL = URL_SERVICIOS+ "/chat/list-my-chat-room";
+    return this.http.post(URL,data,{headers: headers});
+  }
+  paginateScroll(page:any,data:any){
+    let headers = new HttpHeaders({'Authorization': "Bearer "+this.authServices.token});
+    let URL = URL_SERVICIOS+ "/chat/chat-room-paginate?page="+page;
+    return this.http.post(URL,data,{headers: headers});
   }
 
-  listMyChatRooms(data:any){
-  
-    let headers = new HttpHeaders({'Authorization': 'Bearer '+this.authService.token});
-    let URL = URL_SERVICIOS+ "/chat/list-my-chat-room";
-    return this.http.post(URL, data, {headers:headers});
-  }
 
   listMyGroups(){
   
-    let headers = new HttpHeaders({'Authorization': 'Bearer '+this.authService.token});
+    let headers = new HttpHeaders({'Authorization': 'Bearer '+this.authServices.token});
     let URL = URL_SERVICIOS+ "/grupo";
     return this.http.get(URL,  {headers:headers});
   }
-
   sendMessageTxt(data:any){
-  
-    let headers = new HttpHeaders({'Authorization': 'Bearer '+this.authService.token});
+    let headers = new HttpHeaders({'Authorization': "Bearer "+this.authServices.token});
     let URL = URL_SERVICIOS+ "/chat/send-message-txt";
-    return this.http.post(URL, data, {headers:headers}); 
+    return this.http.post(URL,data,{headers: headers});
   }
-
 }

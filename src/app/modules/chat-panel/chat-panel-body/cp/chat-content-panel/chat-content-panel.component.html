@@ -12,7 +12,7 @@
                      <div class="message-wrapper">
                          <div class="message-content">
                              <h6 class="text-dark">{{message.sender.full_name}}</h6>
-                             <span>{{message.message}}</span>
+                             <span [innerHtml]="message.message"></span>
                          </div>
                      </div>
                      <div class="message-options">
@@ -184,21 +184,7 @@
         <!-- Message Day End -->
 
         <!-- Message Day Start -->
-        <div class="message-day">
 
-            <div class="message-divider sticky-top pb-2" data-label="Today">&nbsp;</div>
-
-            <!-- Self Message Start -->
-
-            <!-- Self Message End -->
-
-            <!-- Received Message Start -->
- 
-            <!-- Self Message End -->
-        </div>
-        <!-- Message Day End -->
-
-    </div>
 
     <!-- Scroll to finish -->
     <div class="chat-finished" id="chat-finished"></div>

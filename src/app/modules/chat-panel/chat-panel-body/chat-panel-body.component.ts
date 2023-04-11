@@ -24,11 +24,37 @@ export class ChatPanelBodyComponent {
   chat_chat_rooms:any =[];
   step: string='';
   contador: number =0;
+  users_actives:any = [];
+  message_text_area:any = null;
   nombreChatGrupal:string = '';
 
 
-  sendMessageTexto(){
-    console.log("El to_user::::",this.to_user);
+  constructor(
+              private _userProfileService: ProfileUserService,
+              private _chatPanelService: ChatPanelService,
+              private _crearChatGrupalService: CrearChatGrupalService
+              ) { }
+  ngOnInit(): void {
+   // $("#messageInput").emojioneArea();
+    this.ContactsUsers();
+    this.GetGroups();
+    this.user = this._chatPanelService.authServices.user;
+
+    this.listMyFriends();
+
+    const ECHO_PUSHER_INST = ECHO_PUSHER(this._chatPanelService.authServices.token);
+    ECHO_PUSHER_INST.private("chat.refresh.room."+this._userProfileService.authService.user.id)
+      .listen('RefreshMyChatRoom', (e:any) => {
+        console.log("Mensaje en RefreshChatRoom:::::",e);
+        this.chat_chat_rooms = [];
+        this.chat_chat_rooms = e.chatrooms;
+       // this.asignedUserActive();
+      });
+  }
+
+  
+  sendMessageText(){
+    console.log(this.mensaje);
 
     let data= {
       
@@ -48,29 +74,32 @@ export class ChatPanelBodyComponent {
     })*/
   }
 
-  constructor(
-              private _userProfileService: ProfileUserService,
-              private _chatPanelService: ChatPanelService,
-              private _crearChatGrupalService: CrearChatGrupalService
-              ) { }
-  ngOnInit(): void {
-   // $("#messageInput").emojioneArea();
-    this.ContactsUsers();
-    this.GetGroups();
-    this.user = this._chatPanelService.authService.user;
-
-    this.listMyFriends();
-
-    const ECHO_PUSHER_INST = ECHO_PUSHER(this._chatPanelService.authService.token);
-    ECHO_PUSHER_INST.private("chat.refresh.room."+this._userProfileService.authService.user.id)
-      .listen('RefreshMyChatRoom', (e:any) => {
-        console.log(e);
-        this.chat_chat_rooms = [];
-        this.chat_chat_rooms = e.chatrooms;
-
+  /*
+  asignedUserActive(){
+    for (const user of this.users_actives) {
+      const Index = this.chat_chat_rooms.findIndex((item:any) => {
+        if(item.friend_first){
+          return item.friend_first.id == user.id;
+        }else if (item.friend_second){
+          return item.friend_second.id == user.id;
+        }
+        return;
       });
-  }
 
+      if(Index != -1){
+        this.chat_chat_rooms[Index].is_active = true;
+      }
+
+      const IndexN = this.users_contacts.findIndex((item:any) => item.id == user.id);
+      if(IndexN != -1){
+        this.users_contacts[IndexN].is_active = true;
+      }
+
+      if(this.to_user && this.to_user.user.id == user.id){
+        this.to_user.is_active = true;
+      }
+    }
+  }*/
 
     ContactsUsers(){
     
@@ -79,7 +108,7 @@ export class ChatPanelBodyComponent {
                 this.users_contacts = resp.users;
       })
     }
-
+    
     GetGroups(){
     
       this._chatPanelService.listMyGroups()
@@ -99,7 +128,7 @@ export class ChatPanelBodyComponent {
       this.loadChatPanelContent = false;
       this._chatPanelService.startChat(data).subscribe((resp:any) => {
       
-        console.log("larespuesta::",resp);
+        console.log(resp);
         this.loadChatPanelContent = true;
         /*
         setTimeout(() =>{
@@ -122,18 +151,23 @@ export class ChatPanelBodyComponent {
     }
 
     loadMyChat(item: any){
-      let to_user = 0;
+      let to_user_id = 0;
       item.count_message =0;
       if(item.friend_first){
-          to_user = item.friend_first.id;
+        to_user_id = item.friend_first.id;
         }else if(item.friend_second){
-          to_user = item.friend_second.id;
+          to_user_id = item.friend_second.id;
         }else{
-          to_user = item.group_chat.id;
+          to_user_id = item.group_chat.id;
         }
         item.is_chat_Active = true;
-
-      this.startChat(to_user);
+        this.chat_chat_rooms.map((element:any)=>{
+          if(element.uniqd != item.uniqd){
+            element.is_chat_active = false;
+          }
+          return element;
+        })
+      this.startChat(to_user_id);
     }
 
     createGroup(){
