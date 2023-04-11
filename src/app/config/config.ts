@@ -8,22 +8,22 @@ export const URL_FRONTEND   = environment.URL_FRONTEND;
 
 
 export function ECHO_PUSHER (token:any){
-  return new Echo ({
-    broadcaster: 'pusher',
-    encrypted: false,
-    cluster: 'mt1',
-    key: 'ASDEFGRG1231',
-    wsHost: environment.HOST_BACKEND,
-    wsPort: 6001,
-    wssPort: 443,
-    forceTLS: false,
-    disableStats: true,
-    // enabledTransports: ['ws', 'wss'],
-    authEndpoint: `${URL_SERVICIOS}/broadcasting/auth`,
-    auth: {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    },
-  });
-}
+    return new Echo ({
+        broadcaster: 'pusher',
+        encrypted: environment.production,
+        cluster: 'mt1',
+        key: 'ASDEFGRG1231',
+        wsHost: environment.HOST_BACKEND,
+        wsPort: environment.WSS_PORT,
+        wssPort: 443,
+        forceTLS: environment.SSL_WSS,
+        disableStats: true,
+        enabledTransports: ['ws'],
+        authEndpoint: `${URL_SERVICIOS}/broadcasting/auth`,
+        auth: {
+          headers: {Authorization:`Bearer ${token}`}
+          
+        },
+      });
+  }
+   
