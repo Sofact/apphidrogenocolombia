@@ -18,7 +18,7 @@ export class EventoComponent {
     listaEvento: any = [];
     listaEvento1: any = [];
     evento_id: string = '';
-    activa_conferencistas: boolean = true;
+    activa_conferencistas: boolean = false;
     //listaAgenda2: any = [];
     @ViewChild('dt') table: Table;
 
@@ -51,9 +51,9 @@ export class EventoComponent {
               console.log("Ingreso a poblar la lista");
                     this.listaPersona=resp.eventopersona;
                     this.listaPersona1=this.listaPersona.filter(p => p.eve_id==this.evento_id);
-                    if (this.listaPersona1.length==0)
+                    if (this.listaPersona1.length>0)
                     {
-                      this.activa_conferencistas=false;
+                      this.activa_conferencistas=true;
                     }
                     //this.listaAgenda2=this.listaAgenda.filter(p => p.eve_dia==2);
             }else{

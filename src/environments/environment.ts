@@ -4,12 +4,12 @@
 
 export const environment = {
   production: false,
-  HOST_BACKEND: '127.0.0.1',
+  HOST_BACKEND: 'websockets.hidrogenocolombia.com',
   URL_SERVICIOS: "HTTP://127.0.0.1:8000/api",
   URL_BACKEND: "HTTP://127.0.0.1:8000",
   URL_FRONTEND: "HTTP://127.0.0.1:4200",
   SSL_WSS: false,
-  WSS_PORT: 6001
+  WSS_PORT: 80
 };
 
 /*
