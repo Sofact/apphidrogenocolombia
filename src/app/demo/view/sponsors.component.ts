@@ -14,9 +14,12 @@ import { MessageService, ConfirmationService } from 'primeng/api';
 })
 export class SponsorsComponent {
     listaSponsors: any = [];
+    listaSponsors0: any = [];
     listaSponsors1: any = [];
     listaSponsors2: any = [];
     listaSponsors3: any = [];
+    listaSponsorsoro: any = [];
+    listaSponsorsapoya: any = [];
     //listaAgenda2: any = [];
     @ViewChild('dt') table: Table;
 
@@ -44,9 +47,12 @@ export class SponsorsComponent {
             if(!resp.error && resp){
               console.log("Ingreso a poblar la lista");
                     this.listaSponsors=resp.sponsor;
+                    this.listaSponsors0=this.listaSponsors.filter(p => p.spo_tipo==0);
                     this.listaSponsors1=this.listaSponsors.filter(p => p.spo_tipo==1);
                     this.listaSponsors2=this.listaSponsors.filter(p => p.spo_tipo==2);
                     this.listaSponsors3=this.listaSponsors.filter(p => p.spo_tipo==3);
+                    this.listaSponsorsoro=this.listaSponsors.filter(p => p.spo_tipo==4);
+                    this.listaSponsorsapoya=this.listaSponsors.filter(p => p.spo_tipo==5);
                     //this.listaAgenda2=this.listaAgenda.filter(p => p.eve_dia==2);
             }else{
               if(resp.error == 'Unauthorized'){
