@@ -61,6 +61,10 @@ export class ChatPanelBodyComponent {
     window.location.reload();
   }
   
+  irAPaginaDash() {
+    this.route.navigate(['dash']);
+  }
+
   sendMessageText(){
     console.log("EL to_user::",this.to_user);
 
