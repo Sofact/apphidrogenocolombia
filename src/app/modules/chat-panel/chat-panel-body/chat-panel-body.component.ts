@@ -5,6 +5,8 @@ import { Message } from 'primeng/api';
 import { ECHO_PUSHER } from 'src/app/config/config';
 import { AuthService } from '../../auth/_services/auth.service';
 import { CrearChatGrupalService } from '../services/crear-chat-grupal.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -32,7 +34,9 @@ export class ChatPanelBodyComponent {
   constructor(
               private _userProfileService: ProfileUserService,
               private _chatPanelService: ChatPanelService,
-              private _crearChatGrupalService: CrearChatGrupalService
+              private _crearChatGrupalService: CrearChatGrupalService,
+              private route: Router,
+              private location: Location
               ) { }
   ngOnInit(): void {
    // $("#messageInput").emojioneArea();
@@ -52,7 +56,10 @@ export class ChatPanelBodyComponent {
        // this.asignedUserActive();
       });
   }
-
+  
+  irAPaginaDestino() {
+    window.location.reload();
+  }
   
   sendMessageText(){
     console.log("EL to_user::",this.to_user);
