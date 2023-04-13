@@ -6,6 +6,7 @@ import {Product} from '../domain/product';
 import {AppConfig} from '../domain/appconfig';
 import {ConfigService} from '../service/app.config.service';
 import {Subscription} from 'rxjs';
+import { AgendaService } from '../service/agenda.service';
 
 @Component({
     templateUrl: './dashboard.component.html',
@@ -35,7 +36,20 @@ export class DashboardDemoComponent implements OnInit {
 
     config: AppConfig;
 
-    constructor(private productService: ProductService, private breadcrumbService: BreadcrumbService, public configService: ConfigService) {
+    listaPersona: any = [];
+    cantPersonas: number = 0;
+
+    listaUsuarios: any = [];
+    cantUsuarios: number = 0;
+
+    listaPatrocinadores: any = [];
+    cantPatrocinadores: number = 0;
+
+    constructor(
+        private productService: ProductService, 
+        private breadcrumbService: BreadcrumbService, 
+        public configService: ConfigService,
+        private agenda: AgendaService) {
       this.breadcrumbService.setItems([
           {label: 'Dashboard', routerLink: ['/']}
       ]); 
@@ -49,6 +63,8 @@ export class DashboardDemoComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.cargarDatosParticipantes();
+        this.cargarDatosSponsors();
         this.productService.getProducts().then(data => this.products = data);
 
         this.lineChartData = {
@@ -188,6 +204,38 @@ export class DashboardDemoComponent implements OnInit {
         };
     }
 
+    cargarDatosParticipantes(){
+        this.agenda.get_persona(null).subscribe((resp: any) => {
+          console.log(resp);
+          if(!resp.error && resp){
+            console.log("Ingreso a poblar la lista");
+                  this.listaPersona=resp.persona;
+                  this.cantPersonas = this.listaPersona.length;
+                  //this.listaAgenda2=this.listaAgenda.filter(p => p.eve_dia==2);
+          }else{
+            if(resp.error == 'Unauthorized'){
+              console.log("Usuario no Autorizado");
+            }
+          }
+        })
+      }
+
+      cargarDatosSponsors(){
+        this.agenda.get_sponsor(null).subscribe((resp: any) => {
+          console.log(resp);
+          if(!resp.error && resp){
+            console.log("Ingreso a poblar la lista");
+                  this.listaPatrocinadores=resp.sponsor;
+                  this.cantPatrocinadores = this.listaPatrocinadores.length;
+                  //this.listaAgenda2=this.listaAgenda.filter(p => p.eve_dia==2);
+          }else{
+            if(resp.error == 'Unauthorized'){
+              console.log("Usuario no Autorizado");
+            }
+          }
+        })
+      }
+    
     ngOnDestroy() {
         this.subscription.unsubscribe();
     }
