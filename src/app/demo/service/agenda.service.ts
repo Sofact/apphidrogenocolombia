@@ -26,4 +26,9 @@ export class AgendaService {
         let url = URL_SERVICIOS +"/sponsor";
         return this.http.get(url);
       } 
+
+      get_users(data:any){
+        let url = URL_SERVICIOS +"/users/contact";
+        return this.http.get(url);
+      } 
 }
