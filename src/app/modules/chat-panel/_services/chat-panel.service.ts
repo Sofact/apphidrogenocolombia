@@ -17,6 +17,13 @@ export class ChatPanelService {
     let URL = URL_SERVICIOS+ "/chat/start-chat";
     return this.http.post(URL,data,{headers: headers});
   }
+
+  startChatGroup(data:any){
+    let headers = new HttpHeaders({'Authorization': "Bearer "+this.authServices.token});
+    let URL = URL_SERVICIOS+ "/chat/start-chat-group";
+    return this.http.post(URL,data,{headers: headers});
+  }
+
   listMyChatRooms(data:any){
     let headers = new HttpHeaders({'Authorization': "Bearer "+this.authServices.token});
     let URL = URL_SERVICIOS+ "/chat/list-my-chat-room";

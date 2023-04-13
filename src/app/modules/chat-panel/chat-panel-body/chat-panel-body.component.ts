@@ -139,6 +139,26 @@ export class ChatPanelBodyComponent {
       })
     }
 
+    startChatGroup(value: number){
+
+      let data = {
+        to_user_id: value,
+      }
+
+      this.loadChatPanelContent = false;
+      this._chatPanelService.startChatGroup(data).subscribe((resp:any) => {
+      
+        console.log(resp);
+        this.loadChatPanelContent = true;
+        /*
+        setTimeout(() =>{
+          $("#messageInput").emojioneArea();
+        },50);*/
+        $("#participarGrupo").modal("hide");
+        this.to_user = resp;
+      })
+    }
+
     listMyFriends(){
       
       this._chatPanelService.listMyChatRooms({}).subscribe((resp: any)=>{
