@@ -47,7 +47,8 @@ export class ChatPanelBodyComponent {
       .listen('RefreshMyChatRoom', (e:any) => {
         console.log("Mensaje en RefreshChatRoom:::::",e);
         this.chat_chat_rooms = [];
-        this.chat_chat_rooms = e.chatrooms;
+        //this.chat_chat_rooms = e.chatrooms;
+        this.listMyFriends();
        // this.asignedUserActive();
       });
   }
@@ -151,10 +152,7 @@ export class ChatPanelBodyComponent {
       
         console.log(resp);
         this.loadChatPanelContent = true;
-        /*
-        setTimeout(() =>{
-          $("#messageInput").emojioneArea();
-        },50);*/
+
         $("#participarGrupo").modal("hide");
         this.to_user = resp;
       })
