@@ -65,7 +65,7 @@ export const routes: Routes = [
         redirectTo: 'error/404'
     }, */
     {
-        path: '', component: AppMainComponent,
+        path: '', component: DashboardDemoComponent,
         children: [
             {path: 'dash', component: DashboardDemoComponent},
             {path: 'uikit/formlayout', component: FormLayoutDemoComponent},
