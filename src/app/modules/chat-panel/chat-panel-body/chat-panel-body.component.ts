@@ -54,10 +54,11 @@ export class ChatPanelBodyComponent {
 
   
   sendMessageText(){
-    console.log(this.mensaje);
+    console.log("EL to_user::",this.to_user);
 
     let data= {
       
+
       chat_room_id: this.to_user.room_id,
       message:this.mensaje,
       to_user_id : this.to_user.user.id
