@@ -60,7 +60,7 @@ submit(){
         if(resp.error.error == 'Unauthorized'){
         
           this.hasError = true;
-          this.hasErrorText = "El usuario o la contraseña son incorrectos";
+          this.hasErrorText = "Por favor inicie con el correo registrado";
         }
       }
     })

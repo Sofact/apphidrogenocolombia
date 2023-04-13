@@ -121,7 +121,8 @@ import { AuthService} from './modules/auth/_services/auth.service';
                         </li>
 					-->
 						<li #calendar class="topbar-item" [ngClass]="{'active-topmenuitem': appMain.activeTopbarItem === calendar}">
-							<a href="#" (click)="appMain.onTopbarItemClick($event,calendar)">
+							<!-- <a href="#" (click)="appMain.onTopbarItemClick($event,calendar)"> -->
+							<a href="#/pages/agenda">
 								<i class="topbar-icon pi pi-calendar"></i>
 							</a>
 							<ul class="fadeInDown" (click)="appMain.topbarItemClick = true">
@@ -135,7 +136,8 @@ import { AuthService} from './modules/auth/_services/auth.service';
 						</li>
 
 						<li #message class="topbar-item" [ngClass]="{'active-topmenuitem': appMain.activeTopbarItem === message}">
-							<a href="#" (click)="appMain.onTopbarItemClick($event,message)">
+							<!-- <a href="#" (click)="appMain.onTopbarItemClick($event,message)"> -->
+							<a href="#/chat">
 								<i class="topbar-icon pi pi-inbox"></i>
 							</a>
 							<ul class="fadeInDown">
@@ -179,7 +181,8 @@ import { AuthService} from './modules/auth/_services/auth.service';
 						</li>
 
 						<li #gift class="topbar-item" [ngClass]="{'active-topmenuitem': appMain.activeTopbarItem === gift}">
-							<a href="#" (click)="appMain.onTopbarItemClick($event,gift)">
+							<!-- <a href="#" (click)="appMain.onTopbarItemClick($event,gift)"> -->
+							<a href="#/chat">
 								<i class="topbar-icon pi pi-envelope"></i>
 							</a>
 							<ul class="fadeInDown">

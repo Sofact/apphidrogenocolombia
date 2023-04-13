@@ -16,7 +16,7 @@
 								<span><i class="pi pi-clock"></i> {{evento.eve_hora}}</span>
 							</div>							
 							<div class="store-card-content" style="text-align: justify; padding: 15px;">
-								<span>{{evento.eve_resumen}}</span>	
+								<span><p *ngFor="let linea of evento.eve_resumen.split('\n')">{{ linea }}</p></span>	
 								<br>
 							</div>
                         </div>	

@@ -29,9 +29,10 @@
                             <div class="store-card-icons">
                             </div>
 							<div class="store-card-content" style="text-align: justify; padding: 15px;">
-								<span>{{persona.per_bio}}</span><br><br>
+								<span><p *ngFor="let linea of persona.per_bio.split('\n')">{{ linea }}</p></span><br>
 								<span><i class="pi pi-building"></i> {{persona.per_empresa}}</span><br>
 								<span><i class="pi pi-envelope"></i> {{persona.per_correo}}</span><br>
+								
 							</div>
                         </div>	
 					</div>													
