@@ -65,6 +65,7 @@ export class DashboardDemoComponent implements OnInit {
     ngOnInit() {
         this.cargarDatosParticipantes();
         this.cargarDatosSponsors();
+        this.cargarDatosUsuarios();
         this.productService.getProducts().then(data => this.products = data);
 
         this.lineChartData = {
@@ -236,6 +237,22 @@ export class DashboardDemoComponent implements OnInit {
         })
       }
     
+      cargarDatosUsuarios(){
+        this.agenda.get_users(null).subscribe((resp: any) => {
+          console.log(resp);
+          if(!resp.error && resp){
+            console.log("Ingreso a poblar la lista");
+                  this.listaUsuarios=resp.users;
+                  this.cantUsuarios = this.listaUsuarios.length;
+                  //this.listaAgenda2=this.listaAgenda.filter(p => p.eve_dia==2);
+          }else{
+            if(resp.error == 'Unauthorized'){
+              console.log("Usuario no Autorizado");
+            }
+          }
+        })
+      }
+
     ngOnDestroy() {
         this.subscription.unsubscribe();
     }
