@@ -5,21 +5,19 @@ import {Component} from '@angular/core';
     template: `
         <div class="layout-footer">
 			<div >
-				<img src="assets/layout/images/Logos_hidro_wec.png" alt="mirage-layout" />
+				<img src="assets/layout/images/Logos_hidro_wec2.png" alt="mirage-layout" height="40" />
 				<div class="text">
-					
-					
 				</div>
 			</div>
 			<div class="icons">
-				<div class="icon icon-hastag">
-					<i class="pi pi-home"></i>
+				<div class="icon">
+					<!-- <i class="pi pi-home"></i> -->
 				</div>
-				<div class="icon icon-twitter">
-					<i class="pi pi-globe"></i>
+				<div class="icon">
+					<i class="pi pi-twitter"></i>
 				</div>
-				<div class="icon icon-prime">
-					<i class="pi pi-bookmark"></i>
+				<div class="icon">
+					<i class="pi pi-linkedin"></i>
 				</div>
 			</div>
         </div>

@@ -10,7 +10,7 @@ import { AuthService} from './modules/auth/_services/auth.service';
                 <div class="layout-topbar-left">
 					<div class="layout-topbar-logo-wrapper" >
 						<a href="#/dash" height="40" >
-							<img src="assets/layout/images/Logos_hidro_wec.png" alt="mirage-layout" />
+							<img src="assets/layout/images/Logos_hidro_wec2.png" alt="mirage-layout" height="40" />
 						</a>
 					</div>
 

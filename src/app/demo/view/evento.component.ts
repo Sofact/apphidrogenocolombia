@@ -15,10 +15,12 @@ import { MessageService, ConfirmationService } from 'primeng/api';
 export class EventoComponent {
     listaPersona: any = [];
     listaPersona1: any = [];
+    listaPersona2: any = [];
     listaEvento: any = [];
     listaEvento1: any = [];
     evento_id: string = '';
     activa_conferencistas: boolean = false;
+    activa_modera: boolean = false;
     //listaAgenda2: any = [];
     @ViewChild('dt') table: Table;
 
@@ -50,11 +52,16 @@ export class EventoComponent {
             if(!resp.error && resp){
               console.log("Ingreso a poblar la lista");
                     this.listaPersona=resp.eventopersona;
-                    this.listaPersona1=this.listaPersona.filter(p => p.eve_id==this.evento_id);
+                    this.listaPersona1=this.listaPersona.filter(p => p.eve_id==this.evento_id && p.evt_estado=="a");
+                    this.listaPersona2=this.listaPersona.filter(p => p.eve_id==this.evento_id && p.evt_estado=="m");
                     if (this.listaPersona1.length>0)
                     {
                       this.activa_conferencistas=true;
                     }
+                    if (this.listaPersona2.length>0)
+                    {
+                      this.activa_modera=true;
+                    }                    
                     //this.listaAgenda2=this.listaAgenda.filter(p => p.eve_dia==2);
             }else{
               if(resp.error == 'Unauthorized'){
