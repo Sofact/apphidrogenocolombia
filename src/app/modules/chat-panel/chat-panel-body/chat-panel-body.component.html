@@ -4,7 +4,7 @@
         <div class="tab-content">
             <!-- Chat Tab Content Start -->
             <div class="tab-pane active" id="chats-content">
-                <div class="d-flex flex-column h-100">
+                <div class="d-flex flex-column h-70">
                     <div class="hide-scrollbar h-100" id="chatContactsList">
                         
                         <!-- Chat Header Start -->
@@ -155,7 +155,7 @@
     </aside>
 
     <!-- Main Start -->
-    <main class="main main-visible">
+    <main class="main main-visible" style="height:auto; min-height: 600px;">
 
         <!-- Chats Page Start -->
         <div class="chats">
@@ -371,7 +371,7 @@
                 <!-- Search End -->
 
                 <!-- Chat Content Start-->
-                <div class="chat-content p-2" *ngIf="loadChatPanelContent">
+                <div class="chat-content p-2"  *ngIf="loadChatPanelContent">
                   <app-chat-content-panel [to_user]="to_user"></app-chat-content-panel>
                 
                     <!-- Scroll to finish -->
@@ -449,6 +449,7 @@
                     </div>
 
                     <textarea class="form-control emojionearea-form-control" id="messageInput" [(ngModel)]="mensaje" id="mensaje" ></textarea>
+                    
                     <div class="btn btn-primary btn-icon send-icon rounded-circle text-light mb-1" (click)="sendMessageText()" role="button">
                         <svg class="hw-24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>

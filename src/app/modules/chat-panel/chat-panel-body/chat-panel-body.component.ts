@@ -66,11 +66,14 @@ export class ChatPanelBodyComponent {
 
 
     }
+    if(this.mensaje){
     console.log(this.mensaje);
     this.mensaje = null;
      this._chatPanelService.sendMessageTxt(data).subscribe((resp:any) => {
       console.log(resp);
+     
     })
+  }
    /* .subscribe((resp) =>{
       console.log(resp);
     })*/
