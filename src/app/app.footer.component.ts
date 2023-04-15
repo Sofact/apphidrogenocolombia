@@ -5,7 +5,9 @@ import {Component} from '@angular/core';
     template: `
         <div class="layout-footer">
 			<div >
-				<img src="assets/layout/images/Logos_hidro_wec2.png" alt="mirage-layout" height="40" />
+				<a href="#/dash">
+					<img src="assets/layout/images/Logos_hidro_wec2.png" alt="mirage-layout" height="40" />
+				</a>
 				<div class="text">
 				</div>
 			</div>
@@ -14,10 +16,10 @@ import {Component} from '@angular/core';
 					<!-- <i class="pi pi-home"></i> -->
 				</div>
 				<div class="icon">
-					<i class="pi pi-twitter"></i>
+					<!--<a href="#/pages/acerca"><i class="pi pi-twitter"></i></a>-->
 				</div>
 				<div class="icon">
-					<i class="pi pi-linkedin"></i>
+					<a href="#/pages/acerca"><i class="pi pi-info-circle"></i></a>
 				</div>
 			</div>
         </div>

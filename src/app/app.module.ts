@@ -139,6 +139,7 @@ import { ParticipantesComponent } from './demo/view/participantes.component';
 import { ParticipanteInfoComponent } from './demo/view/participanteinfo.component';
 import { EventoComponent } from './demo/view/evento.component';
 import { SponsorsComponent } from './demo/view/sponsors.component';
+import { AcercadeComponent } from './demo/view/acercade.component';
 
 // Demo services
 import {CountryService} from './demo/service/countryservice';
@@ -313,7 +314,8 @@ import { ChatContentPanelComponent } from './modules/chat-panel/chat-panel-body/
         ParticipantesComponent,
         ParticipanteInfoComponent,
         EventoComponent,
-        SponsorsComponent
+        SponsorsComponent,
+        AcercadeComponent
     ],
     providers: [authInterceptorProviders,
         {provide: LocationStrategy, useClass: HashLocationStrategy},

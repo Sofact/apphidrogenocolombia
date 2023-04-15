@@ -129,6 +129,7 @@ export class AppMenuComponent implements OnInit {
                 label: 'Buy Now', icon: 'pi pi-fw pi-money-bill', url: ['https://www.primefaces.org/store']
             }
  */
+            {label: 'Información Evento', icon: 'pi pi-fw pi-info-circle', routerLink: ['pages/acerca']},
         ];
 
         if(this.authService.isLogin()){

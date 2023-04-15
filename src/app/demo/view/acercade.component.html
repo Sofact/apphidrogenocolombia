@@ -1,0 +1,60 @@
+<div class="grid layout-dashboard">
+    <div class="col-12 lg:col-12 ">
+        <div class="grid flex-column grid-nogutter">
+             <div class="col-12 widget-news">
+                <div class="news-row" [ngStyle]="{'transform': activeNews === 1 ? 'translate3d(0px, 0px, 0px)':activeNews === 2
+                ?'translate3d(-100%, 0px, 0px)':'translate3d(-200%, 0px, 0px)'}">
+                     <div class="card news news-2 active-news">
+                        <div class="news-title">
+                            <h5>INFO</h5>
+                        </div>
+                        <h6>Acerca del evento</h6>
+                        <p style="text-align: justify;">El 2° Congreso Internacional de Hidrógeno «Innovación, transición y vida» se llevará a cabo el 20 y 21 de Abril de 2023 en Bogotá. 
+                            Es un evento presencial de 2 días en el que se reunirán los principales actores del hidrógeno en Colombia y América Latina, 
+                            donde se abordarán las principales temáticas del desarrollo del H2 y sus derivados, tales como escenarios de demanda, 
+                            tecnologías de producción, proyectos y pilotos y los distintos marcos políticos y regulatorios pioneros en la región.</p><br />
+                            <div class="grid link">
+                                <div class="col-9">
+                                    <a href="https://hidrogenocolombia.com" target="_blank">
+                                        Hidrógeno Colombia | WEC
+                                    </a>
+                                </div>
+                            </div>
+                    </div> 
+                    <div class="link-points">
+                        <div class="grid points">
+                            <div class="col-4 point point-2 " [ngClass]="{'active-point': activeNews === 2}" (click)="activeNews = 1"></div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+	<div class="col-12">
+		<div class="card widget-store-items">
+			<div class="store-cards-container">
+				<div class="grid store-cards">
+					<div class="col-12 lg:col-6 md:col-6">
+                        <div class="store-card">
+							<div class="store-card-image">
+							</div>						
+							<div class="store-card-content">
+								<span>Síguenos en nuestras redes sociales y registra tus momentos favoritos del evento con el</span><h5>#CongresoH2Col</h5>
+                                <hr>
+                                <div style="text-align: left; padding: 10px;">
+                                    <span><i class="pi pi-linkedin"></i> Hidrógeno Colombia</span><br>
+                                    <span><i class="pi pi-twitter"></i> asoh2colombia</span><br><br>
+                                    <span><i class="pi pi-linkedin"></i> Consejo Mundial de Energía Colombia</span><br>
+                                    <span><i class="pi pi-twitter"></i> WEC_COLOMBIA</span>
+                                    <span></span>	
+                                </div>
+							</div>
+                        </div>
+					</div>
+											
+				</div>
+			</div>
+		</div>
+	</div>	    
+</div>
+ 
