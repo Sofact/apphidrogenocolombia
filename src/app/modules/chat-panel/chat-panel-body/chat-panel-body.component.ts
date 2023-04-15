@@ -63,7 +63,7 @@ export class ChatPanelBodyComponent {
       .listen('RefreshMyChatRoom', (e:any) => {
         console.log("Mensaje en RefreshChatRoom:::::",e);
         this.chat_chat_rooms = [];
-        //this.chat_chat_rooms = e.chatrooms;
+        this.chat_chat_rooms = e.chatrooms;
         this.listMyFriends();
        // this.asignedUserActive();
       });

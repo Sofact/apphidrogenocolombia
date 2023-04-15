@@ -155,7 +155,7 @@
     </aside>
 
     <!-- Main Start -->
-    <main class="main main-visible" style="height:auto; min-height: 600px;">
+    <main class="main main-visible" style="height:auto; min-height: 800px;">
 
         <!-- Chats Page Start -->
         <div class="chats">
@@ -371,7 +371,7 @@
                 <!-- Search End -->
 
                 <!-- Chat Content Start-->
-                <div class="chat-content p-2"  *ngIf="loadChatPanelContent">
+                <div class="chat-content p-2" id="externo"  *ngIf="loadChatPanelContent">
                   <app-chat-content-panel [to_user]="to_user"></app-chat-content-panel>
                 
                     <!-- Scroll to finish -->

@@ -34,7 +34,11 @@ export class ChatContentPanelComponent implements OnInit{
       this.LIST_MESSAGES.unshift(element);
     });0
 
-  
+    this.last_page = this.to_user.last_page;
+
+    setTimeout(() => {
+      $("#ScrollChat").scrollTop( $("#ScrollChat").height());
+    }, 50);
 
     console.log("EL uniqd:::",this.to_user.room_uniqd );
 
@@ -44,20 +48,16 @@ export class ChatContentPanelComponent implements OnInit{
         console.log(e);
         this.LIST_MESSAGES.push(e);
       });
-      this.last_page = this.to_user.last_page;
-      setTimeout(()=>{
-        $("ScrollChat").scrollTop($("ScrollChat").height());
-      }, 3600);
+
+     
       this.group = this._chatPanelService.listMyGroups()
       .subscribe((response: any) =>{
         console.log("Mis grupos:::",response);
       })
 
-  
       $("#ScrollChat").scroll(()=>{
         var position = $("#ScrollChat").scrollTop();
-        console.log(position);
-
+         console.log(position);
         if(this.last_page > this.page && position == 0){
           this.page ++;
           //haces una peticion al servidor para que te devuelva los chats anteriores
@@ -72,8 +72,7 @@ export class ChatContentPanelComponent implements OnInit{
       console.log(resp);
       let last_message = this.LIST_MESSAGES[0];
       var etiqueta = $("#tag"+last_message.id).last();
-
-      $("#ScrollChat").scrollTop(etiqueta.offset().top - 100);
+      $("#ScrollChat").scrollTop(  $("#ScrollChat").height());
 
       resp.messages.forEach((element:any) => {
         this.LIST_MESSAGES.unshift(element);
