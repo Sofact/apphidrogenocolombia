@@ -9,7 +9,7 @@ import { AuthService} from './modules/auth/_services/auth.service';
 			<div class="layout-topbar-wrapper">
                 <div class="layout-topbar-left">
 					<div class="layout-topbar-logo-wrapper" >
-						<a href="#/dash" height="40" >
+						<a href="#/dash">
 							<img src="assets/layout/images/Logos_hidro_wec2.png" alt="mirage-layout" height="40" />
 						</a>
 					</div>
@@ -137,8 +137,8 @@ import { AuthService} from './modules/auth/_services/auth.service';
 
 						<li #message class="topbar-item" [ngClass]="{'active-topmenuitem': appMain.activeTopbarItem === message}">
 							<!-- <a href="#" (click)="appMain.onTopbarItemClick($event,message)"> -->
-							<a href="#/chat">
-								<i class="topbar-icon pi pi-inbox"></i>
+							<a href="#/pages/participantes">
+								<i class="topbar-icon pi pi-megaphone"></i>
 							</a>
 							<ul class="fadeInDown">
 								<li class="layout-submenu-header">

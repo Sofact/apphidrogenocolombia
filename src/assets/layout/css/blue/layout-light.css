@@ -9470,7 +9470,8 @@ a {
   color: #ebcb8b;
 }
 .widget-news .news-row .news.news-2 {
-  background-image: url("../../images/dashboard/news-2.png");
+ /*  background-image: url("../../images/dashboard/news-2.png"); */
+  background-image: url("../../images/dashboard/news-empty.png");
 }
 .widget-news .news-row .news.news-2 .news-title {
   background: -moz-linear-gradient(246deg, #8fb56f 0%, #a3be8c 100%);

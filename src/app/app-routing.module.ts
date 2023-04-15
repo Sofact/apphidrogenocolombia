@@ -40,6 +40,7 @@ import {BlocksComponent} from './blocks/blocks/blocks.component';
 import {AuthGuard} from './modules/auth/_services/auth.guard';
 import { AuthComponent } from './modules/auth/auth.component';
 import { ChatPanelComponent } from './modules/chat-panel/chat-panel.component';
+import { AcercadeComponent } from './demo/view/acercade.component';
 
 export const routes: Routes = [
     {path: 'login', component: AppLoginComponent},
@@ -102,6 +103,7 @@ export const routes: Routes = [
             {path: 'pages/participanteinfo/:id', component: ParticipanteInfoComponent},
             {path: 'pages/evento/:id', component: EventoComponent},
             {path: 'pages/sponsors', component: SponsorsComponent},
+            {path: 'pages/acerca', component: AcercadeComponent},
         ], canActivate: [AuthGuard]
     },
     {path: 'error', component: AppErrorComponent},
