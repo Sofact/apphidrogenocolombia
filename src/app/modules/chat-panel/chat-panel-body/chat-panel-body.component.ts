@@ -19,6 +19,8 @@ export class ChatPanelBodyComponent {
   lado: string= '';
   mensaje: string;
   users_contacts:any =[];
+  group_contacts: any =[];
+  group_id: string ='';
   groups: any[];
   path: string = '/assets/media/avatar/';
   to_user: any;
@@ -36,13 +38,23 @@ export class ChatPanelBodyComponent {
               private _chatPanelService: ChatPanelService,
               private _crearChatGrupalService: CrearChatGrupalService,
               private route: Router,
+              private router: ActivatedRoute,
               private location: Location
               ) { }
   ngOnInit(): void {
+
+    this.router.paramMap.subscribe(params => {
+      this.group_id = params.get('id');
+    });
+
+    if(this.group_id){
+      this.startChatGroup(Number(this.group_id));
+    }
    // $("#messageInput").emojioneArea();
     this.ContactsUsers();
     this.GetGroups();
     this.user = this._chatPanelService.authServices.user;
+
 
     this.listMyFriends();
 

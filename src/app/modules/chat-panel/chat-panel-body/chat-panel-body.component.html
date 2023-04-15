@@ -563,9 +563,41 @@
                       </ul>
                             <!-- List Group End -->
                         </div>
+
+                       
+
                     </div>
                 </div>
-                </div>
+                <div class="col-12">
+                    <h2>Grupos</h2>
+                    <!-- List Group Start -->
+                    <ul class="list-group list-group-flush">
+
+                    <!-- List Group Item Start -->
+                    <li class="list-group-item" *ngFor="let grupon of groups">
+                        <div class="media">
+                            <div class="avatar avatar-online mr-2">
+                                <img src={{path}}{{grupon.avatar}} alt="">
+                              
+                            </div>
+
+                            <div class="media-body">
+                                <h6 class="text-truncate">
+                                    <a style="cursor: pointer;" (click)="startChatGroup(grupon.id)" class="text-reset">{{grupon.name}}</a>
+                                </h6>
+
+                                <p class="text-muted mb-0">Online</p>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- List Group Item End -->
+
+          </ul>
+                <!-- List Group End -->
+            </div>
+              
+            content
+            </div>
             </div>
         </div>
 
@@ -574,7 +606,7 @@
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-dialog-zoom">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="startConversationLabel">Nuevo Chat</h5>
+                    <h5 class="modal-title" id="startConversationLabel">Participantes</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -601,8 +633,10 @@
                             </form>
                             <!-- Search End -->
                         </div>
+                        
 
                         <div class="col-12">
+                            
                                 <!-- List Group Start -->
                                 <ul class="list-group list-group-flush">
 
@@ -628,6 +662,34 @@
                       </ul>
                             <!-- List Group End -->
                         </div>
+
+                        <div class="col-12">
+                            <h4>..        Grupos</h4>
+                            <!-- List Group Start -->
+                            <ul class="list-group list-group-flush">
+
+                            <!-- List Group Item Start -->
+                            <li class="list-group-item" *ngFor="let groupons of groups">
+                                <div class="media">
+                                    <div class="avatar avatar-online mr-2">
+                                        <img src={{path}}{{groupons.avatar}} alt="">
+                                      
+                                    </div>
+
+                                    <div class="media-body">
+                                        <h6 class="text-truncate">
+                                            <a style="cursor: pointer;" (click)="startChat(groupons.id)" class="text-reset">{{groupons.name}}</a>
+                                        </h6>
+
+                                        <p class="text-muted mb-0">Online</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- List Group Item End -->
+
+                  </ul>
+                        <!-- List Group End -->
+                    </div>
                     </div>
                 </div>
                 </div>

@@ -94,6 +94,7 @@ export const routes: Routes = [
             {path: 'components/file', component: FileDemoComponent},
             {path: 'documentation', component: DocumentationComponent},
             {path: 'blocks', component: BlocksComponent},
+            {path: 'chat/:id', loadChildren: () => import('src/app/modules/chat-panel/chat-panel.module').then(m => m.ChatPanelModule)},
             {path: 'chat', loadChildren: () => import('src/app/modules/chat-panel/chat-panel.module').then(m => m.ChatPanelModule)},
             {path: 'pages/register', component: RegisterComponent},
             {path: 'pages/agenda', component: AgendaComponent},
