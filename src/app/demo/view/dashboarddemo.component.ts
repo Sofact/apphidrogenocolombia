@@ -7,6 +7,8 @@ import {AppConfig} from '../domain/appconfig';
 import {ConfigService} from '../service/app.config.service';
 import {Subscription} from 'rxjs';
 import { AgendaService } from '../service/agenda.service';
+import { AuthService } from '../../modules/auth/_services/auth.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     templateUrl: './dashboard.component.html',
@@ -49,7 +51,14 @@ export class DashboardDemoComponent implements OnInit {
         private productService: ProductService, 
         private breadcrumbService: BreadcrumbService, 
         public configService: ConfigService,
+        private authService: AuthService,
+        private route: Router,
         private agenda: AgendaService) {
+
+        if(!this.authService.isLogin()){
+            this.authService.logout();
+        }
+
       this.breadcrumbService.setItems([
           {label: 'Dashboard', routerLink: ['/']}
       ]); 

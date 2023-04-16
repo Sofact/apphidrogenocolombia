@@ -15,9 +15,10 @@
 							<div class="store-card-icons">
 								<span><i class="pi pi-clock"></i> {{evento.eve_hora}}</span>
 							</div>							
-							<div class="store-card-content" style="text-align: justify; padding: 15px;">
+							<div class="store-card-content" style="text-align: justify; padding: 15px;" *ngIf="evento.eve_resumen!=null">
 								<span><p *ngFor="let linea of evento.eve_resumen.split('\n')">{{ linea }}</p></span>	
 								<br>
+								<a href="#/chat/{{evento.eve_orden}}" *ngIf="evento.eve_orden!=null"><span><i class="pi pi-send"></i> Preguntas - Chat</span></a>
 							</div>
                         </div>	
 					</div>
