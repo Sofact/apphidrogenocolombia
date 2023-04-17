@@ -55,10 +55,6 @@ export class DashboardDemoComponent implements OnInit {
         private route: Router,
         private agenda: AgendaService) {
 
-        if(!this.authService.isLogin()){
-            this.authService.logout();
-        }
-
       this.breadcrumbService.setItems([
           {label: 'Dashboard', routerLink: ['/']}
       ]); 
@@ -72,6 +68,11 @@ export class DashboardDemoComponent implements OnInit {
     }
 
     ngOnInit() {
+
+        if(!this.authService.isLogin()){
+            this.authService.logout();
+        }
+        
         this.cargarDatosParticipantes();
         this.cargarDatosSponsors();
         this.cargarDatosUsuarios();
