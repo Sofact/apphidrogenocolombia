@@ -235,6 +235,13 @@ export class ChatPanelBodyComponent {
       if(this.contador == 2){
         console.log("Ahora si se crea");
       //  this.contador=0;
+      this.listMyFriends();
       }
+    }
+
+    hideModal(){
+      $("#startConversation").modal("hide");
+     
+      this.GetGroups();
     }
 }
