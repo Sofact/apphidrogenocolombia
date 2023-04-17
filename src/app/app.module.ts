@@ -140,6 +140,7 @@ import { ParticipanteInfoComponent } from './demo/view/participanteinfo.componen
 import { EventoComponent } from './demo/view/evento.component';
 import { SponsorsComponent } from './demo/view/sponsors.component';
 import { AcercadeComponent } from './demo/view/acercade.component';
+import { PerfilComponent } from './demo/view/perfil.component';
 
 // Demo services
 import {CountryService} from './demo/service/countryservice';
@@ -158,6 +159,7 @@ import {BreadcrumbService} from './breadcrumb.service';
 import {MenuService} from './app.menu.service';
 import {AppCodeModule} from './blocks/app-code/app.code.component';
 import { RouterModule } from '@angular/router';
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 //Auth services
 import { AuthRoutingModule } from './modules/auth/auth-routing.module';
@@ -262,6 +264,7 @@ import { ChatContentPanelComponent } from './modules/chat-panel/chat-panel-body/
 
         AuthRoutingModule,
         ReactiveFormsModule,
+        ImageCropperModule
     ],
     declarations: [
         AppComponent,
@@ -315,7 +318,8 @@ import { ChatContentPanelComponent } from './modules/chat-panel/chat-panel-body/
         ParticipanteInfoComponent,
         EventoComponent,
         SponsorsComponent,
-        AcercadeComponent
+        AcercadeComponent,
+        PerfilComponent
     ],
     providers: [authInterceptorProviders,
         {provide: LocationStrategy, useClass: HashLocationStrategy},

@@ -41,6 +41,7 @@ import {AuthGuard} from './modules/auth/_services/auth.guard';
 import { AuthComponent } from './modules/auth/auth.component';
 import { ChatPanelComponent } from './modules/chat-panel/chat-panel.component';
 import { AcercadeComponent } from './demo/view/acercade.component';
+import { PerfilComponent } from './demo/view/perfil.component';
 
 export const routes: Routes = [
     {path: 'login', component: AppLoginComponent},
@@ -104,6 +105,7 @@ export const routes: Routes = [
             {path: 'pages/evento/:id', component: EventoComponent},
             {path: 'pages/sponsors', component: SponsorsComponent},
             {path: 'pages/acerca', component: AcercadeComponent},
+            {path: 'pages/perfil', component: PerfilComponent},
         ], canActivate: [AuthGuard]
     },
     {path: 'error', component: AppErrorComponent},
