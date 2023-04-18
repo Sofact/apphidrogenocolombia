@@ -6,6 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { URL_SERVICIOS } from 'src/app/config/config';
 import { AuthService } from 'src/app/modules/auth/_services/auth.service';
 import { ProfileUserService } from 'src/app/modules/chat-panel/services/profile-user.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     selector: 'aperfil',
@@ -25,7 +26,8 @@ export class PerfilComponent {
         private authService: AuthService,
         private http: HttpClient,
         private _serviceProfileUser: ProfileUserService,
-        private ng2ImgMax: Ng2ImgMaxService
+        private ng2ImgMax: Ng2ImgMaxService,
+        private route: Router,
         ) {
         this.breadcrumbService.setItems([
             { label: 'Pages' },
@@ -90,9 +92,13 @@ export class PerfilComponent {
         this._serviceProfileUser.AvatarChangeUser(target).subscribe((resp:any)=>{
           this.avatar = resp.user.usr_avatar;
           localStorage.setItem("user", JSON.stringify(resp.user));
+          this.irAPaginaDestino();
         },error => {
           console.log(error);
         })
       }
-//hello
+
+      irAPaginaDestino() {
+        location.reload();
+      }
 }

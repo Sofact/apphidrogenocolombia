@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {AppMainComponent} from './app.main.component';
 import { AuthService} from './modules/auth/_services/auth.service';
 import { URL_BACKEND } from './config/config';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     selector: 'app-topbar',
@@ -304,7 +305,7 @@ import { URL_BACKEND } from './config/config';
 								<li>
 									<i class="pi pi-users icon icon-3"></i>
 									<div class="menu-text">
-										<a href="#/pages/perfil"><p>Cambiar Imagen Perfil</p></a>
+										<a (click)="irAPaginaDestino('pages/perfil')"><p>Cambiar Imagen Perfil</p></a>
 									</div>
 								</li>										
 								<li class="layout-submenu-footer">
@@ -372,7 +373,7 @@ import { URL_BACKEND } from './config/config';
 								<li>
 									<i class="pi pi-users icon icon-3"></i>
 									<div class="menu-text">
-										<a href="#/pages/perfil"><p>Cambiar Imagen Perfil</p></a>
+										<a (click)="irAPaginaDestino('pages/perfil')"><p>Cambiar Imagen Perfil</p></a>
 									</div>
 								</li>								
 								<li class="layout-submenu-footer">
@@ -394,6 +395,7 @@ export class AppTopBarComponent {
 	back:string = URL_BACKEND+"/storage/";
 
     constructor(public appMain: AppMainComponent,
+		private route: Router,
 		private authService: AuthService) {
 
 			if(this.authService.isLogin()){
@@ -414,4 +416,7 @@ export class AppTopBarComponent {
 		this.authService.logout();
 	}
 
+	irAPaginaDestino(pagina: string) {
+		this.route.navigate([pagina]);
+	  }
 }
