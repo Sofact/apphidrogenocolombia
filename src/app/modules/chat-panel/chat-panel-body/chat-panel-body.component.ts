@@ -180,6 +180,7 @@ export class ChatPanelBodyComponent {
         this.loadChatPanelContent = true;
 
         $("#participarGrupo").modal("hide");
+        $("#startConversation").modal("hide");
         this.to_user = resp;
       })
     }
