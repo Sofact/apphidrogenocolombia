@@ -40,7 +40,7 @@ export class PerfilComponent {
    
       imageCropped(event: ImageCroppedEvent) {
         this.croppedImage = event.base64;
-      }
+    }
     
       imageLoaded() {
         this.showCropper = true;
@@ -58,18 +58,6 @@ export class PerfilComponent {
          var fd=new FormData();
          fd.append('image','profile.png');
          console.log(fd);
-        /*
-        this.ng2ImgMax.resizeImage(this.croppedImage, 500, 500).subscribe(
-          (result) => {
-            this.croppedImage = result;
-            console.log("El resultado",result);
-            this.AvatarChangeUser( this.croppedImage);
-            // Aquí puedes hacer lo que quieras con la imagen recortada y redimensionada
-          },
-          (error) => {
-            console.log('😢 Oh no!', error);
-          }
-        );*/
 
         this.changeAvatar(Blob);
       }

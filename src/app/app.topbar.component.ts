@@ -126,6 +126,7 @@ import { URL_BACKEND } from './config/config';
 							<a href="#/pages/agenda">
 								<i class="topbar-icon pi pi-calendar"></i>
 							</a>
+							<!--
 							<ul class="fadeInDown" (click)="appMain.topbarItemClick = true">
 								<li class="layout-submenu-header">
 									<h1>Calendar</h1>
@@ -134,6 +135,7 @@ import { URL_BACKEND } from './config/config';
                                     <p-calendar [inline]="true"></p-calendar>
 								</li>
 							</ul>
+							-->
 						</li>
 
 						<li #message class="topbar-item" [ngClass]="{'active-topmenuitem': appMain.activeTopbarItem === message}">
@@ -141,6 +143,7 @@ import { URL_BACKEND } from './config/config';
 							<a href="#/pages/participantes">
 								<i class="topbar-icon pi pi-megaphone"></i>
 							</a>
+							<!--
 							<ul class="fadeInDown">
 								<li class="layout-submenu-header">
 									<h1>Messages</h1>
@@ -179,6 +182,7 @@ import { URL_BACKEND } from './config/config';
 									<i class="pi pi-angle-right"></i>
 								</li>
 							</ul>
+							-->
 						</li>
 
 						<li #gift class="topbar-item" [ngClass]="{'active-topmenuitem': appMain.activeTopbarItem === gift}">
@@ -251,7 +255,7 @@ import { URL_BACKEND } from './config/config';
 						<li #profile class="topbar-item profile-item" [ngClass]="{'active-topmenuitem': appMain.activeTopbarItem === profile}">
 							<a href="#" (click)="appMain.onTopbarItemClick($event,profile)">
                             <span class="profile-image-wrapper">
-								<div class="avatar avatar-online mr-2"><img src="assets/media/avatar/{{user.avatar}}" alt="mirage-layout" /></div>
+								<div class="avatar avatar-online mr-2"><img src="{{back}}{{user.avatar}}" alt="mirage-layout" /></div>
                             </span>
 								<span class="profile-info-wrapper">
                                 <h3>{{user.name}}</h3>
@@ -265,7 +269,7 @@ import { URL_BACKEND } from './config/config';
 										<img src="assets/layout/images/topbar/asset-bars.svg" alt="mirage-layout" />
 									</div>
 									<div class="profile">
-										<div class="avatar avatar-online mr-2"><img src="assets/media/avatar/{{user.avatar}}" alt="mirage-layout"
+										<div class="avatar avatar-online mr-2"><img src="{{back}}{{user.avatar}}" alt="mirage-layout"
 														width="40" /></div>
 										<h1>{{user.name}}</h1>
 										<span>{{user.perfil}}</span>
@@ -296,7 +300,13 @@ import { URL_BACKEND } from './config/config';
 									</div>
 									<i class="pi pi-angle-right"></i>
 								</li>
--->								
+-->
+								<li>
+									<i class="pi pi-users icon icon-3"></i>
+									<div class="menu-text">
+										<a href="#/pages/perfil"><p>Cambiar Imagen Perfil</p></a>
+									</div>
+								</li>										
 								<li class="layout-submenu-footer">
 									<button class="signout-button" (click)="signout()">Cerrar Sesión</button>
 								</li>
@@ -358,9 +368,16 @@ import { URL_BACKEND } from './config/config';
 									</div>
 									<i class="pi pi-angle-right"></i>
 								</li>
--->								
+-->
+								<li>
+									<i class="pi pi-users icon icon-3"></i>
+									<div class="menu-text">
+										<a href="#/pages/perfil"><p>Cambiar Imagen Perfil</p></a>
+									</div>
+								</li>								
 								<li class="layout-submenu-footer">
 									<button class="signout-button" (click)="signout()">Cerrar Sesión</button>
+
 								</li>
 							</ul>
 						</li>
