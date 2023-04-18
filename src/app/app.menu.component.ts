@@ -144,6 +144,7 @@ export class AppMenuComponent implements OnInit {
     }
 
     onMenuClick() {
+        this.appMain.topbarMobileMenuActive=false;
         this.appMain.menuClick = true;
     }
 

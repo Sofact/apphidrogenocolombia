@@ -11,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 			<div class="layout-topbar-wrapper">
                 <div class="layout-topbar-left">
 					<div class="layout-topbar-logo-wrapper" >
-						<a href="#/dash">
+						<a (click)="irAPaginaDestino('dash')">
 							<img src="assets/layout/images/Logos_hidro_wec2.png" alt="mirage-layout" height="40" />
 						</a>
 					</div>
@@ -124,7 +124,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 					-->
 						<li #calendar class="topbar-item" [ngClass]="{'active-topmenuitem': appMain.activeTopbarItem === calendar}">
 							<!-- <a href="#" (click)="appMain.onTopbarItemClick($event,calendar)"> -->
-							<a href="#/pages/agenda">
+							<a (click)="irAPaginaDestino('pages/agenda')">
 								<i class="topbar-icon pi pi-calendar"></i>
 							</a>
 							<!--
@@ -141,7 +141,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 						<li #message class="topbar-item" [ngClass]="{'active-topmenuitem': appMain.activeTopbarItem === message}">
 							<!-- <a href="#" (click)="appMain.onTopbarItemClick($event,message)"> -->
-							<a href="#/pages/participantes">
+							<a (click)="irAPaginaDestino('pages/participantes')">
 								<i class="topbar-icon pi pi-megaphone"></i>
 							</a>
 							<!--
@@ -188,7 +188,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 						<li #gift class="topbar-item" [ngClass]="{'active-topmenuitem': appMain.activeTopbarItem === gift}">
 							<!-- <a href="#" (click)="appMain.onTopbarItemClick($event,gift)"> -->
-							<a href="#/chat">
+							<a (click)="irAPaginaDestino('chat')">
 								<i class="topbar-icon pi pi-envelope"></i>
 							</a>
 							<ul class="fadeInDown">
@@ -417,6 +417,7 @@ export class AppTopBarComponent {
 	}
 
 	irAPaginaDestino(pagina: string) {
+		this.appMain.topbarMobileMenuActive=false;
 		this.route.navigate([pagina]);
 	  }
 }
