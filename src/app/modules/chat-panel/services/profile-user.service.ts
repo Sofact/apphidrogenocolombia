@@ -28,6 +28,6 @@ export class ProfileUserService {
       formData.append("imagen",file,file.name);
       return this.http.post(LINK,formData,{headers: headers});
     }
-  
+  // heco
 }
  
