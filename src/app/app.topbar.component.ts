@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {AppMainComponent} from './app.main.component';
 import { AuthService} from './modules/auth/_services/auth.service';
+import { URL_BACKEND } from './config/config';
 
 @Component({
     selector: 'app-topbar',
@@ -314,7 +315,7 @@ import { AuthService} from './modules/auth/_services/auth.service';
 						<li #mobileProfile class="topbar-item profile-item" [ngClass]="{'active-topmenuitem': appMain.activeTopbarItem === mobileProfile}">
 							<a href="#" (click)="appMain.onTopbarItemClick($event,mobileProfile)">
                             <span class="profile-image-wrapper">
-							<div class="avatar avatar-online mr-2"><img src="assets/media/avatar/{{user.avatar}}" alt="mirage-layout" /></div>
+							<div class="avatar avatar-online mr-2"><img src="{{back}}{{user.avatar}}"  alt="mirage-layout" /></div>
                             </span>
 								<span class="profile-info-wrapper">
                                 <h3>{{user.name}}</h3>
@@ -328,7 +329,7 @@ import { AuthService} from './modules/auth/_services/auth.service';
 										<img src="assets/layout/images/topbar/asset-bars.svg" alt="mirage-layout" />
 									</div>
 									<div class="profile">
-										<div class="avatar avatar-online mr-2"><img src="assets/media/avatar/{{user.avatar}}" alt="mirage-layout" width="45" /></div>
+										<div class="avatar avatar-online mr-2"><img src=  "{{back}}{{user.avatar}}" alt="mirage-layout" width="45" /></div>
 										<h1>{{user.name}}</h1>
 										<span>{{user.perfil}}</span>
 									</div>
@@ -373,6 +374,7 @@ export class AppTopBarComponent {
 
     activeItem: number;
 	user:any = null;
+	back:string = URL_BACKEND+"/storage/";
 
     constructor(public appMain: AppMainComponent,
 		private authService: AuthService) {
