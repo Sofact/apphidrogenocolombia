@@ -4,6 +4,7 @@ export const environment = {
   URL_SERVICIOS: "/api/api",
   URL_BACKEND: "/api",
   URL_FRONTEND: "/",
+  URL_FILESERVER: "/api/public",
   SSL_WSS: false,
   WSS_PORT: 80
 };

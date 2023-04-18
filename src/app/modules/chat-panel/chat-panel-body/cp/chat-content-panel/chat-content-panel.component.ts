@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ECHO_PUSHER, URL_BACKEND } from 'src/app/config/config';
+import { ECHO_PUSHER, URL_FILESERVER } from 'src/app/config/config';
 import { AuthService } from 'src/app/modules/auth/_services/auth.service';
 import { ChatPanelService } from '../../../_services/chat-panel.service';
 
@@ -18,7 +18,7 @@ export class ChatContentPanelComponent implements OnInit{
   page:number = 1;
   last_page:number = 1;
   LIST_MESSAGES: any = [];
-  path: string =  URL_BACKEND + '/storage/';
+  path: string =  URL_FILESERVER + '/storage/';
 
   constructor(  private _chatPanelService: ChatPanelService,
                     public authService: AuthService

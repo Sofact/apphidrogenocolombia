@@ -2,7 +2,7 @@ import { Component} from '@angular/core';
 import { ProfileUserService } from '../services/profile-user.service';
 import { ChatPanelService } from '../_services/chat-panel.service';
 import { Message } from 'primeng/api';
-import { ECHO_PUSHER, URL_BACKEND } from 'src/app/config/config';
+import { ECHO_PUSHER, URL_BACKEND, URL_FILESERVER } from 'src/app/config/config';
 import { AuthService } from '../../auth/_services/auth.service';
 import { CrearChatGrupalService } from '../services/crear-chat-grupal.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -22,7 +22,7 @@ export class ChatPanelBodyComponent {
   group_contacts: any =[];
   group_id: string ='';
   groups: any[];
-  path: string = URL_BACKEND + '/storage/';
+  path: string = URL_FILESERVER + '/storage/';
   to_user: any;
   loadChatPanelContent: boolean = true;
   chat_chat_rooms:any =[];

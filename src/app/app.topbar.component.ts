@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {AppMainComponent} from './app.main.component';
 import { AuthService} from './modules/auth/_services/auth.service';
-import { URL_BACKEND } from './config/config';
+import { URL_FILESERVER } from './config/config';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -392,7 +392,7 @@ export class AppTopBarComponent {
 
     activeItem: number;
 	user:any = null;
-	back:string = URL_BACKEND+"/storage/";
+	back:string = URL_FILESERVER +"/storage/";
 
     constructor(public appMain: AppMainComponent,
 		private route: Router,
