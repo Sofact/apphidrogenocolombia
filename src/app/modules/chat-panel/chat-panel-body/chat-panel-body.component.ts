@@ -23,6 +23,7 @@ export class ChatPanelBodyComponent {
   group_id: string ='';
   groups: any[];
   path: string = URL_FILESERVER + '/storage/';
+  pathgrupo: string = URL_FILESERVER + '/storage/users/non-avatar.png';
   to_user: any;
   loadChatPanelContent: boolean = true;
   chat_chat_rooms:any =[];

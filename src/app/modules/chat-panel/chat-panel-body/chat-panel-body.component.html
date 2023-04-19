@@ -96,16 +96,16 @@
                                         <div class="avatar bg-success text-light" [ngClass]="{'avatar-busy': !item.is_active, 'avatar-online': item.is_active}">
                                             <span *ngIf="item.friend_first">
 
-                                                 <img class="injectable" src="{{path}}{{item.friend_first.avatar}}"/> 
+                                               <img class="injectable" src="{{path}}{{item.friend_first.avatar}}"/>
                                             </span>
                                             <span *ngIf="item.friend_second">
 
-                                                <img class="injectable" src="{{path}}{{item.friend_second.avatar}}"/> 
+                                                <img class="injectable" src="{{path}}{{item.friend_second.avatar}}"/>
                                            </span>
                                            <span *ngIf="item.group_chat">
 
-                                            <img class="injectable" src="{{path}}{{item.group_chat.avatar}}"/> 
-                                       </span>
+                                            <img class="injectable" src="{{oathgrupo}}"/>
+                                            </span>
                                         </div>
                                         <div class="contacts-content">
                                             <div class="contacts-info">
