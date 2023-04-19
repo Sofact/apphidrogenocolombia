@@ -41,14 +41,14 @@ export class ChatContentPanelComponent implements OnInit, AfterViewInit{
     }, 50);*/
 
 
-    console.log("EL uniqd:::",this.to_user.room_uniqd );
+    //console.log("EL uniqd:::",this.to_user.room_uniqd );
 
     const ECHO_PUSHER_INST = ECHO_PUSHER(this._chatPanelService.authServices.token);
     ECHO_PUSHER_INST.channel("chat.room."+this.to_user.room_uniqd)
       .listen('SendMessageChat', (e:any) => {
         console.log(e);
         this.LIST_MESSAGES.push(e);
-        console.log('mensaje');
+        console.log('mensaje', this.LIST_MESSAGES);
         this.actualizarScroll();
       });
 
