@@ -67,7 +67,7 @@ export class ChatContentPanelComponent implements OnInit, AfterViewInit{
           this.paginateScroll(this.page,{chat_room_id: this.to_user.room_id});
         }
       })
-    //this.actualizarScroll();
+    
   }
 
   ngAfterViewInit() {
@@ -79,8 +79,7 @@ export class ChatContentPanelComponent implements OnInit, AfterViewInit{
       console.log(resp);
       let last_message = this.LIST_MESSAGES[0];
       var etiqueta = $("#tag"+last_message.id).last();
-     // $("#ScrollChat").scrollTop(  $("#ScrollChat").height());
-     //this.actualizarScroll();
+  
       resp.messages.forEach((element:any) => {
         this.LIST_MESSAGES.unshift(element);
       });
