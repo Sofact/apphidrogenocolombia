@@ -36,9 +36,10 @@ export class ChatContentPanelComponent implements OnInit{
 
     this.last_page = this.to_user.last_page;
 
-    setTimeout(() => {
+    /*setTimeout(() => {
       $("#ScrollChat").scrollTop( $("#ScrollChat").height());
-    }, 50);
+    }, 50);*/
+    this.actualizarScroll();
 
     console.log("EL uniqd:::",this.to_user.room_uniqd );
 
@@ -47,6 +48,8 @@ export class ChatContentPanelComponent implements OnInit{
       .listen('SendMessageChat', (e:any) => {
         console.log(e);
         this.LIST_MESSAGES.push(e);
+        console.log('mensaje');
+        this.actualizarScroll();
       });
 
      
@@ -78,6 +81,14 @@ export class ChatContentPanelComponent implements OnInit{
         this.LIST_MESSAGES.unshift(element);
       });
     })
+  }
+
+  actualizarScroll()
+  {
+    document.querySelector('.chat-finished').scrollIntoView({
+      block: 'nearest',
+      behavior: 'auto'
+    });
   }
 
 }

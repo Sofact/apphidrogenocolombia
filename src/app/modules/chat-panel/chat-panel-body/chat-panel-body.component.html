@@ -373,9 +373,7 @@
                 <!-- Chat Content Start-->
                 <div class="chat-content p-2" id="externo"  *ngIf="loadChatPanelContent">
                   <app-chat-content-panel [to_user]="to_user"></app-chat-content-panel>
-                
-                    <!-- Scroll to finish -->
-                    <div class="chat-finished" id="chat-finished"></div>
+               
                 </div>
                 <!-- Chat Content End-->
 
@@ -443,12 +441,7 @@
                             </div>
                         </div>
                     </div>
-                    <div>
-
-
-                    </div>
-
-                    <textarea class="form-control emojionearea-form-control" id="messageInput" [(ngModel)]="mensaje" id="mensaje" style="font-size: 16px;
+                    <textarea class="form-control emojionearea-form-control" placeholder="Escribe tu mensaje..." id="messageInput" [(ngModel)]="mensaje" id="mensaje" style="font-size: 16px;
                     -ms-text-size-adjust: 100%;
                     -webkit-text-size-adjust: 100%;"></textarea>
                     
