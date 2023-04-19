@@ -67,7 +67,7 @@ export class ChatContentPanelComponent implements OnInit{
           this.paginateScroll(this.page,{chat_room_id: this.to_user.room_id});
         }
       })
-    
+    this.actualizarScroll();
   }
 
   paginateScroll(page:any,data:any) {
@@ -75,8 +75,8 @@ export class ChatContentPanelComponent implements OnInit{
       console.log(resp);
       let last_message = this.LIST_MESSAGES[0];
       var etiqueta = $("#tag"+last_message.id).last();
-      $("#ScrollChat").scrollTop(  $("#ScrollChat").height());
-
+     // $("#ScrollChat").scrollTop(  $("#ScrollChat").height());
+     this.actualizarScroll();
       resp.messages.forEach((element:any) => {
         this.LIST_MESSAGES.unshift(element);
       });
@@ -85,10 +85,15 @@ export class ChatContentPanelComponent implements OnInit{
 
   actualizarScroll()
   {
-    document.querySelector('.chat-finished').scrollIntoView({
-      block: 'nearest',
-      behavior: 'auto'
-    });
+     // Obtener una referencia al elemento con el ID "mi-elemento"
+     const elemento = document.getElementById('chat-finished');
+     console.log("El scroll",elemento);
+      // Comprobar que el elemento existe antes de llamar al método
+      if (elemento !== null) {
+        elemento.scrollIntoView();
+      } else {
+        console.error('El elemento no existerr');
+      }
   }
 
 }
