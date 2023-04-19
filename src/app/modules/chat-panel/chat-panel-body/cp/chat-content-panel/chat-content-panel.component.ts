@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, AfterViewInit } from '@angular/core';
 import { ECHO_PUSHER, URL_FILESERVER } from 'src/app/config/config';
 import { AuthService } from 'src/app/modules/auth/_services/auth.service';
 import { ChatPanelService } from '../../../_services/chat-panel.service';
@@ -10,7 +10,7 @@ declare var $:any;
   styleUrls: ['./chat-content-panel.component.css']
 
 })
-export class ChatContentPanelComponent implements OnInit{
+export class ChatContentPanelComponent implements OnInit, AfterViewInit{
  
   @Input() to_user:any = null;
   user: any;
@@ -39,7 +39,7 @@ export class ChatContentPanelComponent implements OnInit{
     /*setTimeout(() => {
       $("#ScrollChat").scrollTop( $("#ScrollChat").height());
     }, 50);*/
-    this.actualizarScroll();
+
 
     console.log("EL uniqd:::",this.to_user.room_uniqd );
 
@@ -60,13 +60,17 @@ export class ChatContentPanelComponent implements OnInit{
 
       $("#ScrollChat").scroll(()=>{
         var position = $("#ScrollChat").scrollTop();
-         console.log(position);
+        //console.log(position);
         if(this.last_page > this.page && position == 0){
           this.page ++;
           //haces una peticion al servidor para que te devuelva los chats anteriores
           this.paginateScroll(this.page,{chat_room_id: this.to_user.room_id});
         }
       })
+    //this.actualizarScroll();
+  }
+
+  ngAfterViewInit() {
     this.actualizarScroll();
   }
 
@@ -76,7 +80,7 @@ export class ChatContentPanelComponent implements OnInit{
       let last_message = this.LIST_MESSAGES[0];
       var etiqueta = $("#tag"+last_message.id).last();
      // $("#ScrollChat").scrollTop(  $("#ScrollChat").height());
-     this.actualizarScroll();
+     //this.actualizarScroll();
       resp.messages.forEach((element:any) => {
         this.LIST_MESSAGES.unshift(element);
       });
@@ -85,15 +89,10 @@ export class ChatContentPanelComponent implements OnInit{
 
   actualizarScroll()
   {
-     // Obtener una referencia al elemento con el ID "mi-elemento"
-     const elemento = document.getElementById('chat-finished');
-     console.log("El scroll",elemento);
-      // Comprobar que el elemento existe antes de llamar al método
-      if (elemento !== null) {
-        elemento.scrollIntoView();
-      } else {
-        console.error('El elemento no existerr');
-      }
+    document.querySelector('.chat-finished').scrollIntoView({
+      block: 'end',
+      behavior: 'auto'
+    });
   }
 
 }
