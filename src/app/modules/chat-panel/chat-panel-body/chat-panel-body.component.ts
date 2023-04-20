@@ -164,6 +164,8 @@ export class ChatPanelBodyComponent {
           $("#messageInput").emojioneArea();
         },50);*/
         $("#startConversation").modal("hide");
+        $("#chatActivos").modal("hide");
+        $("#startGroup").modal("hide");
         this.to_user = resp;
       })
     }
@@ -182,6 +184,14 @@ export class ChatPanelBodyComponent {
 
         $("#participarGrupo").modal("hide");
         $("#startConversation").modal("hide");
+
+        $("#chatActivos").modal("hide");
+        $("#startGroup").modal("hide");
+        $("#iniciarGroup").modal("hide");
+
+        
+
+
         this.to_user = resp;
       })
     }
@@ -243,6 +253,8 @@ export class ChatPanelBodyComponent {
 
     hideModal(){
       $("#startConversation").modal("hide");
+      $("#chatActivos").modal("hide");
+      $("#startGroup").modal("hide");
      
       this.GetGroups();
     }
