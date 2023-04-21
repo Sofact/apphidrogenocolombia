@@ -71,14 +71,7 @@ export class ChatPanelBodyComponent {
   }
   
   irAPaginaDestino() {
-    if (this.group_id)
-    {
-      this.route.navigate(['chat']);
-    }
-    else
-    {
-      window.location.reload();
-    }
+    window.location.reload();
   }
   
   irAPaginaDash() {
