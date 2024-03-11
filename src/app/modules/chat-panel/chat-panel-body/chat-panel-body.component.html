@@ -9,60 +9,21 @@
                         
                         <!-- Chat Header Start -->
                         <!--<div class="sidebar-header sticky-top p-2">-->
-                        <div class="sidebar-header p-2">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <!-- Chat Tab Pane Title Start -->
-                                <h5 class="font-weight-semibold mb-0">Chats</h5>
-                                <!-- Chat Tab Pane Title End -->
+                            <div class=" p-2">
 
-                                <ul class="nav flex-nowrap">
+                                <h5 class="modal-title" id="chatActivosLabel">Chats Activos</h5>
+                                <br>
+                                <div class="input-group">
+                                    <input type="text" class="form-control basicAutoComplete" autocomplete="on" [(ngModel)]="searchText" placeholder="Buscar...">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                                            </svg> <!-- Icono de lupa -->
+                                        </span>
+                                    </div>
+                                </div>
 
-                                    <li class="nav-item list-inline-item mr-1">
-                                        <a class="nav-link text-muted px-1" href="#" title="Notifications" role="button" data-toggle="modal" data-target="#notificationModal">
-                                            <!-- Default :: Inline SVG -->
-                                         
-
-                                            <!-- Alternate :: External File link -->
-                                            <!-- <img class="injectable hw-20" src="./assets/media/heroicons/outline/bell.svg" alt=""> -->
-                                        </a>
-                                    </li>
-
-                                    
-                                    <li class="nav-item list-inline-item d-block d-xl-none mr-1">
-                                        <a class="nav-link text-muted px-1" href="#" title="Appbar" data-toggle-appbar="">
-                                            <!-- Default :: Inline SVG -->
-                                          
-                                            <!-- Alternate :: External File link -->
-                                            <!-- <img class="hw-20" src="./assets/media/heroicons/outline/view-grid.svg" alt="" class="injectable hw-20"> -->
-                                        </a>
-                                    </li>
-                                    
-                                    <li class="nav-item list-inline-item mr-0">
-                                        <div class="dropdown">
-                                            <a class="nav-link text-muted px-1" href="#" role="button" title="Details" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <!-- Default :: Inline SVG -->
-                                                <svg class="hw-20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"/>
-                                                </svg>
-                                                    
-                                                <!-- Alternate :: External File link -->
-                                                <!-- <img  class="injectable hw-20" src="./assets/media/heroicons/outline/dots-vertical.svg" alt=""> -->
-                                            </a>
-
-                                            <div class="dropdown-menu dropdown-menu-right">
-                                                <a class="dropdown-item" href="#" role="button" data-toggle="modal" data-target="#startConversation">Nuevo Chat</a>
-                                                <a class="dropdown-item" href="#" role="button" data-toggle="modal" data-target="#createGroup">Crear Grupo</a>
-                                                <a class="dropdown-item" href="#" role="button" data-toggle="modal" data-target="#participarGrupo">Participar en grupo</a>
-                                                
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            
-                            
- 
-                            <!-- Sidebar Header End -->
                         </div>
                         <!-- Chat Header End -->
 
@@ -72,7 +33,7 @@
                            <!-- Chat Item End -->
 
                             <!-- Chat Item Start -->
-                            <ng-container *ngFor="let item of chat_chat_rooms">
+                            <ng-container *ngFor="let item of chat_chat_rooms | filterChat:searchText">
 
                                 <li class="contacts-item groups" [ngClass]="{'unread': item.count_message > 0}" >
                                     <a class="contacts-link"  href="javascript:;" (click)="loadMyChat(item)" [ngClass]="{'prymary': item.is_chat_active}">
@@ -354,7 +315,7 @@
                 <!-- Search End -->
 
                 <!-- Chat Content Start-->
-                <div class="chat-content p-2" id="externo"  *ngIf="loadChatPanelContent">
+                <div class="chat-content p-2"  id="externo"  *ngIf="loadChatPanelContent">
                   <app-chat-content-panel [to_user]="to_user"></app-chat-content-panel>
                
                 </div>
@@ -841,8 +802,24 @@
                     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-dialog-zoom">
                         <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="chatActivosLabel">Chats Activos</h5>
-                           
+                            
+                            <div class=" p-2">
+
+                                    <h5 class="modal-title" id="chatActivosLabel">Chats Activos</h5>
+                                    <br>
+                                    <div class="input-group input-group-sm custom-size">
+
+                                        <input type="text" class="form-control basicAutoComplete" autocomplete="on" [(ngModel)]="searchText" placeholder="Buscar...">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                                                </svg> <!-- Icono de lupa -->
+                                            </span>
+                                        </div>
+                                    </div>
+
+                            </div>
                            
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
@@ -880,7 +857,7 @@
                                             <!-- Chat Item End -->
                  
                                              <!-- Chat Item Start -->
-                                             <ng-container *ngFor="let item of chat_chat_rooms">
+                                             <ng-container *ngFor="let item of chat_chat_rooms | filterChat:searchText">
                  
                                                  <li class="contacts-item groups" [ngClass]="{'unread': item.count_message > 0}" >
                                                      <a class="contacts-link"  href="javascript:;" (click)="loadMyChat(item)" [ngClass]="{'prymary': item.is_chat_active}">

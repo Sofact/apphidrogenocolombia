@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { AfterViewInit, Component, ElementRef} from '@angular/core';
 import { ProfileUserService } from '../services/profile-user.service';
 import { ChatPanelService } from '../_services/chat-panel.service';
 import { Message } from 'primeng/api';
@@ -7,13 +7,15 @@ import { AuthService } from '../../auth/_services/auth.service';
 import { CrearChatGrupalService } from '../services/crear-chat-grupal.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
+import PerfectScrollbar from 'perfect-scrollbar';
 
 
 @Component({
   selector: 'app-chat-panel-body',
-  templateUrl: './chat-panel-body.component.html'
+  templateUrl: './chat-panel-body.component.html',
+  styleUrls: ['./chat-panel-body.component.css']
 })
-export class ChatPanelBodyComponent {
+export class ChatPanelBodyComponent implements AfterViewInit{
 
   user:any;
   lado: string= '';
@@ -32,6 +34,7 @@ export class ChatPanelBodyComponent {
   users_actives:any = [];
   message_text_area:any = null;
   nombreChatGrupal:string = '';
+  searchText: string = '';
 
 
   constructor(
@@ -40,8 +43,14 @@ export class ChatPanelBodyComponent {
               private _crearChatGrupalService: CrearChatGrupalService,
               private route: Router,
               private router: ActivatedRoute,
-              private location: Location
+              private location: Location,
+              private elementRef: ElementRef
               ) { }
+  ngAfterViewInit(): void {
+    const container = this.elementRef.nativeElement.querySelector('.contacts-list');
+    const ps = new PerfectScrollbar(container);
+    container.classList.add('ps');
+  }
   ngOnInit(): void {
 
     this.router.paramMap.subscribe(params => {
@@ -265,4 +274,6 @@ export class ChatPanelBodyComponent {
      
       this.GetGroups();
     }
+
+  
 }
