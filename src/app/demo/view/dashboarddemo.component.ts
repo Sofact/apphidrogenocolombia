@@ -17,6 +17,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class DashboardDemoComponent implements OnInit {
 
     lineChartData: any;
+    displayModal: boolean = false;
+
 
     lineChartOptions: any;
 
@@ -69,10 +71,12 @@ export class DashboardDemoComponent implements OnInit {
 
     ngOnInit() {
 
+        
+
         if(!this.authService.isLogin()){
             this.authService.logout();
         }
-        
+        this.displayModal = true;
         this.cargarDatosParticipantes();
         this.cargarDatosSponsors();
         this.cargarDatosUsuarios();
@@ -261,6 +265,19 @@ export class DashboardDemoComponent implements OnInit {
             }
           }
         })
+      }
+
+      
+      handleAuthorization(accepted: boolean) {
+        this.displayModal = false; 
+    
+        if (accepted) {
+          
+          console.log('Usuario autorizado.');
+        } else {
+        
+          console.log('Usuario no autorizó.');
+        }
       }
 
     ngOnDestroy() {
