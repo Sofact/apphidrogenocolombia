@@ -9,6 +9,7 @@ import {Subscription} from 'rxjs';
 import { AgendaService } from '../service/agenda.service';
 import { AuthService } from '../../modules/auth/_services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { PersonaDataService } from '../service/persona-data.service';
 
 @Component({
     templateUrl: './dashboard.component.html',
@@ -18,7 +19,7 @@ export class DashboardDemoComponent implements OnInit {
 
     lineChartData: any;
     displayModal: boolean = false;
-
+    user:any = null;
 
     lineChartOptions: any;
 
@@ -55,7 +56,9 @@ export class DashboardDemoComponent implements OnInit {
         public configService: ConfigService,
         private authService: AuthService,
         private route: Router,
-        private agenda: AgendaService) {
+        private agenda: AgendaService,
+        private PersonaDataService: PersonaDataService
+        ) {
 
       this.breadcrumbService.setItems([
           {label: 'Dashboard', routerLink: ['/']}
@@ -75,8 +78,28 @@ export class DashboardDemoComponent implements OnInit {
 
         if(!this.authService.isLogin()){
             this.authService.logout();
+          
         }
-        this.displayModal = true;
+        this.user = JSON.parse(localStorage.getItem("user") ?? '');
+        console.log("USERID:::", this.user);
+        
+        this.PersonaDataService.getUser(this.user.id)
+        .subscribe({
+            next: (respuesta) =>{
+                if ((respuesta as any).user.usr_datos_personales == 0 || (respuesta as any).user.usr_datos_personales == 1 ){
+                    this.displayModal = false;
+                    }else{
+                        this.displayModal = true;      
+                    }
+        
+            },
+            error: (error) => {
+              console.error('Error al autorizar datos de la persona', error);
+            }
+            
+        })
+
+        //this.displayModal = true;
         this.cargarDatosParticipantes();
         this.cargarDatosSponsors();
         this.cargarDatosUsuarios();
@@ -269,15 +292,42 @@ export class DashboardDemoComponent implements OnInit {
 
       
       handleAuthorization(accepted: boolean) {
+
+        
         this.displayModal = false; 
-    
-        if (accepted) {
+
+        if(this.authService.isLogin()){
+            this.user = JSON.parse(localStorage.getItem("user") ?? '');
+            if (this.user.avatar==null || this.user.avatar==""){
+                this.user.avatar="users/non-avatar.svg";
+            }
+          }
+
+          const data = {
+            id: this.user.id,
+            datosPersonales: accepted
+          };
+
           
+          console.log("USER:::", this.user);
+        if (accepted) {
+           
           console.log('Usuario autorizado.');
         } else {
         
           console.log('Usuario no autorizó.');
         }
+
+        this.PersonaDataService.setPersonaDataAuthorization(data)
+          .subscribe({
+            next: (respuesta) =>{
+             console.log("REspuesta del servidor", respuesta);
+            },
+            error: (error) => {
+              console.error('Error al autorizar datos de la persona', error);
+            }
+            
+        })
       }
 
     ngOnDestroy() {
