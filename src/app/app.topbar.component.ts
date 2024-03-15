@@ -124,7 +124,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 					-->
 						<li #calendar class="topbar-item" [ngClass]="{'active-topmenuitem': appMain.activeTopbarItem === calendar}">
 							<!-- <a href="#" (click)="appMain.onTopbarItemClick($event,calendar)"> -->
-							<a (click)="irAPaginaDestino('pages/agenda')">
+							<a (click)="irAPaginaDestino('pages/agenda/1')">
 								<i class="topbar-icon pi pi-calendar"></i>
 							</a>
 							<!--

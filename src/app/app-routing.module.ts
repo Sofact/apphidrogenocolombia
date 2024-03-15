@@ -99,7 +99,7 @@ export const routes: Routes = [
             {path: 'chat/:id', loadChildren: () => import('src/app/modules/chat-panel/chat-panel.module').then(m => m.ChatPanelModule)},
             {path: 'chat', loadChildren: () => import('src/app/modules/chat-panel/chat-panel.module').then(m => m.ChatPanelModule)},
             {path: 'pages/register', component: RegisterComponent},
-            {path: 'pages/agenda', component: AgendaComponent},
+            {path: 'pages/agenda/:id', component: AgendaComponent},
             {path: 'pages/participantes', component: ParticipantesComponent},
             {path: 'pages/participanteinfo/:id', component: ParticipanteInfoComponent},
             {path: 'pages/evento/:id', component: EventoComponent},
