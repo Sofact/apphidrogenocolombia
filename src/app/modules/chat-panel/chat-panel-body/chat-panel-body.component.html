@@ -717,14 +717,14 @@
                                 <li class="list-group-item" *ngFor="let userSponsor of users_contacts_sponsors  | filterContacts:searchText">
                                     <div class="media">
                                         <div class="avatar avatar-online mr-2">
-                                            <img src={{path}}{{user.avatar}} alt="">
-                                          
+                                            <img src={{path}}{{userSponsor.avatar}} alt="">
+                                            
                                         </div>
 
                                         <div class="media-body">
                                             <div>
                                                 <h6 class="text-truncate">
-                                                    <a style="cursor: pointer;"  class="text-reset" type="button" data-toggle="modal" data-target="#createScheduleSponsor1" style="width:150px">
+                                                    <a style="cursor: pointer;"  class="text-reset" type="button" data-toggle="modal" data-target="#createScheduleSponsor" style="width:150px">
                                                         {{userSponsor.name}}
                                                     </a>
                                                 </h6>
@@ -811,7 +811,7 @@
                                 <li class="list-group-item" *ngFor="let userst of users_contacts  | filterContacts:searchText">
                                     <div class="media">
                                         <div class="avatar avatar-online mr-2">
-                                            <img src={{path}}{{user.avatar}} alt="">
+                                            <img src={{path}}{{userst.avatar}} alt="">
                                           
                                         </div>
 
