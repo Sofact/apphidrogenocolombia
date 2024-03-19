@@ -21,6 +21,13 @@ export class ProfileUserService {
       return this.http.get(LINK,{ headers: headers});
     }
 
+    ContactUsersSponsor(){
+      console.log("autorizaciobn::"+ this.authService.token);
+      let headers =  new HttpHeaders({'Authorization': 'Bearer'+ this.authService.token});
+      let LINK = URL_SERVICIOS+"/users/sponsors";
+      return this.http.get(LINK,{ headers: headers});
+    }
+
     AvatarChangeUser(file:any){
       let headers = new HttpHeaders({'Authorization': 'Bearer '+ this.authService.token})
       let LINK = URL_SERVICIOS+"/profile-user";

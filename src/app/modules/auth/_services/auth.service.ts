@@ -26,6 +26,8 @@ export class AuthService {
     
       this.token = localStorage.getItem("token");
       this.user = JSON.parse(localStorage.getItem("user") ?? '');
+
+      console.log("Usuario del sTAorage:::", this.user);
     }else{
     
       this.token='';

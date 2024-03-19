@@ -434,6 +434,13 @@
                         </button>
                     </div>
                     <br>
+             
+                    <div *ngIf="user.perfil == 'Patrocinador'">
+                        <button class="btn btn-outline-primary no-box-shadow" type="button" data-toggle="modal" data-target="#startConversationSponsor" style="width:150px">
+                            Citas Patrocinadores
+                        </button>
+                    </div>
+                    <br>
                 </div>
             </div>
             <!-- Chat Info Start -->
@@ -650,12 +657,28 @@
         </div>
 
          <!-- Modal 1 :: Start a Conversation-->
-         <div class="modal modal-lg-fullscreen fade" id="startConversation" tabindex="-1" role="dialog" aria-labelledby="startConversationLabel" aria-hidden="true">
+         <div class="modal modal-lg-fullscreen fade" id="startConversationSponsor" tabindex="-1" role="dialog" aria-labelledby="startConversationLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-dialog-zoom">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="startConversationLabel">Iniciar Chat</h5>
-                   
+                    <div class="col-12">  <!--Cambio de p-2 a col-12 para el ancho del buscar-->
+
+                            <h5 class="modal-title" id="chatActivosLabel">Chats Patrocinadores</h5>
+                            <br>
+                            <div class="input-group input-group-sm custom-size">
+                  
+
+                            <input type="text" class="form-control basicAutoComplete" autocomplete="on" [(ngModel)]="searchText" placeholder="Buscar...">
+                            <div class="input-group-append">
+                                <span class="input-group-text">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                                    </svg> <!-- Icono de lupa -->
+                                </span>
+                            </div>
+                        
+                    </div>
+                </div>
                    
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -691,7 +714,101 @@
                                 <ul class="list-group list-group-flush">
 
                                 <!-- List Group Item Start -->
-                                <li class="list-group-item" *ngFor="let user of users_contacts">
+                                <li class="list-group-item" *ngFor="let userSponsor of users_contacts_sponsors  | filterContacts:searchText">
+                                    <div class="media">
+                                        <div class="avatar avatar-online mr-2">
+                                            <img src={{path}}{{user.avatar}} alt="">
+                                          
+                                        </div>
+
+                                        <div class="media-body">
+                                            <div>
+                                                <h6 class="text-truncate">
+                                                    <a style="cursor: pointer;"  class="text-reset" type="button" data-toggle="modal" data-target="#createScheduleSponsor1" style="width:150px">
+                                                        {{userSponsor.name}}
+                                                    </a>
+                                                </h6>
+                                            </div>
+                                           
+
+                                            <p *ngIf="userSponsor.usr_datos_personales == 1"  class="text-muted mb-0">{{userSponsor.usr_empresa}}</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <!-- List Group Item End -->
+
+                      </ul>
+                            <!-- List Group End -->
+                        </div>
+
+                      
+
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal modal-lg-fullscreen fade" id="startConversation" tabindex="-1" role="dialog" aria-labelledby="startConversationLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-dialog-zoom">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <div class="col-12">  <!--Cambio de p-2 a col-12 para el ancho del buscar-->
+
+                        <h5 class="modal-title" id="chatActivosLabel">Iniciar Chat</h5>
+                        <br>
+                        <div class="input-group input-group-sm custom-size">
+                   
+                        <input type="text" class="form-control basicAutoComplete" autocomplete="on" [(ngModel)]="searchText" placeholder="Buscar...">
+                        <div class="input-group-append">
+                            <span class="input-group-text">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                                </svg> <!-- Icono de lupa -->
+                            </span>
+                        </div>
+                    </div>
+                   </div>
+
+                    
+
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    
+                </div>
+                <div class="modal-body p-0 hide-scrollbar">
+                    <div class="row">
+                        <div class="col-12 hide">
+                            
+                            <!-- Search Start -->
+                            <form class="form-inline w-100 p-2 border-bottom">
+                                <div class="input-group w-100 bg-light">
+                                    <input type="text" class="form-control form-control-md search border-right-0 transparent-bg pr-0" placeholder="Search">
+                                    <div class="input-group-append">
+                                        <div class="input-group-text transparent-bg border-left-0" role="button">
+                                            <!-- Default :: Inline SVG -->
+                                            <svg class="hw-20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                                            </svg>   
+                                            
+                                            <!-- Alternate :: External File link -->
+                                            <!-- <img class="injectable hw-20" src="./assets/media/heroicons/outline/search.svg" alt=""> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <!-- Search End -->
+                        </div>
+                        
+
+                        <div class="col-12">
+                            
+                                <!-- List Group Start -->
+                                <ul class="list-group list-group-flush">
+
+                                <!-- List Group Item Start  iniciar chat-->
+                                <li class="list-group-item" *ngFor="let userst of users_contacts  | filterContacts:searchText">
                                     <div class="media">
                                         <div class="avatar avatar-online mr-2">
                                             <img src={{path}}{{user.avatar}} alt="">
@@ -700,10 +817,12 @@
 
                                         <div class="media-body">
                                             <h6 class="text-truncate">
-                                                <a style="cursor: pointer;" (click)="startChat(user.id)" class="text-reset">{{user.name}}</a>
+                                                <a style="cursor: pointer;" (click)="startChat(userst.id)" class="text-reset">{{userst.name}}</a>
                                             </h6>
-
-                                            <p class="text-muted mb-0">Online</p>
+                                            
+                                            <div *ngIf="user.perfil == 'Patrocinador'">
+                                                <p *ngIf="userst.usr_datos_personales == 1"  class="text-muted mb-0">{{userst.usr_empresa}}</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </li>
@@ -797,6 +916,64 @@
                     </div>
                 </div>
 
+                 <!-- Modal 10 :: citas patrocinadores-->
+                 <div class="modal modal-lg-fullscreen fade" id="createScheduleSponsor" tabindex="-1" role="dialog" aria-labelledby="createScheduleSponsorLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-dialog-zoom">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="createScheduleSponsorLabel">Agendar Cita</h5>
+                            <input type="text" class="form-control" id="appointmentDatePicker">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body p-0 hide-scrollbar">
+                            <div class="row">
+                                <div class="col-12 hide">
+                                    <!-- Search Start -->
+                                    <form class="form-inline w-100 p-2 border-bottom">
+                                        <div class="input-group w-100 bg-light">
+                                            <input type="text" class="form-control form-control-md search border-right-0 transparent-bg pr-0" placeholder="Search">
+                                            <div class="input-group-append">
+                                                <div class="input-group-text transparent-bg border-left-0" role="button">
+                                                    <!-- Default :: Inline SVG -->
+                                                    <svg class="hw-20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                                                    </svg>   
+                                                    
+                                                    <!-- Alternate :: External File link -->
+                                                    <!-- <img class="injectable hw-20" src="./assets/media/heroicons/outline/search.svg" alt=""> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <!-- Search End -->
+                                </div>
+                                
+        
+  
+        
+                              
+                                <div class="col-12">
+                                   
+                                    
+                                    <h5>  <a href="#" role="button" data-toggle="modal" data-target="#createGroup" (click)="hideModal()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Crear grupo +</a> </h5>
+                                    <hr>
+                                  
+                                    <!-- List Group Start -->
+                                   
+                                <!-- List Group End -->
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
                  <!-- Modal 11 :: chats activos-->
                 <div class="modal modal-lg-fullscreen fade" id="chatActivos" tabindex="-1" role="dialog" aria-labelledby="chatActivosLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-dialog-zoom">
@@ -856,7 +1033,7 @@
                       
                                             <!-- Chat Item End -->
                  
-                                             <!-- Chat Item Start -->
+                                             <!-- Chat Item Start Iniciar CHat -->
                                              <ng-container *ngFor="let item of chat_chat_rooms | filterChat:searchText">
                  
                                                  <li class="contacts-item groups" [ngClass]="{'unread': item.count_message > 0}" >

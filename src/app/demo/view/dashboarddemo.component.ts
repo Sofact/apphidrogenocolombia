@@ -322,6 +322,7 @@ export class DashboardDemoComponent implements OnInit {
           .subscribe({
             next: (respuesta) =>{
              console.log("REspuesta del servidor", respuesta);
+            
             },
             error: (error) => {
               console.error('Error al autorizar datos de la persona', error);
@@ -333,4 +334,5 @@ export class DashboardDemoComponent implements OnInit {
     ngOnDestroy() {
         this.subscription.unsubscribe();
     }
+
 }
