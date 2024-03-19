@@ -16,6 +16,8 @@ export class AgendaComponent {
     listaAgenda: any = [];
     listaAgenda1: any = [];
     listaAgenda2: any = [];
+    agenda_id: string = '';
+    dia: string = '';
     @ViewChild('dt') table: Table;
 
 
@@ -29,8 +31,26 @@ export class AgendaComponent {
     }
 
     ngOnInit(): void {
-        this.initForm();
-        }
+      this.initForm();
+        this.router.paramMap.subscribe(params => {
+          this.agenda_id = params.get('id');
+          if (this.agenda_id=='1')
+          {
+           this.dia='Día 1 - Martes 9 de abril';
+           this.cargarDatosAgenda();
+          }
+          else if (this.agenda_id=='2')
+          {
+           this.dia='Día 2 - Miércoles 10 de abril';
+           this.cargarDatosAgenda();
+          }
+          else if (this.agenda_id=='3')
+          {
+           this.dia='Día 3 - Jueves 11 de abril';
+           this.cargarDatosAgenda();
+          }
+        });
+      }
         
         initForm(){
           this.cargarDatosAgenda();
@@ -42,8 +62,8 @@ export class AgendaComponent {
             if(!resp.error && resp){
               console.log("Ingreso a poblar la lista");
                     this.listaAgenda=resp.agenda;
-                    this.listaAgenda1=this.listaAgenda.filter(p => p.eve_dia==1);
-                    this.listaAgenda2=this.listaAgenda.filter(p => p.eve_dia==2);
+                    this.listaAgenda1=this.listaAgenda.filter(p => p.eve_dia==this.agenda_id);
+                    //this.listaAgenda2=this.listaAgenda.filter(p => p.eve_dia==2);
             }else{
               if(resp.error == 'Unauthorized'){
                 console.log("Usuario no Autorizado");
