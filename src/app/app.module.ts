@@ -170,6 +170,7 @@ import * as bootstrap from 'bootstrap';
 import * as $ from 'jquery';
 import { ChatContentPanelComponent } from './modules/chat-panel/chat-panel-body/cp/chat-content-panel/chat-content-panel.component';
 import { FilterChatPipe } from 'src/app/pipes/filter-chat.pipe'; 
+import { FilterContactsPipe } from 'src/app/pipes/filter-contacts.pipe'; 
 
 @NgModule({
     imports: [
@@ -321,7 +322,8 @@ import { FilterChatPipe } from 'src/app/pipes/filter-chat.pipe';
         SponsorsComponent,
         AcercadeComponent,
         PerfilComponent,
-        FilterChatPipe
+        FilterChatPipe,
+        FilterContactsPipe
     ],
     providers: [authInterceptorProviders,
         {provide: LocationStrategy, useClass: HashLocationStrategy},

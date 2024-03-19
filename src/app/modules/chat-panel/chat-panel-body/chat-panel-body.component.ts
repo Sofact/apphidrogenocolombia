@@ -8,6 +8,8 @@ import { CrearChatGrupalService } from '../services/crear-chat-grupal.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import PerfectScrollbar from 'perfect-scrollbar';
+import * as $ from 'jquery';
+import 'jquery-ui/ui/widgets/datepicker'; 
 
 
 @Component({
@@ -21,6 +23,7 @@ export class ChatPanelBodyComponent implements AfterViewInit{
   lado: string= '';
   mensaje: string;
   users_contacts:any =[];
+  users_contacts_sponsors: any =[];
   group_contacts: any =[];
   group_id: string ='';
   groups: any[];
@@ -50,21 +53,32 @@ export class ChatPanelBodyComponent implements AfterViewInit{
     const container = this.elementRef.nativeElement.querySelector('.contacts-list');
     const ps = new PerfectScrollbar(container);
     container.classList.add('ps');
+
+    const enabledDates = ['2024-03-20', '2024-03-22', '2024-03-25'];
+
+    $('#myDatePicker').datepicker({
+      dateFormat: 'yy-mm-dd', // Asegúrate de que el formato coincida
+      beforeShowDay: function(date) {
+        const string = ""; //$.datepicker.formatDate('yy-mm-dd', date);
+        return [enabledDates.includes(string), "", ""]; // Habilita solo las fechas en enabledDates
+      }
+    });
   }
   ngOnInit(): void {
 
     this.router.paramMap.subscribe(params => {
       this.group_id = params.get('id');
-    });
+    }); 
 
     if(this.group_id){
       this.startChatGroup(Number(this.group_id));
     }
    // $("#messageInput").emojioneArea();
     this.ContactsUsers();
+    this.ContactsUsersSponsor();
     this.GetGroups();
     this.user = this._chatPanelService.authServices.user;
-
+    console.log("USERCERIBIDODOCARLD:::", this.user);
 
     this.listMyFriends();
 
@@ -77,6 +91,8 @@ export class ChatPanelBodyComponent implements AfterViewInit{
         this.listMyFriends();
        // this.asignedUserActive();
       });
+
+      console.log("USERTTTT:::", this.user);
   }
   
   irAPaginaDestino() {
@@ -149,8 +165,16 @@ export class ChatPanelBodyComponent implements AfterViewInit{
     ContactsUsers(){
     
       this._userProfileService.ContactUsers().subscribe((resp: any) => {
-        console.log(resp);
-                this.users_contacts = resp.users;
+        console.log("contactUser",resp);
+          this.users_contacts = resp.users;
+      })
+    }
+
+    ContactsUsersSponsor(){
+    
+      this._userProfileService.ContactUsersSponsor().subscribe((resp: any) => {
+        console.log("userSponsor",resp);
+                this.users_contacts_sponsors = resp.users;
       })
     }
     
