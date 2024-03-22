@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewEncapsulation, ViewChild } from '@angular/core';
 import { ProfileUserService } from '../services/profile-user.service';
 import { ChatPanelService } from '../_services/chat-panel.service';
 import { Message } from 'primeng/api';
@@ -8,17 +8,26 @@ import { CrearChatGrupalService } from '../services/crear-chat-grupal.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import PerfectScrollbar from 'perfect-scrollbar';
-import * as $ from 'jquery';
-import 'jquery-ui/ui/widgets/datepicker'; 
+import { MatDatepicker } from '@angular/material/datepicker';
+import swal from 'sweetalert2'
 
 
 @Component({
   selector: 'app-chat-panel-body',
   templateUrl: './chat-panel-body.component.html',
-  styleUrls: ['./chat-panel-body.component.css']
+  styleUrls: ['./chat-panel-body.component.css'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class ChatPanelBodyComponent implements AfterViewInit{
 
+  @ViewChild('picker') datepicker: MatDatepicker<Date>;
+
+
+
+  openDatepicker(): void {
+    this.datepicker.open();
+  }
+  value: any;
   user:any;
   lado: string= '';
   mensaje: string;
@@ -30,7 +39,8 @@ export class ChatPanelBodyComponent implements AfterViewInit{
   path: string = URL_FILESERVER + '/storage/';
   //pathgrupo: string = URL_FILESERVER + '/storage/users/non-avatar-group.svg';
   to_user: any;
-  loadChatPanelContent: boolean = true;
+  loadChatPanelContent: boolean = false;
+  loadSchedulePanelContent: boolean = false;
   chat_chat_rooms:any =[];
   step: string='';
   contador: number =0;
@@ -38,7 +48,8 @@ export class ChatPanelBodyComponent implements AfterViewInit{
   message_text_area:any = null;
   nombreChatGrupal:string = '';
   searchText: string = '';
-
+  hours: any[];
+  selectedHour: string;
 
   constructor(
               private _userProfileService: ProfileUserService,
@@ -54,18 +65,11 @@ export class ChatPanelBodyComponent implements AfterViewInit{
     const ps = new PerfectScrollbar(container);
     container.classList.add('ps');
 
-    const enabledDates = ['2024-03-20', '2024-03-22', '2024-03-25'];
-
-    $('#myDatePicker').datepicker({
-      dateFormat: 'yy-mm-dd', // Asegúrate de que el formato coincida
-      beforeShowDay: function(date) {
-        const string = ""; //$.datepicker.formatDate('yy-mm-dd', date);
-        return [enabledDates.includes(string), "", ""]; // Habilita solo las fechas en enabledDates
-      }
-    });
+  
   }
   ngOnInit(): void {
 
+    this.setupHours();
     this.router.paramMap.subscribe(params => {
       this.group_id = params.get('id');
     }); 
@@ -129,6 +133,56 @@ export class ChatPanelBodyComponent implements AfterViewInit{
       console.log(resp);
      
     })
+  }
+   /* .subscribe((resp) =>{
+      console.log(resp);
+    })*/
+  }
+
+  sendMessageSponsor(mensaje, date){
+    console.log("EL to_user Sponsor::",this.to_user);
+
+    const fecha = new Date(date);
+
+    const opcionesDate = { 
+      weekday: 'long', 
+      year: 'numeric', 
+      month: 'long', 
+      day: 'numeric' 
+    };
+
+    const fechaFormateada = fecha.toLocaleDateString('es-ES');
+    console.log(fechaFormateada);
+        let data= {
+      
+
+      chat_room_id: this.to_user.room_id,
+      message:("Hola me gustaría agendar una cita el día "+ fechaFormateada +" a las "+ mensaje + " quedo atento a tu confirmación."),
+      to_user_id : this.to_user.user.id
+
+
+    }
+    if(mensaje){
+    console.log(mensaje);
+    mensaje = null;
+     this._chatPanelService.sendMessageTxt(data).subscribe((resp:any) => {
+      console.log(resp);
+     
+    })
+    swal.fire({
+      title: 'Agendado!',
+      text: 'El mensaje de solicitud de agendamiento fue enviado satisfactoriamente, puede validarlo en los chats activos.',
+      icon: 'success',
+      confirmButtonText: 'Aceptar',
+      confirmButtonColor: '#86B444'
+    }).then((result) => {
+      if (result.value) {
+        setTimeout(() => {
+          this.irAPaginaDestino();
+        }, 500); // Espera 2000 milisegundos (2 segundos) antes de la redirección
+      }
+    });
+    
   }
    /* .subscribe((resp) =>{
       console.log(resp);
@@ -206,6 +260,28 @@ export class ChatPanelBodyComponent implements AfterViewInit{
         $("#startConversation").modal("hide");
         $("#chatActivos").modal("hide");
         $("#startGroup").modal("hide");
+        $("#startConversationSponsor").modal("hide")
+        this.to_user = resp;
+      })
+    }
+
+    startChatSchedule(value: number){
+
+      console.log("Inside StartChatSchedule");
+      let data = {
+        to_user_id: value,
+      }
+
+      this.loadSchedulePanelContent = false;
+      this._chatPanelService.startChat(data).subscribe((resp:any) => {
+      
+        console.log(resp);
+        this.loadSchedulePanelContent = true;
+
+        $("#startConversation").modal("hide");
+        $("#chatActivos").modal("hide");
+        $("#startGroup").modal("hide");
+        $("#startConversationSponsor").modal("hide")
         this.to_user = resp;
       })
     }
@@ -298,6 +374,17 @@ export class ChatPanelBodyComponent implements AfterViewInit{
      
       this.GetGroups();
     }
+    setupHours() {
+      this.hours = [];
+      for (let i = 7; i < 19; i++) {
+        let hourString = i < 10 ? `0${i}` : `${i}`;
+        this.hours.push({ label: `${hourString}:00`, value: `${hourString}:00` });
+        this.hours.push({ label: `${hourString}:30`, value: `${hourString}:30` });
+      }
+    }
 
+    agendarCita(hours, value ){
+      console.log("INgreso agendarCita", hours, "FEcha", value);
+    }
   
 }

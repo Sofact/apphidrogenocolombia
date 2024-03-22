@@ -319,6 +319,11 @@
                   <app-chat-content-panel [to_user]="to_user"></app-chat-content-panel>
                
                 </div>
+
+                <div class="chat-content p-2"  id="externo"  *ngIf="loadSchedulePanelContent">
+                    <app-schedule-content-panel [to_user]="to_user"></app-schedule-content-panel>
+                 
+                  </div>
                 <!-- Chat Content End-->
 
 
@@ -385,16 +390,42 @@
                             </div>
                         </div>
                     </div>
-                    <textarea class="form-control emojionearea-form-control" placeholder="Escribe tu mensaje..." id="messageInput" [(ngModel)]="mensaje" id="mensaje" style="font-size: 16px;
-                    -ms-text-size-adjust: 100%;
-                    -webkit-text-size-adjust: 100%;"></textarea>
+                    <div  *ngIf="loadSchedulePanelContent">
+                        <div class="chat-content-patrocinador">
+
+                            <div >
+                            <h6>Seleccione una fecha</h6>   <!-- Asegúrate de tener un mat-form-field que contenga tu input y el toggle del datepicker -->
+                                <p-calendar [(ngModel)]="value" ></p-calendar>
+
+                              
+                            </div>
+                            <div>
+                                <h6>Seleccione una hora</h6> 
+                                <p-dropdown [options]="hours" [(ngModel)]="selectedHour" placeholder="Select an hour"></p-dropdown>
+                            </div>
+                            <br>
+                            <div>
+                                <p-button (click)="sendMessageSponsor(selectedHour, value)">Agendar Cita</p-button>
+                            </div>
+                          
+                            <!-- List Group Start -->
+                           
+                        <!-- List Group End -->
+                    </div>
                     
-                    <div class="btn btn-primary btn-icon send-icon rounded-circle text-light mb-1" (click)="sendMessageText()" role="button">
-                        <svg class="hw-24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                        </svg>
-                        
-                        <!-- <img src="./assets/media/heroicons/outline/arrow-right.svg" alt="" class="injectable"> -->
+                    </div>
+                    <div  *ngIf="loadChatPanelContent">
+                        <textarea class="form-control emojionearea-form-control" placeholder="Escribe tu mensaje..." id="messageInput" [(ngModel)]="mensaje" id="mensaje" style="font-size: 16px;
+                        -ms-text-size-adjust: 100%;
+                        -webkit-text-size-adjust: 100%;"></textarea>
+                    
+                        <div class="btn btn-primary btn-icon send-icon rounded-circle text-light mb-1" (click)="sendMessageText()" role="button">
+                            <svg class="hw-24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                            </svg>
+                            
+                            <!-- <img src="./assets/media/heroicons/outline/arrow-right.svg" alt="" class="injectable"> -->
+                        </div>
                     </div>
                 </div>
                 <!-- Chat Footer End-->
@@ -720,14 +751,16 @@
                                             <img src={{path}}{{userSponsor.avatar}} alt="">
                                             
                                         </div>
+                                        
 
                                         <div class="media-body">
                                             <div>
                                                 <h6 class="text-truncate">
-                                                    <a style="cursor: pointer;"  class="text-reset" type="button" data-toggle="modal" data-target="#createScheduleSponsor" style="width:150px">
+                                                    <a style="cursor: pointer;"  class="text-reset" (click)="startChatSchedule(userSponsor.id)">
                                                         {{userSponsor.name}}
                                                     </a>
                                                 </h6>
+                                               
                                             </div>
                                            
 
@@ -921,19 +954,14 @@
                     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-dialog-zoom">
                         <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="createScheduleSponsorLabel">Agendar Cita</h5>
-                            <input type="text" class="form-control" id="appointmentDatePicker">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                                
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+                            <h5 class="modal-title" id="createScheduleSponsorLabel">Agendar Citas</h5>
+                           
+                           
                         </div>
                         <div class="modal-body p-0 hide-scrollbar">
                             <div class="row">
                                 <div class="col-12 hide">
+                                    
                                     <!-- Search Start -->
                                     <form class="form-inline w-100 p-2 border-bottom">
                                         <div class="input-group w-100 bg-light">
@@ -958,11 +986,22 @@
   
         
                               
-                                <div class="col-12">
-                                   
-                                    
-                                    <h5>  <a href="#" role="button" data-toggle="modal" data-target="#createGroup" (click)="hideModal()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Crear grupo +</a> </h5>
-                                    <hr>
+                                <div class="chat-content-patrocinador">
+
+                                    <div >
+                                    <h6>Seleccione una fecha</h6>   <!-- Asegúrate de tener un mat-form-field que contenga tu input y el toggle del datepicker -->
+                                        <p-calendar [(ngModel)]="value" ></p-calendar>
+
+                                      
+                                    </div>
+                                    <div>
+                                        <h6>Seleccione una hora</h6> 
+                                        <p-dropdown [options]="hours" [(ngModel)]="selectedHour" placeholder="Select an hour"></p-dropdown>
+                                    </div>
+                                    <br>
+                                    <div>
+                                        <p-button (click)="sendMessageSponsor(selectedHour, value)"  data-toggle="modal" data-target="#chatActivos" style="width:150px">Agendar Cita</p-button>
+                                    </div>
                                   
                                     <!-- List Group Start -->
                                    
@@ -980,23 +1019,13 @@
                         <div class="modal-content">
                         <div class="modal-header">
                             
-                            <div class="col-12">  <!--Cambio de p-2 a col-12 para el ancho del buscar-->
-
-                                    <h5 class="modal-title" id="chatActivosLabel">Chats Activos</h5>
-                                    <br>
-                                    <div class="input-group input-group-sm custom-size">
-
-                                        <input type="text" class="form-control basicAutoComplete" autocomplete="on" [(ngModel)]="searchText" placeholder="Buscar...">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-                                                </svg> <!-- Icono de lupa -->
-                                            </span>
-                                        </div>
-                                    </div>
-
-                            </div>
+                            <div class="modal-body p-0 hide-scrollbar">
+                                <div class="row">
+                                  <div class="col-12">
+                                    
+                                  </div>
+                                </div>
+                              </div>
                            
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>

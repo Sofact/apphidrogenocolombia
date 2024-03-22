@@ -4,19 +4,23 @@ import { CommonModule } from '@angular/common';
 import { ChatPanelRoutingModule } from './chat-panel-routing.module';
 import { ButtonModule } from 'primeng/button';
 
-import { ChatPanelComponent } from './chat-panel.component';
-import { ChatPanelBodyComponent } from './chat-panel-body/chat-panel-body.component';
-import { ChatContentPanelComponent } from './chat-panel-body/cp/chat-content-panel/chat-content-panel.component';
 
 
 @NgModule({
   declarations: [
 
+
+    // ... cualquier otro componente que necesite el datepicker
   ],
   imports: [
     CommonModule,
     ChatPanelRoutingModule,
     ButtonModule
+  ],
+  providers: [
+    // Configura el locale del datepicker si es necesario
+   
+    // ... cualquier otro proveedor que necesites
   ]
 })
 export class ChatPanelModule { }

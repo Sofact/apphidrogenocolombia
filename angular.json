@@ -30,14 +30,11 @@
                             "src/assets"
                         ],
                         "styles": [
-                            "src/styles.scss",
-                            "node_modules/jquery-ui/themes/base/all.css"
+                            "src/styles.scss"
                         ],
                         "scripts": [
                             "node_modules/prismjs/prism.js",
-                            "node_modules/prismjs/components/prism-typescript.js",
-                            "node_modules/jquery/dist/jquery.min.js",
-                            "node_modules/jquery-ui/ui/widgets/datepicker.js"
+                            "node_modules/prismjs/components/prism-typescript.js"
                         ]
                     },
                     "configurations": {

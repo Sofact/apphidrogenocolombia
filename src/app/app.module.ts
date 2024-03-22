@@ -172,6 +172,16 @@ import { ChatContentPanelComponent } from './modules/chat-panel/chat-panel-body/
 import { FilterChatPipe } from 'src/app/pipes/filter-chat.pipe'; 
 import { FilterContactsPipe } from 'src/app/pipes/filter-contacts.pipe'; 
 
+
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import { ScheduleContentPanelComponent } from './chat-panel/chat-panel-body/schedule-content-panel/schedule-content-panel.component';
+
+
+
+
 @NgModule({
     imports: [
         FormsModule ,
@@ -266,7 +276,13 @@ import { FilterContactsPipe } from 'src/app/pipes/filter-contacts.pipe';
 
         AuthRoutingModule,
         ReactiveFormsModule,
-        ImageCropperModule
+        ImageCropperModule,
+        MatDatepickerModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatNativeDateModule,
+        BrowserAnimationsModule
+        
     ],
     declarations: [
         AppComponent,
@@ -323,12 +339,14 @@ import { FilterContactsPipe } from 'src/app/pipes/filter-contacts.pipe';
         AcercadeComponent,
         PerfilComponent,
         FilterChatPipe,
-        FilterContactsPipe
+        FilterContactsPipe,
+        ScheduleContentPanelComponent
     ],
     providers: [authInterceptorProviders,
         {provide: LocationStrategy, useClass: HashLocationStrategy},
         CountryService, CustomerService, EventService, IconService, NodeService,
-        PhotoService, ProductService, MenuService, AgendaService, BreadcrumbService, ConfigService
+        PhotoService, ProductService, MenuService, AgendaService, BreadcrumbService, ConfigService,
+         { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
     ],
     bootstrap: [AppComponent]
 })

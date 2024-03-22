@@ -3,7 +3,7 @@ import { MegaMenuItem, MenuItem } from 'primeng/api';
 import { BreadcrumbService } from 'src/app/breadcrumb.service';
 @Component({
     templateUrl: './menus.component.html',
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.Emulated
 })
 export class MenusComponent implements OnInit {
 
