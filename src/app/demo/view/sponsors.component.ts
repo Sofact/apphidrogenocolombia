@@ -43,7 +43,7 @@ export class SponsorsComponent {
         
         cargarDatosSponsors(){
           this.agenda.get_sponsor(null).subscribe((resp: any) => {
-            console.log(resp);
+            console.log("SponsorInof",resp);
             if(!resp.error && resp){
               console.log("Ingreso a poblar la lista");
                     this.listaSponsors=resp.sponsor;
@@ -60,5 +60,10 @@ export class SponsorsComponent {
               }
             }
           })
+        }
+
+        irAPaginaDestino(id: number) {
+          console.log("SponsorsPAge", id)
+          this.route.navigate(['pages/sponsors-view', id]);
         }
 }

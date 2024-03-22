@@ -178,6 +178,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { ScheduleContentPanelComponent } from './chat-panel/chat-panel-body/schedule-content-panel/schedule-content-panel.component';
+import { SponsorsViewComponent } from './demo/view/sponsors-view/sponsors-view.component';
 
 
 
@@ -340,7 +341,8 @@ import { ScheduleContentPanelComponent } from './chat-panel/chat-panel-body/sche
         PerfilComponent,
         FilterChatPipe,
         FilterContactsPipe,
-        ScheduleContentPanelComponent
+        ScheduleContentPanelComponent,
+        SponsorsViewComponent
     ],
     providers: [authInterceptorProviders,
         {provide: LocationStrategy, useClass: HashLocationStrategy},
