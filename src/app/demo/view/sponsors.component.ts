@@ -21,6 +21,12 @@ export class SponsorsComponent {
     listaSponsorsoro: any = [];
     listaSponsorsapoya: any = [];
     //listaAgenda2: any = [];
+    versponsors0: boolean = false;
+    versponsors1: boolean = false;
+    versponsors2: boolean = false;
+    versponsors3: boolean = false;
+    versponsorsoro: boolean = false;
+    versponsorsapoya: boolean = false;
     @ViewChild('dt') table: Table;
 
 
@@ -54,6 +60,12 @@ export class SponsorsComponent {
                     this.listaSponsorsoro=this.listaSponsors.filter(p => p.spo_tipo==4);
                     this.listaSponsorsapoya=this.listaSponsors.filter(p => p.spo_tipo==5);
                     //this.listaAgenda2=this.listaAgenda.filter(p => p.eve_dia==2);
+                    if (this.listaSponsors0.length>0) {this.versponsors0=true};
+                    if (this.listaSponsors1.length>0) {this.versponsors1=true};
+                    if (this.listaSponsors2.length>0) {this.versponsors2=true}; 
+                    if (this.listaSponsors3.length>0) {this.versponsors3=true}; 
+                    if (this.listaSponsorsoro.length>0) {this.versponsorsoro=true};
+                    if (this.listaSponsorsapoya.length>0) {this.versponsorsapoya=true}; 
             }else{
               if(resp.error == 'Unauthorized'){
                 console.log("Usuario no Autorizado");
