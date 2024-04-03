@@ -97,7 +97,36 @@ export class ChatPanelBodyComponent implements AfterViewInit{
       });
 
       console.log("USERTTTT:::", this.user);
-  }
+  
+      ECHO_PUSHER_INST.join("onlineusers").here((users:any) =>{
+        console.log(users);
+        this.users_actives = users;
+        this.asignedUserActive();
+      }).joining((user:any) =>{
+        console.log(user);
+      }).leaving((user:any) =>{
+        console.log(user);
+      })
+  
+    }
+
+    asignedUserActive(){
+      for(const user of this.users_actives){
+      
+        const Index = this.chat_chat_rooms.findIndex((item: any) =>{
+        if(item.friend_first){
+          return item.friend_first.id == user.id;
+        }else if (item.friend_second){
+          return item.friend_second.id == user.id;
+        }
+        return 0;
+        });
+
+        if(Index != -1){
+          this.chat_chat_rooms[Index].is_active = true;
+        }
+      }
+    } 
   
   irAPaginaDestino() {
     if (this.group_id)
