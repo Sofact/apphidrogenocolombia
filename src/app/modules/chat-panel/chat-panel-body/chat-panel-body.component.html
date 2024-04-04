@@ -747,7 +747,7 @@
                                 <!-- List Group Item Start -->
                                 <li class="list-group-item" *ngFor="let userSponsor of users_contacts_sponsors  | filterContacts:searchText">
                                     <div class="media">
-                                        <div class="avatar avatar-online mr-2">
+                                        <div class="avatar bg-success text-light" [ngClass]="{'avatar-busy': !userSponsor.is_active, 'avatar-online': userSponsor.is_active}">
                                             <img src={{path}}{{userSponsor.avatar}} alt="">
                                             
                                         </div>
@@ -841,9 +841,9 @@
                                 <ul class="list-group list-group-flush">
 
                                 <!-- List Group Item Start  iniciar chat-->
-                                <li class="list-group-item" *ngFor="let userst of users_contacts  | filterContacts:searchText">
+                                <li class="list-group-item" *ngFor="let userst of users_contacts  | filterContacts:searchText"> 
                                     <div class="media">
-                                        <div class="avatar avatar-online mr-2">
+                                        <div class="avatar bg-success text-light" [ngClass]="{'avatar-busy': !userst.is_active, 'avatar-online': userst.is_active}">
                                             <img src={{path}}{{userst.avatar}} alt="">
                                           
                                         </div>
@@ -1000,7 +1000,7 @@
                                     </div>
                                     <br>
                                     <div>
-                                        <p-button (click)="sendMessageSponsor(selectedHour, value)"  data-toggle="modal" data-target="#chatActivos" style="width:150px">Agendar Cita</p-button>
+                                        <p-button (click)="sendMessageSponsor(selectedHour, value)"  data-toggle="modal" data-target="#chatActivos" >Agendar Cita</p-button>
                                     </div>
                                   
                                     <!-- List Group Start -->

@@ -42,6 +42,7 @@ export class ChatPanelBodyComponent implements AfterViewInit{
   loadChatPanelContent: boolean = false;
   loadSchedulePanelContent: boolean = false;
   chat_chat_rooms:any =[];
+
   step: string='';
   contador: number =0;
   users_actives:any = [];
@@ -102,6 +103,8 @@ export class ChatPanelBodyComponent implements AfterViewInit{
         console.log(users);
         this.users_actives = users;
         this.asignedUserActive();
+        this.asignedNewActive();
+        this.asignedNewChat();
       }).joining((user:any) =>{
         console.log(user);
       }).leaving((user:any) =>{
@@ -113,6 +116,7 @@ export class ChatPanelBodyComponent implements AfterViewInit{
     asignedUserActive(){
       for(const user of this.users_actives){
       
+        console.log("USER_CINTACT:::", this.users_actives);
         const Index = this.chat_chat_rooms.findIndex((item: any) =>{
         if(item.friend_first){
           return item.friend_first.id == user.id;
@@ -127,6 +131,43 @@ export class ChatPanelBodyComponent implements AfterViewInit{
         }
       }
     } 
+
+    asignedNewActive(){
+      for(const user of this.users_actives){
+      
+        console.log("USER_CINTACTspons:::", this.users_actives);
+        const Index = this.users_contacts_sponsors.findIndex((item: any) =>{
+          console.log("USERS_CONTACT_SPONSORS_DATA:::", item);
+          if(item.id){
+            return item.id == user.id;
+          }
+          return 0;
+        });
+    
+        if(Index != -1){
+          this.users_contacts_sponsors[Index].is_active = true;
+        }
+      }
+    }
+
+    asignedNewChat(){
+      for(const user of this.users_actives){
+      
+        console.log("USER_CINTACTspons:::", this.users_actives);
+        const Index = this.users_contacts.findIndex((item: any) =>{
+          console.log("USERS_CONTACT_SPONSORS_DATA:::", item);
+          if(item.id){
+            return item.id == user.id;
+          }
+          return 0;
+        });
+    
+        if(Index != -1){
+          this.users_contacts[Index].is_active = true;
+        }
+      }
+    }
+    
   
   irAPaginaDestino() {
     if (this.group_id)

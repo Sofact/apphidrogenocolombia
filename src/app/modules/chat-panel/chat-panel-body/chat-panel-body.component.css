@@ -9,13 +9,14 @@
   
   .ps__thumb-x,
   .ps__thumb-y {
-    background-color: #c62828; /* Color del thumb (barra de desplazamiento) */
+    background-color: #ffffff00; /* Color del thumb (barra de desplazamiento) */
     border-radius: 5px; /* Bordes redondeados */
+    height: 50px;
   }
   
   .ps__rail-x:hover > .ps__thumb-x,
   .ps__rail-y:hover > .ps__thumb-y {
-    background-color: #8e0000; /* Color del thumb al pasar el mouse */
+    background-color: #ffffff00; /* Color del thumb al pasar el mouse */
   }
 
   .chat-content {
