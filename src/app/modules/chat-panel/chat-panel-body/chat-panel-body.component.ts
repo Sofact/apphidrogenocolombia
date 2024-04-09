@@ -93,6 +93,9 @@ export class ChatPanelBodyComponent implements AfterViewInit{
         console.log("Mensaje en RefreshChatRoom:::::",e);
         this.chat_chat_rooms = [];
         this.chat_chat_rooms = e.chatrooms;
+        this.asignedUserActive();
+        this.asignedNewActive();
+        this.asignedNewChat();
         this.listMyFriends();
        // this.asignedUserActive();
       });
