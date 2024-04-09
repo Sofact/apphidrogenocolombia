@@ -61,11 +61,12 @@ export class ChatPanelBodyComponent implements AfterViewInit{
               private location: Location,
               private elementRef: ElementRef
               ) { }
+
   ngAfterViewInit(): void {
     const container = this.elementRef.nativeElement.querySelector('.contacts-list');
     const ps = new PerfectScrollbar(container);
     container.classList.add('ps');
-
+    this.setupEchoPusher();
   
   }
   ngOnInit(): void {
@@ -87,8 +88,15 @@ export class ChatPanelBodyComponent implements AfterViewInit{
 
     this.listMyFriends();
 
-    const ECHO_PUSHER_INST = ECHO_PUSHER(this._chatPanelService.authServices.token);
-    ECHO_PUSHER_INST.private("chat.refresh.room."+this._userProfileService.authService.user.id)
+    this.setupEchoPusher();
+  
+    }
+
+    setupEchoPusher(): void {
+      const ECHO_PUSHER_INST = ECHO_PUSHER(this._chatPanelService.authServices.token);
+  
+      // Escucha para refrescar salas de chat
+      ECHO_PUSHER_INST.private("chat.refresh.room."+this._userProfileService.authService.user.id)
       .listen('RefreshMyChatRoom', (e:any) => {
         console.log("Mensaje en RefreshChatRoom:::::",e);
         this.chat_chat_rooms = [];
@@ -97,24 +105,48 @@ export class ChatPanelBodyComponent implements AfterViewInit{
         this.asignedNewActive();
         this.asignedNewChat();
         this.listMyFriends();
-       // this.asignedUserActive();
       });
-
-      console.log("USERTTTT:::", this.user);
   
-      ECHO_PUSHER_INST.join("onlineusers").here((users:any) =>{
+      // Escucha para usuarios activos
+      ECHO_PUSHER_INST.join("onlineusers")
+      .here((users:any) => {
         console.log(users);
         this.users_actives = users;
         this.asignedUserActive();
         this.asignedNewActive();
         this.asignedNewChat();
-      }).joining((user:any) =>{
+      }).joining((user:any) => {
         console.log(user);
-      }).leaving((user:any) =>{
+        
+        const found = this.users_actives.some((el: any) => el.id == user.id);
+        if(!found) this.users_actives.push(user);
+        this.asignedUserActive();
+        this.asignedNewActive();
+        this.asignedNewChat();
+        // Actualiza o añade el usuario que se une
+      }).leaving((user:any) => {
         console.log(user);
-      })
+        const Index = this.users_actives.findIndex((item: any) => item.id == user.id);
+        this.users_actives.splice(Index,1);
+
+        const IndexInactive = this.chat_chat_rooms.findIndex((item: any) =>{
+          if(item.friend_first){
+            return item.friend_first.id == user.id;
+          }else if (item.friend_second){
+            return item.friend_second.id == user.id;
+          }
+          return 0;
+          });
   
+          if(IndexInactive != -1){
+            this.chat_chat_rooms[IndexInactive].is_active = false;
+          }
+        // Elimina o actualiza el usuario que se va
+      });
     }
+  
+    // Resto de tus métodos...
+  
 
     asignedUserActive(){
       for(const user of this.users_actives){
@@ -167,8 +199,11 @@ export class ChatPanelBodyComponent implements AfterViewInit{
     
         if(Index != -1){
           this.users_contacts[Index].is_active = true;
+          
         }
+        
       }
+      
     }
     
   
@@ -204,9 +239,10 @@ export class ChatPanelBodyComponent implements AfterViewInit{
     this.mensaje = null;
      this._chatPanelService.sendMessageTxt(data).subscribe((resp:any) => {
       console.log(resp);
-     
+      this.setupEchoPusher();
     })
   }
+
    /* .subscribe((resp) =>{
       console.log(resp);
     })*/
@@ -257,37 +293,9 @@ export class ChatPanelBodyComponent implements AfterViewInit{
     });
     
   }
-   /* .subscribe((resp) =>{
-      console.log(resp);
-    })*/
+
+  
   }
-
-  /*
-  asignedUserActive(){
-    for (const user of this.users_actives) {
-      const Index = this.chat_chat_rooms.findIndex((item:any) => {
-        if(item.friend_first){
-          return item.friend_first.id == user.id;
-        }else if (item.friend_second){
-          return item.friend_second.id == user.id;
-        }
-        return;
-      });
-
-      if(Index != -1){
-        this.chat_chat_rooms[Index].is_active = true;
-      }
-
-      const IndexN = this.users_contacts.findIndex((item:any) => item.id == user.id);
-      if(IndexN != -1){
-        this.users_contacts[IndexN].is_active = true;
-      }
-
-      if(this.to_user && this.to_user.user.id == user.id){
-        this.to_user.is_active = true;
-      }
-    }
-  }*/
 
     ContactsUsers(){
     
@@ -326,10 +334,7 @@ export class ChatPanelBodyComponent implements AfterViewInit{
       
         console.log(resp);
         this.loadChatPanelContent = true;
-        /*
-        setTimeout(() =>{
-          $("#messageInput").emojioneArea();
-        },50);*/
+      
         $("#startConversation").modal("hide");
         $("#chatActivos").modal("hide");
         $("#startGroup").modal("hide");
@@ -394,6 +399,7 @@ export class ChatPanelBodyComponent implements AfterViewInit{
       }
         
       )
+      this.setupEchoPusher();
     }
 
     loadMyChat(item: any){
