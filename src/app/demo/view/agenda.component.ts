@@ -62,8 +62,8 @@ export class AgendaComponent {
             if(!resp.error && resp){
               console.log("Ingreso a poblar la lista");
                     this.listaAgenda=resp.agenda;
-                    this.listaAgenda1=this.listaAgenda.filter(p => p.eve_dia==this.agenda_id && p.eve_tipo!='Caspula');
-                    this.listaAgenda2=this.listaAgenda.filter(p => p.eve_dia==this.agenda_id && p.eve_tipo=='Caspula');
+                    this.listaAgenda1=this.listaAgenda.filter(p => p.eve_dia==this.agenda_id && p.eve_tipo!="Cápsula");
+                    this.listaAgenda2=this.listaAgenda.filter(p => p.eve_dia==this.agenda_id && p.eve_tipo=="Cápsula");
             }else{
               if(resp.error == 'Unauthorized'){
                 console.log("Usuario no Autorizado");
