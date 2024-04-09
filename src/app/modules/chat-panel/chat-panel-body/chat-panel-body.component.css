@@ -1,5 +1,5 @@
 .contacts-list {
-    max-height: 900px; /* Altura máxima del panel */
+    max-height: 700px; /* Altura máxima del panel */
     overflow-y: auto; /* Agrega una barra de desplazamiento vertical cuando sea necesario */
   }
   .ps__rail-x,
@@ -59,3 +59,4 @@
   max-width: 300px; /* or whatever size you want */
   width: 100%;
 }
+
