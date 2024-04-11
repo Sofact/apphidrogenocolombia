@@ -247,7 +247,7 @@ export class DashboardDemoComponent implements OnInit {
           console.log(resp);
           if(!resp.error && resp){
             console.log("Ingreso a poblar la lista");
-                  this.listaPersona=resp.persona;
+                  this.listaPersona=resp.persona.filter(p => p.per_tipo_persona==1);
                   this.cantPersonas = this.listaPersona.length;
                   //this.listaAgenda2=this.listaAgenda.filter(p => p.eve_dia==2);
           }else{
