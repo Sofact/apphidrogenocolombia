@@ -36,17 +36,17 @@ export class AgendaComponent {
           this.agenda_id = params.get('id');
           if (this.agenda_id=='1')
           {
-           this.dia='Día 1 - Martes 9 de abril';
+           this.dia='Día 1 - Martes 1 de abril';
            this.cargarDatosAgenda();
           }
           else if (this.agenda_id=='2')
           {
-           this.dia='Día 2 - Miércoles 10 de abril';
+           this.dia='Día 2 - Miércoles 2 de abril';
            this.cargarDatosAgenda();
           }
           else if (this.agenda_id=='3')
           {
-           this.dia='Día 3 - Jueves 11 de abril';
+           this.dia='Día 3 - Jueves 3 de abril';
            this.cargarDatosAgenda();
           }
         });
