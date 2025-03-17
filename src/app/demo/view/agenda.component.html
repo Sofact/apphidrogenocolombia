@@ -27,7 +27,7 @@
 				</ng-template>
 			</p-table>          
         </div>
-        <div class="card">
+        <div class="card" *ngIf="vercapsulas">
             <h5>Cápsulas de Conocimiento</h5>
             <p-table [value]="listaAgenda2" sortMode="single">
 				<ng-template pTemplate="body" let-agenda let-rowIndex="rowIndex">

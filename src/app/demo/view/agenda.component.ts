@@ -20,6 +20,7 @@ export class AgendaComponent {
     dia: string = '';
     @ViewChild('dt') table: Table;
 
+    vercapsulas: boolean = false;
 
     constructor( private fb: FormBuilder,
         private authService: AuthService,
@@ -64,6 +65,7 @@ export class AgendaComponent {
                     this.listaAgenda=resp.agenda;
                     this.listaAgenda1=this.listaAgenda.filter(p => p.eve_dia==this.agenda_id && p.eve_tipo!="Cápsula");
                     this.listaAgenda2=this.listaAgenda.filter(p => p.eve_dia==this.agenda_id && p.eve_tipo=="Cápsula");
+                    if (this.listaAgenda2.length>0) {this.vercapsulas=true}; 
             }else{
               if(resp.error == 'Unauthorized'){
                 console.log("Usuario no Autorizado");
