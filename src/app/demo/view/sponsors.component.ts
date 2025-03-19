@@ -22,6 +22,7 @@ export class SponsorsComponent {
     listaSponsorsapoya: any = [];
     listaSponsorsAConocimiento: any = [];
     listaSponsorsAComunicaciones: any = [];
+    listaExpositores: any = [];
     //listaAgenda2: any = [];
     versponsors0: boolean = false;
     versponsors1: boolean = false;
@@ -31,6 +32,7 @@ export class SponsorsComponent {
     versponsorsapoya: boolean = false;
     versponsorsaconocimiento: boolean = false;
     versponsorsacomunicaciones: boolean = false;
+    verexpositores: boolean = false;
     @ViewChild('dt') table: Table;
 
 
@@ -65,6 +67,7 @@ export class SponsorsComponent {
                     this.listaSponsorsapoya=this.listaSponsors.filter(p => p.spo_tipo==5);
                     this.listaSponsorsAConocimiento=this.listaSponsors.filter(p => p.spo_tipo==6);
                     this.listaSponsorsAComunicaciones=this.listaSponsors.filter(p => p.spo_tipo==7);
+                    this.listaExpositores=this.listaSponsors.filter(p => p.spo_tipo==8);
                     //this.listaAgenda2=this.listaAgenda.filter(p => p.eve_dia==2);
                     if (this.listaSponsors0.length>0) {this.versponsors0=true};
                     if (this.listaSponsors1.length>0) {this.versponsors1=true};
@@ -74,6 +77,7 @@ export class SponsorsComponent {
                     if (this.listaSponsorsapoya.length>0) {this.versponsorsapoya=true}; 
                     if (this.listaSponsorsAConocimiento.length>0) {this.versponsorsaconocimiento=true}; 
                     if (this.listaSponsorsAComunicaciones.length>0) {this.versponsorsacomunicaciones=true}; 
+                    if (this.listaExpositores.length>0) {this.verexpositores=true}; 
             }else{
               if(resp.error == 'Unauthorized'){
                 console.log("Usuario no Autorizado");
