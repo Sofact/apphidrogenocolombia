@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {PrimeNGConfig} from 'primeng/api';
+import {NavigationEnd, Router} from '@angular/router';
+
+declare const gtag: Function;
 
 @Component({
     selector: 'app-root',
@@ -23,7 +26,17 @@ export class AppComponent implements OnInit{
 
     inputStyle = 'outlined';
 
-    constructor(private primengConfig: PrimeNGConfig) {}
+    constructor(private primengConfig: PrimeNGConfig,
+        private router: Router
+    ) {
+        this.router.events.subscribe(event => {
+            if (event instanceof NavigationEnd) {
+              gtag('event', 'page_view', {
+                page_path: event.urlAfterRedirects
+              });
+            }
+        });
+    }
 
     ngOnInit() {
         this.primengConfig.ripple = true;
